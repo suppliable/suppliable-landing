@@ -123,17 +123,22 @@
       return;
     }
 
-    /* ---------------------------------------------------------
-       TODO: connect to your backend / Supabase / email service.
-       The form data is collected below — POST it to your endpoint.
-       --------------------------------------------------------- */
     var data = {
       name: form.name.value.trim(),
       company: form.company.value.trim(),
       phone: form.phone.value.trim(),
       requirement: form.requirement.value.trim()
     };
-    console.log('Bulk quote enquiry:', data);
+
+    var message =
+      'Bulk quote enquiry from suppliable.in\n\n' +
+      'Name: ' + data.name + '\n' +
+      'Company: ' + data.company + '\n' +
+      'Phone: ' + data.phone + '\n\n' +
+      'Requirement:\n' + data.requirement;
+
+    var waUrl = 'https://wa.me/918778627926?text=' + encodeURIComponent(message);
+    window.open(waUrl, '_blank');
 
     form.reset();
     success.hidden = false;
