@@ -12,28 +12,47 @@ step, no dependencies. Open `index.html` in a browser to preview.
 ## Files
 | File | Purpose |
 |------|---------|
-| `index.html` | Page structure & content |
-| `styles.css` | All styling — solid purple `#4B22D6`, orange accent `#F26A1B`, no gradients |
+| `index.html` | Landing page structure & content |
+| `styles.css` | All landing-page styling |
 | `script.js` | Mobile nav, scroll reveals, stat counters, form validation, demo control |
 | `app-demo.html` | **Interactive app demo** — a working mini-version of the Suppliable app |
-| `assets/` | Place your images here (see below) |
+| `js/api.js` | API client for the catalogue backend (fetch + normalize) |
+| `privacypolicy/`, `contact/` | Standalone pages (clean URLs) |
+| `assets/` | Logo, og-image, favicons, product photos |
 
 ## Interactive app demo (`app-demo.html`)
-A self-contained, working prototype of the app — Home, Search, Cart and Track
-Order screens, all clickable. **Open `app-demo.html` directly in a browser** to
-review the app on its own (no Supabase, no backend — it runs entirely in the page).
+A working prototype of the app — Home, Search, Cart and Track Order screens, all
+clickable. **Open `app-demo.html` directly in a browser** to review the app on
+its own; it's also embedded live inside the landing page's "How it works" section.
 
-It's also embedded live inside the landing page's "How it works" section, sitting
-in a phone frame. The three step cards drive it: clicking a step navigates the
-demo (Search → Cart → Track). Visitors can also tap around it freely.
+### Data source: live API
+The demo fetches its catalogue from the backend at runtime via [`js/api.js`](js/api.js):
 
-The demo carries the real Suppliable catalogue — 11 categories, 63 products and
-the actual brands (UltraTech, Ramco, Finolex, ARS, MYK, Dr. Fixit, etc.) and a
-pre-filled cart so every screen has content. Edit the `PRODUCTS`, `CATEGORIES`
-and `POPULAR` arrays near the top of the `<script>` block to change what's shown.
+| Endpoint | What we use it for |
+|---|---|
+| `GET /home` | Categories + 5-item preview per category (loaded at startup) |
+| `GET /products?category=<DisplayName>` | Full product list when a category is tapped |
+| `GET /products/:id` | Single product (currently unused by the demo; available for future detail screen) |
+| `GET /search?q=...` | (Available; demo currently filters client-side) |
 
-> ⚠️ **Prices are representative placeholders.** Swap in the real price sheet
-> before launch — see the `price` field on each product in `PRODUCTS`.
+**Base URL** is hardcoded in `js/api.js` (`BASE_URL` const). To switch backends,
+change that and update `_normalizeProduct` / `_normalizeCategory` if the field
+names differ.
+
+**API contract — internal product shape** (what `SuppliableAPI._normalizeProduct`
+produces, used by the demo UI):
+```js
+{ id, name, brand, cat, catKey, price, unit, stock, e (emoji),
+  imageUrl, fallbackImage, variants?: [{id, label, price, stock}],
+  hasVariants, gst, hsn, description }
+```
+
+**Fallback:** if the API is unreachable (or `js/api.js` doesn't load),
+`FALLBACK_PRODUCTS` / `FALLBACK_CATEGORIES` in `app-demo.html` keep the demo
+usable with a tiny offline catalogue. A toast tells the visitor.
+
+**Loading state:** the home category grid shows "Loading catalogue…" while the
+first `/home` request is in flight. Render free tier has 30–50s cold starts.
 
 ## Product images
 Each product can show a real photo. Drop image files into `assets/products/`,

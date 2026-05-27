@@ -103,7 +103,7 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
   letter-spacing:-.02em;margin:22px 0 12px;}
 .sec-h .bar{width:4px;height:18px;background:var(--purple);border-radius:2px;}
 
-.catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
+.catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;min-height:100px;}
 .catcard{
   background:#fff;border:1.5px solid var(--line);border-radius:13px;
   padding:12px 4px;text-align:center;transition:transform .12s,border-color .12s;
@@ -111,6 +111,15 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
 .catcard:active{transform:scale(.95);border-color:var(--purple);}
 .catcard .ce{font-size:24px;}
 .catcard .cn{font-size:10px;font-weight:700;margin-top:5px;line-height:1.2;}
+
+/* loading skeleton — shown while api.js is fetching */
+.catgrid.is-loading::before{
+  content:'Loading catalogue…';
+  grid-column:1/-1;text-align:center;color:var(--muted);
+  font-size:12px;font-weight:600;padding:24px 0;
+  animation:pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1;}}
 
 .usp{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
   background:var(--mist);border-radius:14px;padding:14px 8px;}
@@ -421,6 +430,7 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
   </div>
 </div>
 
+<script src="js/api.js"></script>
 <script>
 (function(){
 "use strict";
@@ -434,121 +444,110 @@ function tickClock(){
 }
 tickClock(); setInterval(tickClock,30000);
 
-/* ---- data ----
-   NOTE: prices below are representative placeholders for the demo.
-   Swap in the real price sheet before launch. */
-var PRODUCTS=[
-  /* Cement */
-  {id:'cem1',name:'UltraTech PPC Cement 50Kg',cat:'cement',price:290,unit:'bag',stock:true,e:'🧱'},
-  {id:'cem2',name:'Ramco Supergrade PPC Cement 50Kg',cat:'cement',price:280,unit:'bag',stock:true,e:'🧱'},
-  {id:'cem3',name:'Dalmia PPC Cement 50Kg',cat:'cement',price:270,unit:'bag',stock:true,e:'🧱'},
-  {id:'cem4',name:'JSW PPC Cement 50Kg',cat:'cement',price:280,unit:'bag',stock:false,e:'🧱'},
-  {id:'cem5',name:'Chettinad PPC Cement 50Kg',cat:'cement',price:275,unit:'bag',stock:true,e:'🧱'},
-  {id:'cem6',name:'Birla White Cement 1Kg',cat:'cement',price:40,unit:'pack',stock:true,e:'⚪'},
-  {id:'cem7',name:'Ramco Super Plaster 40Kg',cat:'cement',price:360,unit:'bag',stock:true,e:'🧱'},
-  {id:'cem8',name:'Ramco AAC Block Fix 40Kg',cat:'cement',price:340,unit:'bag',stock:true,e:'🧱'},
-  /* AAC Blocks & Bricks */
-  {id:'blk1',name:'Reenacon AAC Block 4 inch',cat:'blocks',price:42,unit:'block',stock:true,e:'🧊'},
-  {id:'blk2',name:'Reenacon AAC Block 6 inch',cat:'blocks',price:58,unit:'block',stock:true,e:'🧊'},
-  {id:'blk3',name:'Ekocon AAC Block 8 inch',cat:'blocks',price:75,unit:'block',stock:true,e:'🧊'},
-  {id:'blk4',name:'Ekocon AAC Block 9 inch',cat:'blocks',price:85,unit:'block',stock:true,e:'🧊'},
-  {id:'blk5',name:'Solid Cement Block 4 inch',cat:'blocks',price:32,unit:'block',stock:true,e:'🧱'},
-  {id:'blk6',name:'Solid Cement Block 6 inch',cat:'blocks',price:45,unit:'block',stock:true,e:'🧱'},
-  /* Steel */
-  {id:'stl1',name:'ARS TMT Rod 8mm',cat:'steel',price:62,unit:'Kg',stock:true,e:'🏗️',note:'Min. order 500 Kg'},
-  {id:'stl2',name:'ARS TMT Rod 10mm',cat:'steel',price:61,unit:'Kg',stock:true,e:'🏗️',note:'Min. order 500 Kg'},
-  {id:'stl3',name:'Isteel TMT Rod 12mm',cat:'steel',price:60,unit:'Kg',stock:true,e:'🏗️',note:'Min. order 500 Kg'},
-  {id:'stl4',name:'Arun TMT Rod 16mm',cat:'steel',price:60,unit:'Kg',stock:true,e:'🏗️',note:'Min. order 500 Kg'},
-  {id:'stl5',name:'ARS TMT Rod 20mm',cat:'steel',price:60,unit:'Kg',stock:false,e:'🏗️',note:'Min. order 500 Kg'},
-  {id:'stl6',name:'Tata Binding Wire 1Kg',cat:'steel',price:95,unit:'Kg',stock:true,e:'🪢'},
-  /* Sand & Aggregates */
-  {id:'agg1',name:'M-Sand',cat:'aggregates',price:1200,unit:'ton',stock:true,e:'⛏️'},
-  {id:'agg2',name:'P-Sand',cat:'aggregates',price:1350,unit:'ton',stock:true,e:'⛏️'},
-  {id:'agg3',name:'Stone Aggregate 20mm (Jally)',cat:'aggregates',price:1300,unit:'ton',stock:true,e:'🪨'},
-  {id:'agg4',name:'Stone Aggregate 40mm (Jally)',cat:'aggregates',price:1250,unit:'ton',stock:true,e:'🪨'},
-  /* Plumbing */
-  {id:'plm1',name:'Finolex PVC Pipe 1 inch (3m)',cat:'plumbing',price:240,unit:'pc',stock:true,e:'🚰'},
-  {id:'plm2',name:'Prince PVC Pipe 2 inch (3m)',cat:'plumbing',price:390,unit:'pc',stock:true,e:'🚰'},
-  {id:'plm3',name:'Ashirvad CPVC Pipe 3/4 inch (3m)',cat:'plumbing',price:310,unit:'pc',stock:true,e:'🚰'},
-  {id:'plm4',name:'Finolex UPVC Pipe 1 inch (3m)',cat:'plumbing',price:360,unit:'pc',stock:false,e:'🚰'},
-  {id:'plm5',name:'PVC Elbow Bend 1 inch',cat:'plumbing',price:18,unit:'pc',stock:true,e:'🔩'},
-  {id:'plm6',name:'Water Storage Tank 1000L',cat:'plumbing',price:6200,unit:'pc',stock:true,e:'🛢️'},
-  {id:'plm7',name:'Finolex CPVC Pipe 1 inch (3m)',cat:'plumbing',price:290,unit:'pc',stock:true,e:'🚰'},
-  /* Electrical */
-  {id:'elc1',name:'Orbit 1.5mm Wire (90m)',cat:'electrical',price:1150,unit:'roll',stock:true,e:'💡'},
-  {id:'elc2',name:'Polycab 2.5mm Wire (90m)',cat:'electrical',price:1980,unit:'roll',stock:true,e:'💡'},
-  {id:'elc3',name:'GM 3-Gang Modular Switch',cat:'electrical',price:190,unit:'pc',stock:true,e:'🔌'},
-  {id:'elc4',name:'Mount Plast Conduit Pipe 1 inch',cat:'electrical',price:95,unit:'pc',stock:true,e:'💡'},
-  {id:'elc5',name:'Anchor 16A MCB',cat:'electrical',price:240,unit:'pc',stock:true,e:'⚡'},
-  {id:'elc6',name:'Ellgee 8-Way DB Box',cat:'electrical',price:680,unit:'pc',stock:false,e:'⚡'},
-  /* Painting */
-  {id:'pnt1',name:'Asian Paints Royale Luxury Emulsion',cat:'painting',price:339,stock:true,e:'🎨',
-    variants:[{label:'1L',price:339,stock:6},{label:'4L',price:1290,stock:0},
-              {label:'10L',price:2960,stock:6},{label:'20L',price:5600,stock:0}]},
-  {id:'pnt2',name:'Birla Opus Interior Emulsion 1L',cat:'painting',price:330,unit:'L',stock:true,e:'🎨'},
-  {id:'pnt3',name:'Asian Paints TruCare Wall Putty 20Kg',cat:'painting',price:620,unit:'bag',stock:true,e:'🎨'},
-  {id:'pnt4',name:'Birla Wall Care Putty 40Kg',cat:'painting',price:780,unit:'bag',stock:true,e:'🎨'},
-  {id:'pnt5',name:'Asian Paints Wall Primer 1L',cat:'painting',price:220,unit:'L',stock:true,e:'🎨'},
-  {id:'pnt6',name:'Dr. Fixit Crack-X Paste 1Kg',cat:'painting',price:180,unit:'pc',stock:true,e:'🎨'},
-  {id:'pnt7',name:'Asian Paints Apex Weatherproof Exterior Emulsion 1L',cat:'painting',price:420,unit:'L',stock:true,e:'🎨'},
-  {id:'pnt8',name:'Asian Paints Tractor Emulsion 1L',cat:'painting',price:190,unit:'L',stock:true,e:'🎨'},
-  /* Waterproofing */
-  {id:'wtp1',name:'Dr. Fixit LW+ Waterproofing 1L',cat:'waterproofing',price:165,unit:'L',stock:true,e:'💧'},
-  {id:'wtp2',name:'Dr. Fixit Pidifin 2K Waterproof Coating',cat:'waterproofing',price:720,unit:'pack',stock:true,e:'💧'},
-  {id:'wtp3',name:'Fosroc Conplast WP200 5L',cat:'waterproofing',price:890,unit:'can',stock:true,e:'💧'},
-  {id:'wtp4',name:'Fosroc Primer Sealer 4L',cat:'waterproofing',price:1100,unit:'can',stock:false,e:'💧'},
-  /* Tiling */
-  {id:'til1',name:'MYK Tile Adhesive Type-1 20Kg',cat:'tiling',price:290,unit:'bag',stock:true,e:'🔳'},
-  {id:'til2',name:'MYK Tile Adhesive Type-3 20Kg',cat:'tiling',price:540,unit:'bag',stock:true,e:'🔳'},
-  {id:'til3',name:'MYK Epoxy Tile Grout 1Kg',cat:'tiling',price:120,unit:'pc',stock:true,e:'🔳'},
-  {id:'til4',name:'Tile Spacers 2mm (100 pcs)',cat:'tiling',price:60,unit:'pack',stock:true,e:'🔳'},
-  {id:'til5',name:'Aluminium Tile Trim 8mm',cat:'tiling',price:140,unit:'pc',stock:true,e:'🔳'},
-  /* Tools */
-  {id:'tol1',name:'Steel Claw Hammer 1Kg',cat:'tools',price:240,unit:'pc',stock:true,e:'🔨'},
-  {id:'tol2',name:'Mason Brick Trowel 8 inch',cat:'tools',price:180,unit:'pc',stock:true,e:'🛠️'},
-  {id:'tol3',name:'Spirit Level 24 inch',cat:'tools',price:420,unit:'pc',stock:true,e:'📏'},
-  {id:'tol4',name:'Line Voltage Tester',cat:'tools',price:45,unit:'pc',stock:true,e:'🛠️'},
-  {id:'tol5',name:'VIKI Paint Roller 9 inch',cat:'tools',price:120,unit:'pc',stock:true,e:'🖌️'},
-  {id:'tol6',name:'VIKI Paint Brush 3 inch',cat:'tools',price:65,unit:'pc',stock:true,e:'🖌️'},
-  {id:'tol7',name:'CUMI Cutting Wheel 4 inch',cat:'tools',price:85,unit:'pc',stock:true,e:'🪚'},
-  /* Hardware */
-  {id:'hrd1',name:'PTA Drywall Screws (100 pcs)',cat:'hardware',price:85,unit:'pack',stock:true,e:'🔩'},
-  {id:'hrd2',name:'Concrete Nails 3 inch 1Kg',cat:'hardware',price:95,unit:'Kg',stock:true,e:'🔩'},
-  {id:'hrd3',name:'Tarpaulin Sheet 12x15 ft',cat:'hardware',price:480,unit:'pc',stock:true,e:'🟦'},
-  {id:'hrd4',name:'Brown Packing Tape (6 pcs)',cat:'hardware',price:180,unit:'pack',stock:true,e:'📦'},
-  {id:'hrd5',name:'Coir Rope 6mm 1Kg',cat:'hardware',price:110,unit:'Kg',stock:true,e:'🪢'},
-  {id:'hrd6',name:'Chicken Wire Mesh (roll)',cat:'hardware',price:620,unit:'roll',stock:true,e:'🔩'}
+/* ---- catalogue state ----
+   PRODUCTS / CATEGORIES are populated at startup by bootstrap() via
+   SuppliableAPI (see js/api.js). Until the fetch resolves they're
+   empty and the UI shows skeleton "Loading…" rows.
+   On API failure, FALLBACK_* below is used so the demo still works. */
+var PRODUCTS = [];
+var CATEGORIES = [];
+var POPULAR = [
+  'TMT Steel','PPC Cement','AAC Blocks','M-Sand','PVC Pipes',
+  'Wall Putty','Tile Adhesive','Waterproofing','Binding Wire','Paint'
 ];
-var CAT_LABEL={cement:'Cement',blocks:'AAC Blocks',steel:'TMT Steel',
-  aggregates:'Sand & Aggregates',plumbing:'Plumbing',electrical:'Electrical',
-  painting:'Painting',waterproofing:'Waterproofing',tiling:'Tiling',
-  tools:'Tools',hardware:'Hardware'};
-var CATEGORIES=[
-  {key:'cement',e:'🧱',name:'Cement'},{key:'blocks',e:'🧊',name:'AAC Blocks'},
-  {key:'steel',e:'🏗️',name:'TMT Steel'},{key:'aggregates',e:'⛏️',name:'Aggregates'},
-  {key:'plumbing',e:'🚰',name:'Plumbing'},{key:'electrical',e:'💡',name:'Electrical'},
-  {key:'painting',e:'🎨',name:'Painting'},{key:'waterproofing',e:'💧',name:'Waterproof'},
-  {key:'tiling',e:'🔳',name:'Tiling'},{key:'tools',e:'🛠️',name:'Tools'},
-  {key:'hardware',e:'🔩',name:'Hardware'}
-];
-var POPULAR=['TMT Steel','PPC Cement','AAC Blocks','M-Sand','PVC Pipes',
-  'Wall Putty','Tile Adhesive','Waterproofing','Binding Wire','Paint'];
+var CAT_LABEL = {}; /* key -> display name, rebuilt after data load */
 
-/* cart pre-seeded so Cart & Track always have content */
-var cart=[
-  {key:'cem1',id:'cem1',name:'UltraTech PPC Cement 50Kg',variant:'',price:420,qty:10,e:'🧱'},
-  {key:'til1',id:'til1',name:'MYK Tile Adhesive Type-1 20Kg',variant:'',price:290,qty:6,e:'🔳'}
+/* Tiny offline fallback so the demo isn't blank if the API is down. */
+var FALLBACK_CATEGORIES = [
+  {key:'cement',e:'🧱',name:'Cement'},
+  {key:'steel',e:'🏗️',name:'TMT Steel'},
+  {key:'plumbing',e:'🚰',name:'Plumbing'},
+  {key:'electrical',e:'💡',name:'Electrical'},
+  {key:'painting',e:'🎨',name:'Painting'},
+  {key:'tiling',e:'🔳',name:'Tiling'}
 ];
-var currentQuery='';
+var FALLBACK_PRODUCTS = [
+  {id:'cem1',name:'UltraTech PPC Cement 50Kg',cat:'Cement',catKey:'cement',price:420,unit:'bag',stock:true,e:'🧱',imageUrl:'assets/products/cem1.jpg'},
+  {id:'stl1',name:'ARS TMT Rod 8mm',cat:'Steel',catKey:'steel',price:62,unit:'Kg',stock:true,e:'🏗️',imageUrl:'assets/products/stl1.jpg'},
+  {id:'plm1',name:'Finolex PVC Pipe 1 inch',cat:'Plumbing',catKey:'plumbing',price:240,unit:'pc',stock:true,e:'🚰',imageUrl:'assets/products/plm1.jpg'},
+  {id:'pnt1',name:'Asian Paints Royale Emulsion',cat:'Painting',catKey:'painting',price:339,unit:'L',stock:true,e:'🎨',imageUrl:'assets/products/pnt1.jpg'},
+  {id:'til1',name:'MYK Tile Adhesive 20Kg',cat:'Tiling',catKey:'tiling',price:290,unit:'bag',stock:true,e:'🔳',imageUrl:'assets/products/til1.jpg'}
+];
+
+/* cart starts empty — pre-seeding caused stale items once products came from API */
+var cart = [];
+var currentQuery = '';
+var loadedCats = {}; /* tracks which categories we've fully fetched (vs preview only) */
+
+function rebuildCatLabel() {
+  CAT_LABEL = {};
+  CATEGORIES.forEach(function (c) { CAT_LABEL[c.key] = c.name; });
+}
+
+function setLoading(on) {
+  var grid = $('#catGrid');
+  if (!grid) return;
+  grid.classList.toggle('is-loading', !!on);
+}
+
+/* Boot: fetch home (categories + per-category preview) then render */
+function bootstrap() {
+  setLoading(true);
+  if (typeof SuppliableAPI === 'undefined') {
+    /* api.js failed to load — go straight to fallback */
+    useFallback();
+    return;
+  }
+  SuppliableAPI.getHome().then(function (home) {
+    CATEGORIES = home.categories.filter(function (c) {
+      /* hide empty / test categories from the demo */
+      return c.productCount > 0 && c.key !== 'test_cat';
+    });
+    /* Flatten the per-category preview into a single PRODUCTS array.
+       For richer demo, switch to SuppliableAPI.getAllProducts() instead. */
+    var all = [];
+    Object.keys(home.productsByCategory).forEach(function (k) {
+      all = all.concat(home.productsByCategory[k]);
+    });
+    /* de-dup by id (in case a product appears in multiple previews) */
+    var seen = {};
+    PRODUCTS = all.filter(function (p) {
+      if (seen[p.id]) return false;
+      seen[p.id] = true;
+      return true;
+    });
+    rebuildCatLabel();
+    setLoading(false);
+    renderCats();
+    renderSearchBody();
+    updateBadges();
+  }).catch(function (err) {
+    if (window.console) console.warn('[Suppliable] API failed, using fallback data:', err);
+    useFallback();
+  });
+}
+
+function useFallback() {
+  CATEGORIES = FALLBACK_CATEGORIES;
+  PRODUCTS = FALLBACK_PRODUCTS;
+  rebuildCatLabel();
+  setLoading(false);
+  renderCats();
+  renderSearchBody();
+  updateBadges();
+  toast('Showing offline catalogue (couldn\'t reach server)');
+}
 
 /* ---- helpers ---- */
 function cartCount(){return cart.reduce(function(n,l){return n+l.qty;},0);}
 function cartTotal(){return cart.reduce(function(n,l){return n+l.price*l.qty;},0);}
 function rupee(n){return '₹'+n.toLocaleString('en-IN');}
 function findLine(key){for(var i=0;i<cart.length;i++){if(cart[i].key===key)return cart[i];}return null;}
-/* product thumbnail: real image if present in assets/products/, else emoji fallback */
-function thumb(id,emoji){
-  return '<img class="thumb-img" src="assets/products/'+id+'.jpg" alt="" loading="lazy" '+
+/* product thumbnail: prefer API image URL; fall back to local file then emoji */
+function thumb(p){
+  var src = p && (p.imageUrl || ('assets/products/'+p.id+'.jpg'));
+  var emoji = (p && p.e) || '📦';
+  return '<img class="thumb-img" src="'+src+'" alt="" loading="lazy" '+
          'onerror="this.remove()"><span class="thumb-e">'+emoji+'</span>';
 }
 function updateBadges(){
@@ -624,7 +623,7 @@ function rowHTML(p){
     (p.variants?' <span class="punit">onwards</span>':
       (p.unit?' <span class="punit">/ '+p.unit+'</span>':''))+'</div>';
   return '<div class="prow'+(p.stock?'':' oos')+'" data-pid="'+p.id+'">'+
-    '<div class="pthumb">'+thumb(p.id,p.e)+'</div>'+
+    '<div class="pthumb">'+thumb(p)+'</div>'+
     '<div class="pinfo">'+
       '<div class="pkick">'+(CAT_LABEL[p.cat]||p.cat)+'</div>'+
       '<div class="pname">'+p.name+'</div>'+price+
@@ -650,7 +649,7 @@ function addToCart(p,variant){
   var line=findLine(key);
   if(line){line.qty++;}
   else{cart.push({key:key,id:p.id,name:p.name,variant:variant?variant.label:'',
-    price:variant?variant.price:p.price,qty:1,e:p.e});}
+    price:variant?variant.price:p.price,qty:1,e:p.e,imageUrl:p.imageUrl||null});}
   updateBadges();
   toast(p.name.split(' ').slice(0,3).join(' ')+' added');
 }
@@ -671,7 +670,7 @@ function renderCart(){
   bar.style.display='flex';
   body.innerHTML=cart.map(function(l){
     return '<div class="crow">'+
-      '<div class="pthumb">'+thumb(l.id,l.e)+'</div>'+
+      '<div class="pthumb">'+thumb(l)+'</div>'+
       '<div class="pinfo">'+
         '<div class="pname">'+l.name+'</div>'+
         (l.variant?'<div class="pvar">Size: '+l.variant+'</div>':'')+
@@ -724,7 +723,8 @@ setInterval(function(){
 },14000);
 
 /* ============ events ============ */
-buildNav();updateBadges();renderCats();renderSearchBody();
+buildNav();
+bootstrap();  /* loads data from API and renders home/search */
 
 $('#app').addEventListener('click',function(e){
   var t=e.target.closest('[data-go],[data-cat],[data-chip],[data-add],[data-variant],'+
@@ -734,9 +734,23 @@ $('#app').addEventListener('click',function(e){
   if(t.dataset.go){showScreen(t.dataset.go);return;}
 
   if(t.dataset.cat){
-    currentQuery=CAT_LABEL[t.dataset.cat]||t.dataset.cat;
+    var catKey=t.dataset.cat;
+    var catName=CAT_LABEL[catKey]||catKey;
+    currentQuery=catName;
     $('#searchInput').value=currentQuery;
-    showScreen('search');return;
+    showScreen('search');
+    /* lazy-load: if we only have the 5-item preview for this category,
+       fetch the full list once and merge into PRODUCTS so search shows everything */
+    if(typeof SuppliableAPI!=='undefined' && !loadedCats[catKey]){
+      loadedCats[catKey]=true;
+      SuppliableAPI.getProducts(catName).then(function(list){
+        var seen={};
+        PRODUCTS.forEach(function(p){seen[p.id]=true;});
+        list.forEach(function(p){if(!seen[p.id])PRODUCTS.push(p);});
+        if(current==='search')renderSearchBody();
+      }).catch(function(){/* silent: preview is good enough */});
+    }
+    return;
   }
   if(t.dataset.chip){
     currentQuery=t.dataset.chip;
