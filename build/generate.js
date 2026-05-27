@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url';
 import {
   productPage, categoryPage, productsHubPage, escapeHTML, rupee
 } from './templates.js';
+import { buildBlog } from './blog.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -121,8 +122,8 @@ async function writeFile(relPath, content) {
   await fs.writeFile(abs, content, 'utf8');
 }
 
-/* delete the generated /products/ subfolders (categories) without removing
-   /products/index.html — that's the SPA fallback we maintain by hand. */
+/* delete the generated /products/ subfolders (categories) — index.html
+   itself is regenerated each build so we don't need to preserve it. */
 async function cleanGenerated() {
   const productsDir = path.join(ROOT, 'products');
   try {
@@ -131,6 +132,20 @@ async function cleanGenerated() {
       if (e.isDirectory()) {
         await fs.rm(path.join(productsDir, e.name), { recursive: true, force: true });
         console.log(`  ✗ removed products/${e.name}/`);
+      }
+    }
+  } catch (e) {
+    if (e.code !== 'ENOENT') throw e;
+  }
+
+  /* also clean generated blog post folders (preserve blog/posts/ source) */
+  const blogDir = path.join(ROOT, 'blog');
+  try {
+    const entries = await fs.readdir(blogDir, { withFileTypes: true });
+    for (const e of entries) {
+      if (e.isDirectory() && e.name !== 'posts') {
+        await fs.rm(path.join(blogDir, e.name), { recursive: true, force: true });
+        console.log(`  ✗ removed blog/${e.name}/`);
       }
     }
   } catch (e) {
@@ -230,7 +245,11 @@ async function main() {
   );
   console.log(`   ✓ /products/`);
 
-  console.log(`\n6. Writing sitemap.xml…`);
+  console.log(`\n6. Building blog…`);
+  const { posts, count: blogCount } = await buildBlog(ROOT);
+  console.log(`   ✓ ${blogCount} blog post${blogCount === 1 ? '' : 's'}`);
+
+  console.log(`\n7. Writing sitemap.xml…`);
   const today = new Date().toISOString().slice(0, 10);
   const urls = [
     { loc: `${SITE}/`, priority: '1.0', changefreq: 'weekly', lastmod: today },
@@ -250,11 +269,25 @@ async function main() {
       });
     }
   }
+  /* blog URLs */
+  if (posts.length > 0) {
+    urls.push({
+      loc: `${SITE}/blog/`,
+      priority: '0.8', changefreq: 'weekly', lastmod: today
+    });
+    for (const p of posts) {
+      urls.push({
+        loc: `${SITE}/blog/${p.slug}/`,
+        priority: '0.7', changefreq: 'monthly',
+        lastmod: (p.date || today).slice(0, 10)
+      });
+    }
+  }
   await writeFile('sitemap.xml', sitemapXML(urls));
   console.log(`   ✓ sitemap.xml  (${urls.length} URLs)`);
 
   console.log(`\n✅ Build complete.`);
-  console.log(`   Total pages generated: ${productCount + allCategories.length + 1}`);
+  console.log(`   Total pages generated: ${productCount + allCategories.length + 1 + blogCount + (blogCount ? 1 : 0)}`);
   console.log(`   Sitemap entries: ${urls.length}\n`);
 }
 
