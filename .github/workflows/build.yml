@@ -1,0 +1,55 @@
+name: Build static product pages
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      # Don't trigger on commits that ONLY change generated files (prevents infinite loop)
+      - 'products/**'
+      - 'sitemap.xml'
+  schedule:
+    # Re-build every 6 hours so new products / price changes get picked up
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # manual trigger from the Actions tab
+
+# Allow the workflow to push back to the repo
+permissions:
+  contents: write
+
+concurrency:
+  group: build-static-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Use a token that can push commits even when actions/checkout default token can't
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run build
+        run: node build/generate.js
+
+      - name: Commit generated pages
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Suppliable Build Bot"
+          git add products/ sitemap.xml
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "build: regenerate static product pages
+
+            Triggered by: ${{ github.event_name }}
+            Run: ${{ github.run_number }}"
+            git push
+          fi
