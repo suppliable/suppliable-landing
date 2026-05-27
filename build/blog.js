@@ -9,6 +9,27 @@ import { marked } from 'marked';
 
 import { escapeHTML } from './templates.js';
 
+/* Make ~ behave like a literal character. Marked's default GFM strikethrough
+   triggers on single tildes too ("~text~"), which turns innocent text like
+   "(~5%) vs (~10%)" into a strikethrough span. Override the `del` tokenizer
+   to require the proper GFM double-tilde syntax ("~~text~~"). */
+marked.use({
+  tokenizer: {
+    del(src) {
+      const match = src.match(/^~~(?=\S)([\s\S]*?\S)~~/);
+      if (match) {
+        return {
+          type: 'del',
+          raw: match[0],
+          text: match[1],
+          tokens: this.lexer.inlineTokens(match[1])
+        };
+      }
+      return false;
+    }
+  }
+});
+
 const SITE = 'https://www.suppliable.in';
 const BIZ_NAME = 'Suppliable';
 const BIZ_PHONE = '+91-87786-27926';

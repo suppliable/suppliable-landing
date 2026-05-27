@@ -30,8 +30,8 @@ That means an AAC wall puts about **40–50% less dead load** on the structure c
 
 This is where AAC blocks pull decisively ahead in Chennai's climate.
 
-- **AAC**: thermal conductivity ~0.16 W/mK
-- **Red brick**: thermal conductivity ~0.81 W/mK
+- **AAC**: thermal conductivity around 0.16 W/mK
+- **Red brick**: thermal conductivity around 0.81 W/mK
 
 In plain terms — AAC walls keep your interiors **3-5°C cooler** than brick walls in peak Chennai summer. Over a 10-year period, that's a substantial AC electricity saving.
 
@@ -39,7 +39,7 @@ In plain terms — AAC walls keep your interiors **3-5°C cooler** than brick wa
 
 Chennai's monsoons mean every external wall takes a beating. Both materials handle moisture well *if installed correctly*, but:
 
-- AAC blocks have **lower water absorption** (~5-10%) vs red bricks (~15-25%)
+- AAC blocks have **lower water absorption** (around 5-10%) vs red bricks (around 15-25%)
 - AAC needs careful **end-sealing** during the rains — exposed cut edges can wick water
 - Red bricks are more forgiving with sloppy mortar work
 
@@ -51,7 +51,7 @@ A mason can lay roughly:
 - **150–200 AAC blocks per day**
 - **400–500 red bricks per day**
 
-But because one AAC block replaces ~8 bricks, **AAC walls go up nearly 3× faster** by wall area. For a 1,500 sq.ft. apartment, that's a saving of 4-6 days of mason labour.
+But because one AAC block replaces about 8 bricks, **AAC walls go up nearly 3× faster** by wall area. For a 1,500 sq.ft. apartment, that's a saving of 4-6 days of mason labour.
 
 You'll also need a **special thin-bed adhesive** (like [Ramco Block Fix](/products/) or MYK products) instead of conventional cement-sand mortar for AAC. Don't skip this — using regular mortar voids the thermal performance benefits.
 
