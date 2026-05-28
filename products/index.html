@@ -100,7 +100,18 @@
 .app-banner-text strong { font-size: 1.1rem; font-weight: 700; display: block; }
 .app-banner-text p { opacity: .85; font-size: .9rem; margin-top: 4px; line-height: 1.5; }
 .app-banner .btn { white-space: nowrap; position: relative; z-index: 1; }
-</style>
+
+    /* hub-specific: filter chip styling (buttons not anchors) */
+    #catChips .cat-chip { font-family: inherit; cursor: pointer; }
+    #catChips .chip-count { font-size: .72rem; opacity: .65; margin-left: 4px; font-weight: 500; }
+    #catChips .cat-chip.active .chip-count { opacity: .55; }
+    .results-meta { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; gap: 16px; flex-wrap: wrap; }
+    .results-meta .count { font-size: .9rem; color: var(--gray-500, #757285); font-weight: 500; }
+    .results-meta .seo-link { font-size: .85rem; color: var(--purple); font-weight: 600; text-decoration: none; }
+    .results-meta .seo-link:hover { text-decoration: underline; }
+    .results-empty { text-align: center; padding: 60px 20px; color: var(--gray-500, #757285); }
+    .results-empty .big-emoji { font-size: 48px; display: block; margin-bottom: 14px; }
+  </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.suppliable.in/"},{"@type":"ListItem","position":2,"name":"Products","item":"https://www.suppliable.in/products/"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Products | Construction materials in Chennai | Suppliable","description":"Browse 290+ construction materials across 10 categories — cement, steel, paint, plumbing, electrical, tiling and more. Order online with 60-minute Chennai delivery via the Suppliable app.","url":"https://www.suppliable.in/products/","hasPart":[{"@type":"ItemList","name":"Bathroom Fittings","numberOfItems":19,"url":"https://www.suppliable.in/products/bathroom-fittings/"},{"@type":"ItemList","name":"Construction Chemicals","numberOfItems":6,"url":"https://www.suppliable.in/products/construction-chemicals/"},{"@type":"ItemList","name":"Electrical","numberOfItems":45,"url":"https://www.suppliable.in/products/electrical/"},{"@type":"ItemList","name":"Electrical Conduits","numberOfItems":23,"url":"https://www.suppliable.in/products/electrical-conduits/"},{"@type":"ItemList","name":"Hardwares","numberOfItems":76,"url":"https://www.suppliable.in/products/hardwares/"},{"@type":"ItemList","name":"Lighting & Fans","numberOfItems":2,"url":"https://www.suppliable.in/products/lighting-fans/"},{"@type":"ItemList","name":"Painting","numberOfItems":43,"url":"https://www.suppliable.in/products/painting/"},{"@type":"ItemList","name":"Paints","numberOfItems":1,"url":"https://www.suppliable.in/products/paints/"},{"@type":"ItemList","name":"Plumbing","numberOfItems":66,"url":"https://www.suppliable.in/products/plumbing/"},{"@type":"ItemList","name":"Tiling","numberOfItems":9,"url":"https://www.suppliable.in/products/tiling/"}]}</script>
 </head>
@@ -128,6 +139,11 @@
   </nav>
     <h1>All products</h1>
     <p class="sub">290+ construction materials across 10 categories — delivered to your Chennai site in 60 minutes.</p>
+    
+    <div class="cat-chips" id="catChips" role="tablist" aria-label="Filter by category">
+      <button class="cat-chip active" data-filter="all" role="tab" aria-selected="true">All <span class="chip-count">290</span></button>
+      <button class="cat-chip" data-filter="bathroom-fittings" role="tab" aria-selected="false">🚿 Bathroom Fittings <span class="chip-count">19</span></button><button class="cat-chip" data-filter="construction-chemicals" role="tab" aria-selected="false">🧪 Construction Chemicals <span class="chip-count">6</span></button><button class="cat-chip" data-filter="electrical" role="tab" aria-selected="false">💡 Electrical <span class="chip-count">45</span></button><button class="cat-chip" data-filter="electrical-conduits" role="tab" aria-selected="false">🔌 Electrical Conduits <span class="chip-count">23</span></button><button class="cat-chip" data-filter="hardwares" role="tab" aria-selected="false">🔩 Hardwares <span class="chip-count">76</span></button><button class="cat-chip" data-filter="lighting-fans" role="tab" aria-selected="false">💡 Lighting &amp; Fans <span class="chip-count">2</span></button><button class="cat-chip" data-filter="painting" role="tab" aria-selected="false">🎨 Painting <span class="chip-count">43</span></button><button class="cat-chip" data-filter="paints" role="tab" aria-selected="false">🎨 Paints <span class="chip-count">1</span></button><button class="cat-chip" data-filter="plumbing" role="tab" aria-selected="false">🚰 Plumbing <span class="chip-count">66</span></button><button class="cat-chip" data-filter="tiling" role="tab" aria-selected="false">🔳 Tiling <span class="chip-count">9</span></button>
+    </div>
   </div>
 </section>
 
@@ -143,79 +159,2049 @@
       <a href="/#download" class="btn btn-orange">Download app</a>
     </div>
 
-    <h2 style="font-size:1.2rem;font-weight:800;margin-bottom:14px;">Browse by category</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
-      
-        <a href="/products/bathroom-fittings/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">🚿</span>
-          <span>
-            <span style="font-weight:700;display:block;">Bathroom Fittings</span>
-            <span style="font-size:.8rem;color:#6B6880;">19 products</span>
-          </span>
-        </a>
-        <a href="/products/construction-chemicals/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">🧪</span>
-          <span>
-            <span style="font-weight:700;display:block;">Construction Chemicals</span>
-            <span style="font-size:.8rem;color:#6B6880;">6 products</span>
-          </span>
-        </a>
-        <a href="/products/electrical/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">💡</span>
-          <span>
-            <span style="font-weight:700;display:block;">Electrical</span>
-            <span style="font-size:.8rem;color:#6B6880;">45 products</span>
-          </span>
-        </a>
-        <a href="/products/electrical-conduits/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">🔌</span>
-          <span>
-            <span style="font-weight:700;display:block;">Electrical Conduits</span>
-            <span style="font-size:.8rem;color:#6B6880;">23 products</span>
-          </span>
-        </a>
-        <a href="/products/hardwares/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">🔩</span>
-          <span>
-            <span style="font-weight:700;display:block;">Hardwares</span>
-            <span style="font-size:.8rem;color:#6B6880;">76 products</span>
-          </span>
-        </a>
-        <a href="/products/lighting-fans/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">💡</span>
-          <span>
-            <span style="font-weight:700;display:block;">Lighting &amp; Fans</span>
-            <span style="font-size:.8rem;color:#6B6880;">2 products</span>
-          </span>
-        </a>
-        <a href="/products/painting/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">🎨</span>
-          <span>
-            <span style="font-weight:700;display:block;">Painting</span>
-            <span style="font-size:.8rem;color:#6B6880;">43 products</span>
-          </span>
-        </a>
-        <a href="/products/paints/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">🎨</span>
-          <span>
-            <span style="font-weight:700;display:block;">Paints</span>
-            <span style="font-size:.8rem;color:#6B6880;">1 product</span>
-          </span>
-        </a>
-        <a href="/products/plumbing/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">🚰</span>
-          <span>
-            <span style="font-weight:700;display:block;">Plumbing</span>
-            <span style="font-size:.8rem;color:#6B6880;">66 products</span>
-          </span>
-        </a>
-        <a href="/products/tiling/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">🔳</span>
-          <span>
-            <span style="font-weight:700;display:block;">Tiling</span>
-            <span style="font-size:.8rem;color:#6B6880;">9 products</span>
-          </span>
-        </a>
+    <div class="results-meta">
+      <span class="count" id="resultCount">Showing all 290 products</span>
+      <a href="#" class="seo-link" id="seoLink" hidden>View this category on its own page →</a>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <a href="/products/bathroom-fittings/parryware-utsav-500-sqatting-pan/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689829437-v3k12eix3h.png" alt="Parryware Utsav 500 Sqatting Pan" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Utsav 500 Sqatting Pan</div>
+        <div class="product-price">₹1,800 – ₹2,500</div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-connection-hose-t991299/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689864652-jhhh4yczpzg.png" alt="Parryware Connection Hose (T991299)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Connection Hose (T991299)</div>
+        <div class="product-price">₹140 – ₹150</div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-2-in-1-wall-mixer-claret-t4616a1/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689901070-4inziowxghc.png" alt="Parryware 2 in 1 Wall Mixer Claret (T4616A1)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware 2 in 1 Wall Mixer Claret (T4616A1)</div>
+        <div class="product-price">₹5,260 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-angle-cock-cute-t9880a1/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689934090-y0xrbhfzdi.png" alt="Parryware Angle Cock Cute (T9880A1)" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Angle Cock Cute (T9880A1)</div>
+        <div class="product-price">₹585 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-claret-bib-cock-with-nozzle-g5279a1/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689990897-ap31opxgslb.png" alt="Parryware Claret Bib Cock With Nozzle (G5279A1)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Claret Bib Cock With Nozzle (G5279A1)</div>
+        <div class="product-price">₹875 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-floor-mounted-ewc-elite-s-trap/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690052884-tm9pxnhluo.png" alt="Parryware Floor Mounted EWC Elite S Trap" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Floor Mounted EWC Elite S Trap</div>
+        <div class="product-price">₹2,500 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-full-thread-waste-coupler/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690092537-0ozxqnattit.png" alt="Parryware Full Thread Waste Coupler" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Full Thread Waste Coupler</div>
+        <div class="product-price">₹430 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-p-trap-white/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690123489-p999sngd4hi.png" alt="Parryware P Trap White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware P Trap White</div>
+        <div class="product-price">₹315 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-pillar-cock-claret-t4601a1/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690155730-vgf5nl2z4mg.png" alt="Parryware Pillar Cock Claret (T4601A1)" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Pillar Cock Claret (T4601A1)</div>
+        <div class="product-price">₹895 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-single-flow-shower-with-arm-t9808a1/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690199208-yt7y7u83tp.png" alt="Parryware Single Flow Shower With Arm (T9808A1)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Single Flow Shower With Arm (T9808A1)</div>
+        <div class="product-price">₹895 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-slimline-flush-tank-wall-mount-e8333/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690247206-8y916qn25qb.png" alt="Parryware Slimline Flush Tank Wall Mount (E8333)" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Slimline Flush Tank Wall Mount (E8333)</div>
+        <div class="product-price">₹1,340 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-splash-heath-faucet-with-hose-t9805a1/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690469752-g3s085oypyj.png" alt="Parryware Splash Heath Faucet With Hose (T9805A1)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Splash Heath Faucet With Hose (T9805A1)</div>
+        <div class="product-price">₹765 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-standard-ewc-seat-cover-e8071/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690498501-lb2xb5fq2e.png" alt="Parryware Standard Ewc Seat Cover (E8071)" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Standard Ewc Seat Cover (E8071)</div>
+        <div class="product-price">₹740 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-swan-neck-sink-cock-claret-t4621a1/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690544395-8lagrulte9e.png" alt="Parryware Swan Neck Sink Cock Claret (T4621A1)" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Swan Neck Sink Cock Claret (T4621A1)</div>
+        <div class="product-price">₹1,830 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-tapti-wall-hung-basin-white/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690614116-ash8se7ibln.png" alt="Parryware Tapti Wall Hung Basin White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Tapti Wall Hung Basin White</div>
+        <div class="product-price">₹1,480 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/parryware-ultra-high-flow-concealed-diverter-body-only-g4888a1/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779691357279-78w3erojufs.png" alt="Parryware Ultra High Flow Concealed Diverter Body Only(G4888A1)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Parryware Ultra High Flow Concealed Diverter Body Only(G4888A1)</div>
+        <div class="product-price">₹3,530 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/rack-bolt-fischer-10mm/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779691470949-dueck3gwee7.png" alt="Rack Bolt / Fischer 10mm" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Rack Bolt / Fischer 10mm</div>
+        <div class="product-price">₹125 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/rack-bolt-fischer-16mm-for-wall-hang-ewc/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779691557696-t3dy6yc2t3.png" alt="Rack Bolt / Fischer 16mm For Wall Hang EWC" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Rack Bolt / Fischer 16mm For Wall Hang EWC</div>
+        <div class="product-price">₹670 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/bathroom-fittings/waste-hose-1-1-4-inch/" class="product-card" data-cat="bathroom-fittings">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779691858362-pbo9fpo4w0c.png" alt="Waste Hose 1 1/4 inch" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Bathroom Fittings</div>
+        <div class="product-name">Waste Hose 1 1/4 inch</div>
+        <div class="product-price">₹50 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/construction-chemicals/dr-fixit-pidifin-2k-cementitious-two-component-waterproofing/" class="product-card" data-cat="construction-chemicals">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779685963590-hpsma1h8dxr.png" alt="Dr.Fixit Pidifin 2K Cementitious Two Component Waterproofing" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Construction Chemicals</div>
+        <div class="product-name">Dr.Fixit Pidifin 2K Cementitious Two Component Waterproofing</div>
+        <div class="product-price">₹460 – ₹1,950</div>
+      </div>
+    </a><a href="/products/construction-chemicals/dr-fixit-pidiproof-lw-101-adimix-chemical/" class="product-card" data-cat="construction-chemicals">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779520277827-a3j014s60o.png" alt="Dr.Fixit Pidiproof Lw+ 101 Adimix Chemical" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Construction Chemicals</div>
+        <div class="product-name">Dr.Fixit Pidiproof Lw+ 101 Adimix Chemical</div>
+        <div class="product-price">₹150 – ₹2,100</div>
+      </div>
+    </a><a href="/products/construction-chemicals/dr-fixit-crack-x-paste-crack-filler/" class="product-card" data-cat="construction-chemicals">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779520304521-loh8bjj3cea.png" alt="Dr.Fixit Crack X Paste Crack Filler" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Construction Chemicals</div>
+        <div class="product-name">Dr.Fixit Crack X Paste Crack Filler</div>
+        <div class="product-price">₹410 – ₹1,850</div>
+      </div>
+    </a><a href="/products/construction-chemicals/dr-fixit-pidiproof-urp-301-sbr-waterproofing-chemical/" class="product-card" data-cat="construction-chemicals">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779520329118-h8qyq9flen.png" alt="Dr.Fixit Pidiproof Urp 301 SBR Waterproofing Chemical" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Construction Chemicals</div>
+        <div class="product-name">Dr.Fixit Pidiproof Urp 301 SBR Waterproofing Chemical</div>
+        <div class="product-price">₹320 – ₹4,850</div>
+      </div>
+    </a><a href="/products/construction-chemicals/dr-fixit-bitufix-bitumen-emulsion-20-ltr/" class="product-card" data-cat="construction-chemicals">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779686017312-gimyi1vsj59.png" alt="Dr.Fixit Bitufix Bitumen Emulsion 20 Ltr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Construction Chemicals</div>
+        <div class="product-name">Dr.Fixit Bitufix Bitumen Emulsion 20 Ltr</div>
+        <div class="product-price">₹2,325 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/construction-chemicals/dr-fixit-crack-x-powder-crack-filler-1kg/" class="product-card" data-cat="construction-chemicals">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779520353601-2cpglhqimfk.png" alt="Dr.Fixit Crack X Powder Crack Filler 1Kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Construction Chemicals</div>
+        <div class="product-name">Dr.Fixit Crack X Powder Crack Filler 1Kg</div>
+        <div class="product-price">₹85 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/polycab-rccb-four-pole-fp/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779686322058-olqep4ak3ih.png" alt="Polycab RCCB Four Pole (FP)" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Polycab RCCB Four Pole (FP)</div>
+        <div class="product-price">₹1,990 – ₹2,400</div>
+      </div>
+    </a><a href="/products/electrical/dummy-sheet-plate-with-base-frame/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438866411-h85mxltfpvw.png" alt="Dummy Sheet Plate With Base Frame" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Dummy Sheet Plate With Base Frame</div>
+        <div class="product-price">₹40 – ₹120</div>
+      </div>
+    </a><a href="/products/electrical/neutral-link/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439137654-8nsp2q33uyn.png" alt="Neutral Link" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Neutral Link</div>
+        <div class="product-price">₹30 – ₹80</div>
+      </div>
+    </a><a href="/products/electrical/anchor-uno-mcb-c-type-single-pole-sp/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438691879-seypl4x6e1l.png" alt="Anchor Uno Mcb C Type Single Pole (SP)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Uno Mcb C Type Single Pole (SP)</div>
+        <div class="product-price">₹145</div>
+      </div>
+    </a><a href="/products/electrical/hylam-ply-dummy-sheet-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439223832-cpr3kc2twxm.png" alt="Hylam Ply Dummy Sheet White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Hylam Ply Dummy Sheet White</div>
+        <div class="product-price">₹20 – ₹1,200</div>
+      </div>
+    </a><a href="/products/electrical/slazer-lnt-rotary-switch/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779686077385-5ap1ygslv0b.png" alt="Slazer LnT Rotary Switch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Slazer LnT Rotary Switch</div>
+        <div class="product-price">₹660 – ₹880</div>
+      </div>
+    </a><a href="/products/electrical/earth-link/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779686108100-2gro03rib6y.png" alt="Earth Link" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Earth Link</div>
+        <div class="product-price">₹100 – ₹200</div>
+      </div>
+    </a><a href="/products/electrical/non-chemical-earthing-pipe/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://placehold.co/400x300?text=No+Image" alt="Non Chemical Earthing Pipe" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Non Chemical Earthing Pipe</div>
+        <div class="product-price">₹300 – ₹600</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-gi-metal-box/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779685624755-gnlt4g4u4j6.png" alt="Anchor Roma Gi Metal Box" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Gi Metal Box</div>
+        <div class="product-price">₹42 – ₹186</div>
+      </div>
+    </a><a href="/products/electrical/ellgee-mcb-enclosure-metal-box/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779686453254-3kjwun3cpbv.png" alt="Ellgee Mcb Enclosure Metal Box" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Ellgee Mcb Enclosure Metal Box</div>
+        <div class="product-price">₹145 – ₹370</div>
+      </div>
+    </a><a href="/products/electrical/ellgee-fuse-unit/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439184887-nfqp7qy74x.png" alt="Ellgee Fuse Unit" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Ellgee Fuse Unit</div>
+        <div class="product-price">₹180 – ₹360</div>
+      </div>
+    </a><a href="/products/electrical/ellgee-rotary-switch/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779686469613-p4x9ex9rhgo.png" alt="Ellgee Rotary Switch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Ellgee Rotary Switch</div>
+        <div class="product-price">₹350 – ₹370</div>
+      </div>
+    </a><a href="/products/electrical/eb-main-board-wooden/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687703266-j2by4vmhbp.png" alt="EB Main Board Wooden" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">EB Main Board Wooden</div>
+        <div class="product-price">₹400 – ₹3,900</div>
+      </div>
+    </a><a href="/products/electrical/led-indicator/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779686490621-xqg8euypx19.png" alt="LED Indicator" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">LED Indicator</div>
+        <div class="product-price">₹30</div>
+      </div>
+    </a><a href="/products/electrical/anchor-three-pin-plug-top/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438715021-c8fw5dpi4cb.png" alt="Anchor Three Pin Plug Top" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Three Pin Plug Top</div>
+        <div class="product-price">₹60 – ₹80</div>
+      </div>
+    </a><a href="/products/electrical/elltee-three-phase-double-door-db/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779686634460-h1h3vbiu36r.png" alt="Elltee Three Phase Double Door DB" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Elltee Three Phase Double Door DB</div>
+        <div class="product-price">₹2,475 – ₹3,780</div>
+      </div>
+    </a><a href="/products/electrical/ellgee-three-phase-double-door-db/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439073698-3uetxeq9v0i.png" alt="Ellgee Three Phase Double Door DB" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Ellgee Three Phase Double Door DB</div>
+        <div class="product-price">₹2,400 – ₹3,150</div>
+      </div>
+    </a><a href="/products/electrical/pvc-electrical-gang-box/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439204266-xmxlmxcs15.png" alt="Pvc Electrical Gang Box" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Pvc Electrical Gang Box</div>
+        <div class="product-price">₹60 – ₹140</div>
+      </div>
+    </a><a href="/products/electrical/anchor-uno-mcb-c-type-four-pole-fp/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438664847-t0y5p8xxbdo.png" alt="Anchor Uno Mcb C Type Four Pole (FP)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Uno Mcb C Type Four Pole (FP)</div>
+        <div class="product-price">₹1,335 – ₹1,740</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-plastic-surface-box/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687129705-jmo39ccx6wq.png" alt="Anchor Roma Plastic Surface Box" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Plastic Surface Box</div>
+        <div class="product-price">₹43 – ₹135</div>
+      </div>
+    </a><a href="/products/electrical/anchor-uno-mcb-c-type-double-pole-dp/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438677369-hqn6icdsp6b.png" alt="Anchor Uno Mcb C Type Double Pole (DP)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Uno Mcb C Type Double Pole (DP)</div>
+        <div class="product-price">₹580 – ₹985</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-1-way-switch-with-neon-indicator-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779728764364-9l4phrw3da.png" alt="Anchor Roma Classic 1 Way Switch With Neon Indicator White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic 1 Way Switch With Neon Indicator White</div>
+        <div class="product-price">₹142 – ₹267</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-three-pin-socket-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779728891732-g91dep68azl.png" alt="Anchor Roma Classic Three Pin Socket White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic Three Pin Socket White</div>
+        <div class="product-price">₹101 – ₹165</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-tressa-solid-plates-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779728973639-j2paxqx3krm.png" alt="Anchor Roma Classic Tressa Solid Plates White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic Tressa Solid Plates White</div>
+        <div class="product-price">₹86 – ₹330</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-switch-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779728407516-0czt5r9c88k.png" alt="Anchor Roma Classic Switch White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic Switch White</div>
+        <div class="product-price">₹40 – ₹119</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-2-way-switch-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779728537325-87oxkn1x8ov.png" alt="Anchor Roma Classic 2 Way Switch White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic 2 Way Switch White</div>
+        <div class="product-price">₹108 – ₹136</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-mini-mcb-single-pole/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779729824240-7v8z3hgvk0k.png" alt="Anchor Roma Classic Mini Mcb Single Pole" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic Mini Mcb Single Pole</div>
+        <div class="product-price">₹211</div>
+      </div>
+    </a><a href="/products/electrical/mount-plast-round-dummy-sheet/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Round Dummy Sheet" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Mount Plast Round Dummy Sheet</div>
+        <div class="product-price">₹8 – ₹14</div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-bell-switch/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779729321191-aiir7di23r.png" alt="Anchor Roma Classic Bell Switch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic Bell Switch</div>
+        <div class="product-price">₹112 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-blank-plate-dummy-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779729067384-ykrbcyjw7yl.png" alt="Anchor Roma Classic Blank Plate Dummy White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic Blank Plate Dummy White</div>
+        <div class="product-price">₹26 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-fan-step-regulator-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779729446681-8g82ehryehh.png" alt="Anchor Roma Classic Fan Step Regulator White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic Fan Step Regulator White</div>
+        <div class="product-price">₹255 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-high-speed-fan-step-regulator-2m-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779729754250-bcxqnxeqe99.png" alt="Anchor Roma Classic High Speed Fan Step Regulator 2M White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic High Speed Fan Step Regulator 2M White</div>
+        <div class="product-price">₹356 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-rj-11-telephone-jack-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779729528204-lfwzw6xn2ll.png" alt="Anchor Roma Classic RJ 11 Telephone Jack White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic RJ 11 Telephone Jack White</div>
+        <div class="product-price">₹118 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/anchor-roma-classic-tv-socket-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779729677983-jfrp5hf4xl.png" alt="Anchor Roma Classic Tv Socket White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Roma Classic Tv Socket White</div>
+        <div class="product-price">₹118 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/anchor-uno-four-pole-isolator-fp-40a/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687142345-s4ljc6bh5bh.png" alt="Anchor Uno Four Pole Isolator (FP)-40A" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Anchor Uno Four Pole Isolator (FP)-40A</div>
+        <div class="product-price">₹835 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/combined-junction-box-great-white/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687226568-8ws7zlcikbk.png" alt="Combined Junction Box Great White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Combined Junction Box Great White</div>
+        <div class="product-price">₹175 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/earthing-chemical-1kg/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687237576-mj34wr8fwha.png" alt="Earthing Chemical 1kg" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Earthing Chemical 1kg</div>
+        <div class="product-price">₹30 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/electrical-3ft-pvc-slotted-channel-45mm/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687262568-ljmdp4ythf.png" alt="Electrical 3ft Pvc Slotted Channel 45mm" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Electrical 3ft Pvc Slotted Channel 45mm</div>
+        <div class="product-price">₹200 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/electrical-insulation-tape-deer-brand/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687377340-qphwrhazul.png" alt="Electrical Insulation Tape Deer Brand" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Electrical Insulation Tape Deer Brand</div>
+        <div class="product-price">₹13 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/led-indicator-with-voltage-display/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687391266-tt9tcn1a5oj.png" alt="LED Indicator with Voltage Display" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">LED Indicator with Voltage Display</div>
+        <div class="product-price">₹85 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/merigold-1-sqmm-2-core-shielded-copper-wire-5mtr/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438511104-e0wbg1bzlha.png" alt="Merigold 1 Sqmm 2 Core Shielded Copper Wire 5mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Merigold 1 Sqmm 2 Core Shielded Copper Wire 5mtr</div>
+        <div class="product-price">₹200 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/merigold-1-5-sqmm-2-core-shielded-copper-wire-5mtr/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687490206-1qh0tm8ryfc.png" alt="Merigold 1.5 Sqmm 2 Core Shielded Copper Wire 5mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Merigold 1.5 Sqmm 2 Core Shielded Copper Wire 5mtr</div>
+        <div class="product-price">₹275 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/merigold-1-5-sqmm-3-core-shielded-copper-wire-5mtr/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439423509-rogiw5e7ay.png" alt="Merigold 1.5 Sqmm 3 Core Shielded Copper Wire 5mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Merigold 1.5 Sqmm 3 Core Shielded Copper Wire 5mtr</div>
+        <div class="product-price">₹375 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/orbit-6-sqmm-2-core-aluminium-red-wire-5mtr/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687507448-7aoed9zharo.png" alt="Orbit 6 Sqmm 2 Core Aluminium Red Wire 5mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Orbit 6 Sqmm 2 Core Aluminium Red Wire 5mtr</div>
+        <div class="product-price">₹200 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical/water-proof-electrical-tape/" class="product-card" data-cat="electrical">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687586843-mme1bm2t7z7.png" alt="Water Proof Electrical Tape" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical</div>
+        <div class="product-name">Water Proof Electrical Tape</div>
+        <div class="product-price">₹45 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-electrical-conduit-pipe-light/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783798930-izvntw0ugeb.png" alt="Orbit Electrical Conduit Pipe Light" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Electrical Conduit Pipe Light</div>
+        <div class="product-price">₹40 – ₹55</div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-electrical-bend/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783247090-z6acr9q9qfj.png" alt="Orbit Electrical Bend" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Electrical Bend</div>
+        <div class="product-price">₹6.2 – ₹7.5</div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-junction-box-short-1inch-25mm/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783273380-2oarywdegs5.png" alt="Orbit Junction Box Short 1inch (25mm)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Junction Box Short 1inch (25mm)</div>
+        <div class="product-price">₹15</div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-electrical-pvc-coupler/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783278778-9o6aifae4fi.png" alt="Orbit Electrical Pvc Coupler" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Electrical Pvc Coupler</div>
+        <div class="product-price">₹5 – ₹6</div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-electrical-conduit-roofing-pipe-super-heavy/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783807030-oymjh60v2al.png" alt="Orbit Electrical Conduit Roofing Pipe Super Heavy" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Electrical Conduit Roofing Pipe Super Heavy</div>
+        <div class="product-price">₹60 – ₹90</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-electrical-elbow/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Electrical Elbow" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Electrical Elbow</div>
+        <div class="product-price">₹4 – ₹6</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-surface-junction-box-3-4-inch/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Surface Junction Box 3/4 Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Surface Junction Box 3/4 Inch</div>
+        <div class="product-price">₹10</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-electrical-royal-heavy-roofing-pipe/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Electrical Royal Heavy Roofing Pipe" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Electrical Royal Heavy Roofing Pipe</div>
+        <div class="product-price">₹55 – ₹70</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-electrical-bend/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Electrical Bend" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Electrical Bend</div>
+        <div class="product-price">₹6 – ₹8</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-electrical-tee/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Electrical Tee" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Electrical Tee</div>
+        <div class="product-price">₹5 – ₹6</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-surface-junction-box-1-inch/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Surface Junction Box 1 Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Surface Junction Box 1 Inch</div>
+        <div class="product-price">₹12</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-junction-box-deep-1-inch/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Junction Box Deep 1 Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Junction Box Deep 1 Inch</div>
+        <div class="product-price">₹18</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-junction-box-deep-3-4-inch/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Junction Box Deep 3/4 Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Junction Box Deep 3/4 Inch</div>
+        <div class="product-price">₹16</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-electrical-light-pipe/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Electrical Light Pipe" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Electrical Light Pipe</div>
+        <div class="product-price">₹40 – ₹50</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-electrical-coupling/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Electrical Coupling" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Electrical Coupling</div>
+        <div class="product-price">₹4 – ₹5</div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-fan-box-plastic-jumbo-heavy/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Fan Box Plastic Jumbo Heavy" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Fan Box Plastic Jumbo Heavy</div>
+        <div class="product-price">₹70 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-reducer-1-x-3-4-inch/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Reducer 1&quot;x 3/4&quot; Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Reducer 1&quot;x 3/4&quot; Inch</div>
+        <div class="product-price">₹5 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical-conduits/mount-plast-spot-light-lotta-box-3-x-3-5-inch/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mount Plast Spot Light Lotta Box 3&quot; x 3.5&quot; Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Mount Plast Spot Light Lotta Box 3&quot; x 3.5&quot; Inch</div>
+        <div class="product-price">₹30 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-electrical-jumbo-fan-box/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783858000-mce5im6rxt.png" alt="Orbit Electrical Jumbo Fan Box" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Electrical Jumbo Fan Box</div>
+        <div class="product-price">₹75 <span class="unit">/ pcs</span></div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-junction-box-deep-1inch-25mm-4-way/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783286388-fhs6kmib0w9.png" alt="Orbit Junction Box Deep 1inch (25mm)-4 Way" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Junction Box Deep 1inch (25mm)-4 Way</div>
+        <div class="product-price">₹16.95 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-junction-box-deep-3-4-inch-19-mm-3-way/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783292081-4gwcsf535gr.png" alt="Orbit Junction Box Deep 3/4 inch (19 mm)-3 Way" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Junction Box Deep 3/4 inch (19 mm)-3 Way</div>
+        <div class="product-price">₹16.95 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-junction-box-short-3-4inch-19mm-4-way/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783298652-zv491gnq1lo.png" alt="Orbit Junction Box Short 3/4inch (19mm)-4 Way" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Junction Box Short 3/4inch (19mm)-4 Way</div>
+        <div class="product-price">₹11.86 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/electrical-conduits/orbit-lota-spot-light-box-3inch/" class="product-card" data-cat="electrical-conduits">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779783866461-vwq4596kfzc.png" alt="Orbit Lota Spot Light Box 3Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Electrical Conduits</div>
+        <div class="product-name">Orbit Lota Spot Light Box 3Inch</div>
+        <div class="product-price">₹25 <span class="unit">/ pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/ms-nail-1-1-2-inch/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779535051331-9uuu6atjydb.png" alt="MS Nail 1 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">MS Nail 1 1/2 inch</div>
+        <div class="product-price">₹30 – ₹90</div>
+      </div>
+    </a><a href="/products/hardwares/sledge-hammer/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692075315-bnslsnyl5o7.png" alt="Sledge Hammer" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Sledge Hammer</div>
+        <div class="product-price">₹220 – ₹240</div>
+      </div>
+    </a><a href="/products/hardwares/cable-tie-tag-white-10pcs/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692149818-hxb9fq5dnof.png" alt="Cable Tie Tag White 10pcs" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cable Tie Tag White 10pcs</div>
+        <div class="product-price">₹15 – ₹35</div>
+      </div>
+    </a><a href="/products/hardwares/concrete-manhole-sump-cover-2-1-2-x-2-1-2-frame-with-opening/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779691959553-b9cq1x4bf8j.png" alt="Concrete Manhole Sump Cover 2 1/2&#39; x 2 1/2&#39; Frame With Opening" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Concrete Manhole Sump Cover 2 1/2&#39; x 2 1/2&#39; Frame With Opening</div>
+        <div class="product-price">₹1,450 – ₹1,750</div>
+      </div>
+    </a><a href="/products/hardwares/frp-fiber-manhole-cover-with-frame-3-ton-white-colour/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692381692-vrt681vj6n.png" alt="Frp Fiber Manhole Cover with Frame 3 Ton White Colour" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Frp Fiber Manhole Cover with Frame 3 Ton White Colour</div>
+        <div class="product-price">₹530 – ₹3,325</div>
+      </div>
+    </a><a href="/products/hardwares/cumi-core-cutting-wheel/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539782540-njt8qyujb6g.png" alt="Cumi Core Cutting Wheel" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cumi Core Cutting Wheel</div>
+        <div class="product-price">₹195 – ₹710</div>
+      </div>
+    </a><a href="/products/hardwares/cumi-sukha-paper/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539803651-p8ogjiapef.png" alt="Cumi Sukha Paper" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cumi Sukha Paper</div>
+        <div class="product-price">₹12</div>
+      </div>
+    </a><a href="/products/hardwares/firm-drill-bit-160mm/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539813144-rr1jccu4fot.png" alt="Firm Drill Bit 160mm" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Firm Drill Bit 160mm</div>
+        <div class="product-price">₹70 – ₹200</div>
+      </div>
+    </a><a href="/products/hardwares/hacksaw-blade/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692353407-edy3p5i409.png" alt="Hacksaw Blade" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Hacksaw Blade</div>
+        <div class="product-price">₹7 – ₹12</div>
+      </div>
+    </a><a href="/products/hardwares/round-concrete-cover-block-1no/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779542525721-gfb67ac330t.png" alt="Round Concrete Cover Block 1no" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Round Concrete Cover Block 1no</div>
+        <div class="product-price">₹6 – ₹7.5</div>
+      </div>
+    </a><a href="/products/hardwares/concrete-manhole-cover-with-frame/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779542433917-92a8fuj0mtj.png" alt="Concrete Manhole Cover With Frame" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Concrete Manhole Cover With Frame</div>
+        <div class="product-price">₹330 – ₹1,350</div>
+      </div>
+    </a><a href="/products/hardwares/cumi-wood-cutting-blade/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539836135-t4v0gts4tn.png" alt="Cumi Wood Cutting Blade" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cumi Wood Cutting Blade</div>
+        <div class="product-price">₹230 – ₹250</div>
+      </div>
+    </a><a href="/products/hardwares/claw-hammer/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539937288-eem8daiqjid.png" alt="Claw Hammer" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Claw Hammer</div>
+        <div class="product-price">₹160 – ₹175</div>
+      </div>
+    </a><a href="/products/hardwares/cumi-ajax-water-sheet/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692113657-8jg83yr90sl.png" alt="Cumi Ajax Water Sheet" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cumi Ajax Water Sheet</div>
+        <div class="product-price">₹20 – ₹30</div>
+      </div>
+    </a><a href="/products/hardwares/sara-coir/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688159943-nsi0gwv5y7.png" alt="Sara Coir" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Sara Coir</div>
+        <div class="product-price">₹180 – ₹250</div>
+      </div>
+    </a><a href="/products/hardwares/measuring-tape/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692671136-c756mngzae.png" alt="Measuring Tape" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Measuring Tape</div>
+        <div class="product-price">₹60 – ₹85</div>
+      </div>
+    </a><a href="/products/hardwares/u-clamp/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692197432-9bjoq442tg7.png" alt="U Clamp" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">U Clamp</div>
+        <div class="product-price">₹5 – ₹15</div>
+      </div>
+    </a><a href="/products/hardwares/plastic-tarpaulin/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688200403-9ipwb2jc1ya.png" alt="Plastic Tarpaulin" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Plastic Tarpaulin</div>
+        <div class="product-price">₹165 – ₹1,460</div>
+      </div>
+    </a><a href="/products/hardwares/wall-bracket/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692207188-ucn6l9hdoc.png" alt="Wall Bracket" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Wall Bracket</div>
+        <div class="product-price">₹60 – ₹150</div>
+      </div>
+    </a><a href="/products/hardwares/anchor-fastner-rawl/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692236433-uxm8g9r0snd.png" alt="Anchor Fastner Rawl" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Anchor Fastner Rawl</div>
+        <div class="product-price">₹15 – ₹25</div>
+      </div>
+    </a><a href="/products/hardwares/brown-tape/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688225118-rxtiqvq1eym.png" alt="Brown Tape" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Brown Tape</div>
+        <div class="product-price">₹40 – ₹55</div>
+      </div>
+    </a><a href="/products/hardwares/hand-gloves-rubber/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688321673-x2e5uw8ewjf.png" alt="Hand Gloves Rubber" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Hand Gloves Rubber</div>
+        <div class="product-price">₹50 – ₹95</div>
+      </div>
+    </a><a href="/products/hardwares/u-bolt-set/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692246141-ni305prnmkd.png" alt="U Bolt Set" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">U Bolt Set</div>
+        <div class="product-price">₹10 – ₹40</div>
+      </div>
+    </a><a href="/products/hardwares/door-clamp/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438252550-789tv9okblq.png" alt="Door Clamp" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Door Clamp</div>
+        <div class="product-price">₹17 – ₹22</div>
+      </div>
+    </a><a href="/products/hardwares/sp-clamp/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692728059-vouh8yj2bx.png" alt="SP Clamp" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">SP Clamp</div>
+        <div class="product-price">₹9 – ₹25</div>
+      </div>
+    </a><a href="/products/hardwares/pvc-bond/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692715697-dct916urczv.png" alt="PVC Bond" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">PVC Bond</div>
+        <div class="product-price">₹132 – ₹165</div>
+      </div>
+    </a><a href="/products/hardwares/barbending-pin/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692821578-a1y82ncz8ya.png" alt="Barbending Pin" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Barbending Pin</div>
+        <div class="product-price">₹120 – ₹275</div>
+      </div>
+    </a><a href="/products/hardwares/firm-drill-bit-110mm/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539980189-yi1bvbqwx1.png" alt="Firm Drill Bit 110mm" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Firm Drill Bit 110mm</div>
+        <div class="product-price">₹60 – ₹75</div>
+      </div>
+    </a><a href="/products/hardwares/ms-nail-2-1-2-inch/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688277196-bgdmrfmsrn.png" alt="MS Nail 2 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">MS Nail 2 1/2 inch</div>
+        <div class="product-price">₹30 – ₹90</div>
+      </div>
+    </a><a href="/products/hardwares/ms-nail-2-inch/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688284547-28a8lco6riq.png" alt="MS Nail 2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">MS Nail 2 inch</div>
+        <div class="product-price">₹30 – ₹90</div>
+      </div>
+    </a><a href="/products/hardwares/ms-nail-3-inch/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692887607-h7mbtlweypg.png" alt="MS Nail 3 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">MS Nail 3 inch</div>
+        <div class="product-price">₹30 – ₹90</div>
+      </div>
+    </a><a href="/products/hardwares/frp-fiber-manhole-cover-with-frame-5-ton-white-colour/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779542404581-uhfylz3hktp.png" alt="Frp Fiber Manhole Cover with Frame 5 Ton White Colour" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Frp Fiber Manhole Cover with Frame 5 Ton White Colour</div>
+        <div class="product-price">₹2,350 – ₹3,000</div>
+      </div>
+    </a><a href="/products/hardwares/concrete-nail-packet-10-pieces/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779537830170-rk9647wsutm.png" alt="Concrete Nail Packet (10 Pieces)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Concrete Nail Packet (10 Pieces)</div>
+        <div class="product-price">₹20</div>
+      </div>
+    </a><a href="/products/hardwares/cumi-sandmaster-emery-sheet-roll-1-meter/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779542182594-z803gsd8w6.png" alt="Cumi Sandmaster Emery Sheet Roll 1 Meter" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cumi Sandmaster Emery Sheet Roll 1 Meter</div>
+        <div class="product-price">₹50</div>
+      </div>
+    </a><a href="/products/hardwares/2-in-1-screw-driver/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692903495-1cyo5l3w7ua.png" alt="2 in 1 Screw Driver" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">2 in 1 Screw Driver</div>
+        <div class="product-price">₹70 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/binding-wire-tmt-hook/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693657718-v7d0q8yzs9f.png" alt="Binding Wire Tmt Hook" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Binding Wire Tmt Hook</div>
+        <div class="product-price">₹40 <span class="unit">/ pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/bosch-steel-cutting-wheel-14inch-black/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779540447891-bit5xtpohpd.png" alt="Bosch Steel Cutting Wheel 14inch Black" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Bosch Steel Cutting Wheel 14inch Black</div>
+        <div class="product-price">₹150 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/chalk-pieces-box-144-nos/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688348839-h2djvfvnkxf.png" alt="Chalk Pieces Box ( 144 NOS )" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Chalk Pieces Box ( 144 NOS )</div>
+        <div class="product-price">₹55 <span class="unit">/ Box</span></div>
+      </div>
+    </a><a href="/products/hardwares/chicken-mesh-gi-2ft-10mtr-bundle/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539134626-2pmnm0mnwtj.png" alt="Chicken Mesh Gi 2ft 10mtr Bundle" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Chicken Mesh Gi 2ft 10mtr Bundle</div>
+        <div class="product-price">₹160 <span class="unit">/ pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/chisel-flat-end-pattai-uli/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779691191647-iwaqb6573jb.png" alt="Chisel Flat End (Pattai Uli)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Chisel Flat End (Pattai Uli)</div>
+        <div class="product-price">₹120 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/chisel-sharp-end-koor-uli/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693928868-j072yyieip.png" alt="Chisel Sharp End (Koor Uli)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Chisel Sharp End (Koor Uli)</div>
+        <div class="product-price">₹50 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/construction-concrete-gumboot-10in/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688370824-mxjk4ej3vyo.png" alt="Construction Concrete Gumboot 10in" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Construction Concrete Gumboot 10in</div>
+        <div class="product-price">₹215 <span class="unit">/ Pair</span></div>
+      </div>
+    </a><a href="/products/hardwares/cotton-gloves-pair/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779692988187-1f10c3qtvkw.png" alt="Cotton Gloves Pair" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cotton Gloves Pair</div>
+        <div class="product-price">₹20 <span class="unit">/ Pair</span></div>
+      </div>
+    </a><a href="/products/hardwares/crow-bar-kadaparai/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693852398-frracf85k5l.png" alt="Crow Bar Kadaparai" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Crow Bar Kadaparai</div>
+        <div class="product-price">₹500 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/crow-bar-with-claw/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438132452-8rkjtwb0moe.png" alt="Crow Bar with Claw" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Crow Bar with Claw</div>
+        <div class="product-price">₹300 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/cumi-steel-cutting-blade-4in-green/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539997449-5342mocubof.png" alt="Cumi Steel Cutting Blade 4in Green" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cumi Steel Cutting Blade 4in Green</div>
+        <div class="product-price">₹20 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/cumi-wall-cutting-blade-5in/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693079421-ex0c9vvcaw.png" alt="Cumi Wall Cutting Blade 5in" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Cumi Wall Cutting Blade 5in</div>
+        <div class="product-price">₹220 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/dewalt-star-screw-bit-single-piece-65mm/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779540924115-wyppuw5zuvk.png" alt="Dewalt Star Screw Bit Single Piece 65mm" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Dewalt Star Screw Bit Single Piece 65mm</div>
+        <div class="product-price">₹45 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/engineering-square-l-scale-12in-metal/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779540116285-0kz0nd05vcl.png" alt="Engineering Square L Scale 12in Metal" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Engineering Square L Scale 12in Metal</div>
+        <div class="product-price">₹275 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/freemans-measuring-tape-30mtr/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693187037-w0mmn0jvz5p.png" alt="Freemans Measuring Tape 30mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Freemans Measuring Tape 30mtr</div>
+        <div class="product-price">₹295 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/glass-fibre-mesh-roll-6inch-50mtr-bundle/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693123188-gct63k9pfru.png" alt="Glass Fibre Mesh Roll 6inch 50mtr Bundle" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Glass Fibre Mesh Roll 6inch 50mtr Bundle</div>
+        <div class="product-price">₹295 <span class="unit">/ pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/gurumal-heavy/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779540127653-io4w28i6i6r.png" alt="Gurumal Heavy" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Gurumal Heavy</div>
+        <div class="product-price">₹60 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/manvetti-8in/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438306419-n2j26gtoosb.png" alt="Manvetti 8in" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Manvetti 8in</div>
+        <div class="product-price">₹185 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/mars-square-concrete-cover-block-box-25mm-80-pcs/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://placehold.co/400x300?text=No+Image" alt="Mars Square Concrete Cover Block Box 25mm-80 Pcs" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Mars Square Concrete Cover Block Box 25mm-80 Pcs</div>
+        <div class="product-price">₹84.75 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/mars-square-cover-block-box-25mm-100-pcs/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Mars Square Cover Block Box 25mm-100 Pcs" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Mars Square Cover Block Box 25mm-100 Pcs</div>
+        <div class="product-price">₹93.22 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/mason-square-l-scale-24in-wood/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693227079-tuumiwhhi1b.png" alt="Mason Square L Scale 24in Wood" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Mason Square L Scale 24in Wood</div>
+        <div class="product-price">₹172 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/permanent-marker-black/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688452843-k6zlzcwrkk.png" alt="Permanent Marker Black" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Permanent Marker Black</div>
+        <div class="product-price">₹20 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/polythine-sheet/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688470738-jludodj6x3.png" alt="Polythine Sheet" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Polythine Sheet</div>
+        <div class="product-price">₹115 <span class="unit">/ Kg</span></div>
+      </div>
+    </a><a href="/products/hardwares/royal-binding-wire-loose-qty-1kg/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693281834-q23761nsr3e.png" alt="Royal Binding Wire Loose Qty 1kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Royal Binding Wire Loose Qty 1kg</div>
+        <div class="product-price">₹105 <span class="unit">/ kg</span></div>
+      </div>
+    </a><a href="/products/hardwares/safety-belt-full-body-harness/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688487785-aurb4vhhf85.png" alt="Safety Belt Full Body Harness" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Safety Belt Full Body Harness</div>
+        <div class="product-price">₹635 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/safety-goggle-glass/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693282595-ens9nznnwdq.png" alt="Safety Goggle/Glass" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Safety Goggle/Glass</div>
+        <div class="product-price">₹60 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/safety-helmet-yellow/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688731283-jf2wipnre88.png" alt="Safety Helmet Yellow" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Safety Helmet Yellow</div>
+        <div class="product-price">₹85 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/sponge-heavy-pink/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688745893-zdcxjh7jhii.png" alt="Sponge Heavy Pink" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Sponge Heavy Pink</div>
+        <div class="product-price">₹30 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/spring-box-15mtr/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693319401-2udo34vvnth.png" alt="Spring Box 15mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Spring Box 15mtr</div>
+        <div class="product-price">₹265 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/ss-bearing-hook-for-swing-with-16mm-anchor-hole-single-piece/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693376588-g3l3pp0evur.png" alt="SS Bearing Hook For Swing with 16mm Anchor Hole Single Piece" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">SS Bearing Hook For Swing with 16mm Anchor Hole Single Piece</div>
+        <div class="product-price">₹600 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/ss-s-hook-10mm/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779691557939-mr5bibprx0g.png" alt="SS S Hook 10mm" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">SS S Hook 10mm</div>
+        <div class="product-price">₹50 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/ss-u-hook-10mm/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779691661454-3ug2ny407uj.png" alt="SS U Hook 10mm" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">SS U Hook 10mm</div>
+        <div class="product-price">₹65 <span class="unit">/ pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/ss-w-hook-10mm/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690498790-579loz40meo.png" alt="SS W Hook 10mm" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">SS W Hook 10mm</div>
+        <div class="product-price">₹250 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/taparia-line-tester-yellow/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779540168535-rmoyavayvdc.png" alt="Taparia Line Tester Yellow" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Taparia Line Tester Yellow</div>
+        <div class="product-price">₹50 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/tata-ms-binding-wire-bundle-30kgs/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779539166310-99w4zgt7c3r.jpg" alt="Tata Ms Binding Wire Bundle 30Kgs" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Tata Ms Binding Wire Bundle 30Kgs</div>
+        <div class="product-price">₹3,090 <span class="unit">/ kg</span></div>
+      </div>
+    </a><a href="/products/hardwares/teflon-tape/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693378259-xdspd6drwob.png" alt="Teflon Tape" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Teflon Tape</div>
+        <div class="product-price">₹15 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/thodapam/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693431463-kq79eeslpt.png" alt="Thodapam" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Thodapam</div>
+        <div class="product-price">₹35 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/thread/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779693473886-d6k6ohcg874.png" alt="Thread" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Thread</div>
+        <div class="product-price">₹5 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/truss-gold-wall-cutting-blade-4in/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779540190261-ak3gf7u6c2a.png" alt="Truss Gold Wall Cutting Blade 4in" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Truss Gold Wall Cutting Blade 4in</div>
+        <div class="product-price">₹150 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/wire-stripper/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779540200583-ngzak9tna47.png" alt="Wire Stripper" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Wire Stripper</div>
+        <div class="product-price">₹65 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/hardwares/yuri-steel-cutting-blade-5in-green/" class="product-card" data-cat="hardwares">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689053546-766rl0h3643.png" alt="Yuri Steel Cutting Blade 5in Green" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Hardwares</div>
+        <div class="product-name">Yuri Steel Cutting Blade 5in Green</div>
+        <div class="product-price">₹25 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/lighting-fans/veto-flood-focus-light/" class="product-card" data-cat="lighting-fans">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439448956-na069b9ejyk.png" alt="Veto Flood Focus Light" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Lighting &amp; Fans</div>
+        <div class="product-name">Veto Flood Focus Light</div>
+        <div class="product-price">₹1,050 – ₹2,000</div>
+      </div>
+    </a><a href="/products/lighting-fans/havells-led-batten-tube-light-4ft-20w/" class="product-card" data-cat="lighting-fans">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Havells Led Batten Tube Light 4ft 20W" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Lighting &amp; Fans</div>
+        <div class="product-name">Havells Led Batten Tube Light 4ft 20W</div>
+        <div class="product-price">₹170 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/birla-wallcare-putty/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689215909-o2yl6m71mcc.png" alt="Birla Wallcare Putty" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Birla Wallcare Putty</div>
+        <div class="product-price">₹50 – ₹875</div>
+      </div>
+    </a><a href="/products/painting/birla-white-cement/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687423925-jqdgs1rzd8.png" alt="Birla White Cement" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Birla White Cement</div>
+        <div class="product-price">₹35 – ₹1,095</div>
+      </div>
+    </a><a href="/products/painting/sevenlac-nc-thinner/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779801724870-2ebmk5717pl.png" alt="Sevenlac Nc Thinner" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Sevenlac Nc Thinner</div>
+        <div class="product-price">₹70 – ₹570</div>
+      </div>
+    </a><a href="/products/painting/vicky-paint-brush/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689384619-l0a9lybp7dr.png" alt="Vicky Paint Brush" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Vicky Paint Brush</div>
+        <div class="product-price">₹50 – ₹330</div>
+      </div>
+    </a><a href="/products/painting/putty-blade-with-handle/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689444722-w9f5p934jta.png" alt="Putty Blade With Handle" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Putty Blade With Handle</div>
+        <div class="product-price">₹80 – ₹125</div>
+      </div>
+    </a><a href="/products/painting/polish-powder-100gms/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779802919258-235vm3dvkoq.png" alt="Polish Powder 100gms" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Polish Powder 100gms</div>
+        <div class="product-price">₹72</div>
+      </div>
+    </a><a href="/products/painting/vicky-putty-blade/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689532872-y5wrv8yi8pj.png" alt="Vicky Putty Blade" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Vicky Putty Blade</div>
+        <div class="product-price">₹6 – ₹30</div>
+      </div>
+    </a><a href="/products/painting/polish-powder-30gms/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779802946099-8fy9etsb8ls.png" alt="Polish Powder 30gms" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Polish Powder 30gms</div>
+        <div class="product-price">₹15</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-tractor-interior-emulsion-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689098143-9ymxx2nts68.png" alt="Asian Paints Tractor Interior Emulsion White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Tractor Interior Emulsion White</div>
+        <div class="product-price">₹195 – ₹3,265</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apcolite-glossy-enamel-paint-200-ml/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689060269-fbe2zooz21d.png" alt="Asian Paints Apcolite Glossy Enamel Paint 200 ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apcolite Glossy Enamel Paint 200 ml</div>
+        <div class="product-price">₹100 – ₹250</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-smart-care-damp-proof-teracotta/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779507338085-b7er7nw8uf7.png" alt="Asian Paints Smart Care Damp Proof Teracotta" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Smart Care Damp Proof Teracotta</div>
+        <div class="product-price">₹1,400 – ₹6,550</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-trucare-exterior-primer-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779507352570-c8fpys1zxrb.png" alt="Asian Paints TruCare Exterior Primer White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints TruCare Exterior Primer White</div>
+        <div class="product-price">₹205 – ₹3,665</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-trucare-interior-primer-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687490575-pen0u1xj8ap.png" alt="Asian Paints TruCare Interior Primer White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints TruCare Interior Primer White</div>
+        <div class="product-price">₹190 – ₹3,190</div>
+      </div>
+    </a><a href="/products/painting/sevenlac-white-turpentine/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779802217825-dr7w4qbyby.png" alt="Sevenlac White Turpentine" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Sevenlac White Turpentine</div>
+        <div class="product-price">₹75 – ₹570</div>
+      </div>
+    </a><a href="/products/painting/polish-powder-250gms/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779802063165-mabxho6beu.png" alt="Polish Powder 250gms" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Polish Powder 250gms</div>
+        <div class="product-price">₹40</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-ace-exterior-emulsion-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779507378105-7wlj3bljdtx.png" alt="Asian Paints Ace Exterior Emulsion White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Ace Exterior Emulsion White</div>
+        <div class="product-price">₹220 – ₹3,845</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-smart-care-damp-proof-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779507390844-8xc39bht7nd.png" alt="Asian Paints Smart Care Damp Proof White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Smart Care Damp Proof White</div>
+        <div class="product-price">₹345 – ₹5,910</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-wood-primer-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689135334-y2m3sx63irh.png" alt="Asian Paints Wood Primer White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Wood Primer White</div>
+        <div class="product-price">₹270 – ₹1,020</div>
+      </div>
+    </a><a href="/products/painting/polish-powder-150gms/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779802892611-9f5gda88m6h.png" alt="Polish Powder 150gms" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Polish Powder 150gms</div>
+        <div class="product-price">₹16</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apex-exterior-emulsion-classic-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779507425239-h50kvo007wo.png" alt="Asian Paints Apex Exterior Emulsion Classic White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apex Exterior Emulsion Classic White</div>
+        <div class="product-price">₹365 – ₹6,490</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apcolite-satin-enamle-paint-500ml/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779507442068-k458t2gav6.png" alt="Asian Paints Apcolite Satin Enamle Paint 500ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apcolite Satin Enamle Paint 500ml</div>
+        <div class="product-price">₹215</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apcolite-premium-emulsion-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687562604-6zvrrt85nz4.png" alt="Asian Paints Apcolite Premium Emulsion White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apcolite Premium Emulsion White</div>
+        <div class="product-price">₹360 – ₹6,545</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apcolite-glossy-enamel-paint-1l/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687715615-l1226lv248.png" alt="Asian Paints Apcolite Glossy Enamel Paint 1L" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apcolite Glossy Enamel Paint 1L</div>
+        <div class="product-price">₹350</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apcolite-glossy-enamel-paint-4l/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687751989-pw5bpna2am.png" alt="Asian Paints Apcolite Glossy Enamel Paint 4L" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apcolite Glossy Enamel Paint 4L</div>
+        <div class="product-price">₹1,315</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apcolite-satin-enamel-paint-1l/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779687781495-3wswnvl3xp.png" alt="Asian Paints Apcolite Satin Enamel Paint 1L" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apcolite Satin Enamel Paint 1L</div>
+        <div class="product-price">₹395</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apcolite-synthetic-varnish-clear/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688142854-7kb84ssuwyj.png" alt="Asian Paints Apcolite Synthetic Varnish Clear" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apcolite Synthetic Varnish Clear</div>
+        <div class="product-price">₹195 – ₹380</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-nc-sanding-sealer/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688292053-in3v9jizc7b.png" alt="Asian Paints NC Sanding Sealer" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints NC Sanding Sealer</div>
+        <div class="product-price">₹160 – ₹310</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-royal-interior-emulsion-radiant-white/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779507701489-gjnmuyj1ijo.png" alt="Asian Paints Royal Interior Emulsion Radiant White" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Royal Interior Emulsion Radiant White</div>
+        <div class="product-price">₹660 – ₹11,900</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-apcolite-glossy-enamel-paint-500-ml/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688332057-wf5wogedyvr.png" alt="Asian Paints Apcolite Glossy Enamel Paint 500 ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Apcolite Glossy Enamel Paint 500 ml</div>
+        <div class="product-price">₹200</div>
+      </div>
+    </a><a href="/products/painting/asian-paints-enamel-roller-6inch/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689024035-pffehwluetb.png" alt="Asian Paints Enamel Roller 6inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Enamel Roller 6inch</div>
+        <div class="product-price">₹80 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/asian-paints-glossy-glomax-ultra-polish-500ml/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688615777-n3wwdn39pmj.png" alt="Asian Paints Glossy Glomax Ultra Polish 500ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Glossy Glomax Ultra Polish 500ml</div>
+        <div class="product-price">₹130 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/asian-paints-masking-tape-1-inch/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779507751650-2esga5feo3t.png" alt="Asian Paints Masking Tape 1 Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Masking Tape 1 Inch</div>
+        <div class="product-price">₹30 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/asian-paints-premium-exterior-roller-9inch/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688735749-x02ngsrdto.png" alt="Asian Paints Premium Exterior Roller 9inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Premium Exterior Roller 9inch</div>
+        <div class="product-price">₹230 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/asian-paints-roller-kit-with-tray-2inch/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688814832-tlb8ut8trnd.png" alt="Asian Paints Roller Kit With Tray 2inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Roller Kit With Tray 2inch</div>
+        <div class="product-price">₹195 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/asian-paints-woodtech-termishield-clear-500ml/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688871289-fh4jia90l3u.png" alt="Asian Paints Woodtech Termishield Clear 500ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Asian Paints Woodtech Termishield Clear 500ml</div>
+        <div class="product-price">₹160 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/birla-waterproof-wall-putty-30kg/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689686884-jwab09ums8.png" alt="Birla Waterproof Wall Putty 30kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Birla Waterproof Wall Putty 30kg</div>
+        <div class="product-price">₹1,025 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/chalk-powder-1kg/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779542761639-d2xpfxbwwwm.png" alt="Chalk Powder 1kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Chalk Powder 1kg</div>
+        <div class="product-price">₹45 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/gada-cloth-sheet/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689672737-09jpp75jmpjp.png" alt="Gada Cloth Sheet" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Gada Cloth Sheet</div>
+        <div class="product-price">₹45 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/plaster-of-paris-1kg/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779542873745-wwsp0mf441.png" alt="Plaster of Paris 1kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Plaster of Paris 1kg</div>
+        <div class="product-price">₹45 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/polish-powder-200gms-gobi/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Polish Powder 200gms-Gobi" loading="lazy"><span class="product-stock-pill">Out of stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Polish Powder 200gms-Gobi</div>
+        <div class="product-price">₹33.9 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/vicky-exterior-paint-roller-4-inch/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779689898138-wufd4hljbui.png" alt="Vicky Exterior Paint Roller 4 Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Vicky Exterior Paint Roller 4 Inch</div>
+        <div class="product-price">₹120 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/vicky-exterior-paint-roller-green-thread-9-inch/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690121736-gsghsuwub6a.png" alt="Vicky Exterior Paint Roller Green Thread 9 Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Vicky Exterior Paint Roller Green Thread 9 Inch</div>
+        <div class="product-price">₹250 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/painting/vicky-interior-paint-roller-yellow-thread-9-inch/" class="product-card" data-cat="painting">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779690006437-t0dt7zgyp6.png" alt="Vicky Interior Paint Roller Yellow Thread 9 Inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Painting</div>
+        <div class="product-name">Vicky Interior Paint Roller Yellow Thread 9 Inch</div>
+        <div class="product-price">₹210 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/paints/asian-paints-royale-luxury-emulsion-10l/" class="product-card" data-cat="paints">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779688840436-0tahlut9kjdj.png" alt="Asian Paints Royale Luxury Emulsion-10L" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Paints</div>
+        <div class="product-name">Asian Paints Royale Luxury Emulsion-10L</div>
+        <div class="product-price">₹1 <span class="unit">/ Litre</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-pipe-6kg-6mtr/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779703149954-uhd6nte15ac.png" alt="Finolex Agri Pvc Pipe 6kg - 6mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Pipe 6kg - 6mtr</div>
+        <div class="product-price">₹527.97 – ₹4,178.81</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-pvc-solvent-cement-solution/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779703254610-8jh4etiuu05.png" alt="Finolex Pvc Solvent Cement Solution" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Pvc Solvent Cement Solution</div>
+        <div class="product-price">₹60 – ₹180</div>
+      </div>
+    </a><a href="/products/plumbing/grandica-pvc-plumbing-long-bend/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779694477658-8cj6rgpko29.png" alt="Grandica Pvc Plumbing Long Bend" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Grandica Pvc Plumbing Long Bend</div>
+        <div class="product-price">₹25 – ₹200</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-plumbing-pvc-pipe-15kg-6mtr/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704334195-7ufwf6y1omq.png" alt="Finolex Plumbing Pvc Pipe 15kg - 6mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Plumbing Pvc Pipe 15kg - 6mtr</div>
+        <div class="product-price">₹303 – ₹770</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-reducer/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438216583-o24gnly4pkh.png" alt="Finolex Agri Pvc Reducer" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Reducer</div>
+        <div class="product-price">₹8 – ₹78</div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-pipe-flowguard-20mm-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704370447-2kohk0p07bz.png" alt="Ashirvad Cpvc Pipe Flowguard 20mm 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Pipe Flowguard 20mm 3/4 inch</div>
+        <div class="product-price">₹245 – ₹410</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-pipe-4kg-6mtr/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704488356-8krah50jlge.png" alt="Finolex Agri Pvc Pipe 4kg - 6mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Pipe 4kg - 6mtr</div>
+        <div class="product-price">₹628 – ₹1,276</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-double-side-tee-d-s/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438172650-qssmo6pyvb.png" alt="Finolex Swr Pvc Double Side Tee (D/S)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Swr Pvc Double Side Tee (D/S)</div>
+        <div class="product-price">₹68 – ₹143</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-double-side-door-tee-d-s/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438248694-ztaad6z8qr.png" alt="Finolex Swr Pvc Double Side Door Tee (D/S)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Swr Pvc Double Side Door Tee (D/S)</div>
+        <div class="product-price">₹85 – ₹165</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-plain-tee/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438265243-amnuiwyh9y5.png" alt="Finolex SWR Pvc Plain Tee" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Plain Tee</div>
+        <div class="product-price">₹78 – ₹142</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-plain-y/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438283978-int9oay1yyj.png" alt="Finolex SWR Pvc Plain Y" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Plain Y</div>
+        <div class="product-price">₹97 – ₹194</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-shoe-45/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438299951-0554z0zft4fs.png" alt="Finolex Agri Pvc Shoe 45" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Shoe 45</div>
+        <div class="product-price">₹15 – ₹20</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-double-side-elbow-d-s/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438523676-rpvm78qs7c.png" alt="Finolex Swr Pvc Double Side Elbow (D/S)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Swr Pvc Double Side Elbow (D/S)</div>
+        <div class="product-price">₹58 – ₹112</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-double-side-door-elbow-d-s/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438668171-20a4owkr5aq.png" alt="Finolex Swr Pvc Double Side Door Elbow (D/S)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Swr Pvc Double Side Door Elbow (D/S)</div>
+        <div class="product-price">₹75 – ₹136</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-plain-elbow/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438681651-0apltxn2ftzh.png" alt="Finolex SWR Pvc Plain Elbow" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Plain Elbow</div>
+        <div class="product-price">₹63 – ₹115</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-elbow-10kg/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438703694-ias8jypjt9k.png" alt="Finolex Agri Pvc Elbow 10kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Elbow 10kg</div>
+        <div class="product-price">₹8 – ₹34</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-tee-10kg/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438728163-9q5m661h8x7.png" alt="Finolex Agri Pvc Tee 10kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Tee 10kg</div>
+        <div class="product-price">₹11 – ₹46</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-fta/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438767267-5hdbqrzlq3.png" alt="Finolex Agri Pvc Fta" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Fta</div>
+        <div class="product-price">₹7 – ₹19</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-elbow/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438791388-nimglytpk5c.png" alt="Finolex Upvc Elbow" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Elbow</div>
+        <div class="product-price">₹16 – ₹53</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-mta/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438798955-xgye2mk1b.png" alt="Finolex Upvc Mta" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Mta</div>
+        <div class="product-price">₹10 – ₹30</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-door-elbow/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438818550-dkdv8cxr8xu.png" alt="Finolex SWR Pvc Door Elbow" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Door Elbow</div>
+        <div class="product-price">₹84 – ₹141</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-door-tee/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438828260-vqxt24uixre.png" alt="Finolex SWR Pvc Door Tee" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Door Tee</div>
+        <div class="product-price">₹96 – ₹188</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-plain-shoe-45/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438840699-zi4xy2zlqvn.png" alt="Finolex SWR Pvc Plain Shoe 45" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Plain Shoe 45</div>
+        <div class="product-price">₹45 – ₹85</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-air-cowl/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438862870-8qufp9go4zp.png" alt="Finolex SWR Pvc Air Cowl" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Air Cowl</div>
+        <div class="product-price">₹15 – ₹30</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-coupler/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438888906-qm8tvgzjcw.png" alt="Finolex Agri Pvc Coupler" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Coupler</div>
+        <div class="product-price">₹5 – ₹89</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-mta/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438901141-xlohpcjn0op.png" alt="Finolex Agri Pvc Mta" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Mta</div>
+        <div class="product-price">₹6 – ₹20</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-sch-40-pipe-6mtr/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704549920-4hdg2wqwjxt.png" alt="Finolex Upvc Sch 40 Pipe 6mtr" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Sch 40 Pipe 6mtr</div>
+        <div class="product-price">₹412 – ₹968</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-tee/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438931229-3m9bymwkm5m.png" alt="Finolex Upvc Tee" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Tee</div>
+        <div class="product-price">₹21 – ₹70</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-ball-valve/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779438964338-qbhqo4j3n3.png" alt="Finolex Upvc Ball Valve" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Ball Valve</div>
+        <div class="product-price">₹250 – ₹635</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-coupler/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704626123-v8qy5wqzl3.png" alt="Finolex Upvc Coupler" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Coupler</div>
+        <div class="product-price">₹12 – ₹35</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-fta/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704688941-ngv3jcnx1oh.png" alt="Finolex Upvc Fta" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Fta</div>
+        <div class="product-price">₹12 – ₹35</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-bush/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704776182-cn03msnrfmf.png" alt="Finolex Upvc Bush" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Bush</div>
+        <div class="product-price">₹8 – ₹25</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-endcap-dummy/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439069195-525eo85fjth.png" alt="Finolex Upvc Endcap Dummy" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Endcap Dummy</div>
+        <div class="product-price">₹15 – ₹25</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-bush/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704932764-mty8gx3kvm.png" alt="Finolex Agri Pvc Bush" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Bush</div>
+        <div class="product-price">₹6 – ₹86</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-end-cap-dummy/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704978503-0djjrv0dlnyg.png" alt="Finolex Agri Pvc End Cap Dummy" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc End Cap Dummy</div>
+        <div class="product-price">₹6 – ₹94</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-ball-valve/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439118905-6ja0jhh2f7g.png" alt="Finolex Agri Pvc Ball Valve" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Ball Valve</div>
+        <div class="product-price">₹110 – ₹370</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-reducer/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705034155-4np0xyxtbo8.png" alt="Finolex Upvc Reducer" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Reducer</div>
+        <div class="product-price">₹17 – ₹40</div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-tank-nipple-connector/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705066987-n74dmorlhi.png" alt="Finolex Upvc Tank Nipple Connector" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Tank Nipple Connector</div>
+        <div class="product-price">₹50 – ₹55</div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-6-wall-mixer-set-3-4-x-1-2-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705136965-cwxy147mdf.png" alt="Ashirvad Cpvc Flowguard 6&quot; Wall Mixer Set (3/4 x 1/2 inch)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard 6&quot; Wall Mixer Set (3/4 x 1/2 inch)</div>
+        <div class="product-price">₹400 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-brass-reducer-elbow-3-4-inch-x-1-2-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705170334-p8cnt54n58.png" alt="Ashirvad Cpvc Flowguard Brass Reducer Elbow 3/4 inch x 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Brass Reducer Elbow 3/4 inch x 1/2 inch</div>
+        <div class="product-price">₹65 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-brass-reducer-fta-3-4-inch-x-1-2-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705206923-nt67yxx80j.png" alt="Ashirvad Cpvc Flowguard Brass Reducer FTA 3/4 inch x 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Brass Reducer FTA 3/4 inch x 1/2 inch</div>
+        <div class="product-price">₹78 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-brass-reducer-mta-3-4-inch-x-1-2-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705254717-rw5aacnw9wg.png" alt="Ashirvad Cpvc Flowguard Brass Reducer MTA 3/4 inch x 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Brass Reducer MTA 3/4 inch x 1/2 inch</div>
+        <div class="product-price">₹113 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-brass-reducer-tee-3-4-inch-x-1-2-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705278524-sf172ay8yk.png" alt="Ashirvad Cpvc Flowguard Brass Reducer Tee 3/4 inch x 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Brass Reducer Tee 3/4 inch x 1/2 inch</div>
+        <div class="product-price">₹78 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-coupler-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705465785-fcyr600e0b.png" alt="Ashirvad Cpvc Flowguard Coupler 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Coupler 3/4 inch</div>
+        <div class="product-price">₹15 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-elbow-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705493764-h9genqcaix6.png" alt="Ashirvad Cpvc Flowguard Elbow 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Elbow 3/4 inch</div>
+        <div class="product-price">₹17 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-endcap-dummy-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705571431-5fplltl932t.png" alt="Ashirvad Cpvc Flowguard Endcap Dummy 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Endcap Dummy 3/4 inch</div>
+        <div class="product-price">₹13 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-fta-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705696946-1k8wr90herc.png" alt="Ashirvad Cpvc Flowguard Fta 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Fta 3/4 inch</div>
+        <div class="product-price">₹28 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-mta-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705746446-wxgj4ibhmro.png" alt="Ashirvad Cpvc Flowguard Mta 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Mta 3/4 inch</div>
+        <div class="product-price">₹21 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-offset-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779706365364-12d5okwm6eq.png" alt="Ashirvad Cpvc Flowguard Offset 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Offset 3/4 inch</div>
+        <div class="product-price">₹82 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-plug-dummy-1-2-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779706401306-cwoj952be6.png" alt="Ashirvad Cpvc Flowguard Plug Dummy 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Plug Dummy 1/2 inch</div>
+        <div class="product-price">₹8 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-shoe-45-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779706443707-kgbgzj8lz4.png" alt="Ashirvad Cpvc Flowguard Shoe 45 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Shoe 45 3/4 inch</div>
+        <div class="product-price">₹26 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-flowguard-tee-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779706628976-evodawcpqys.png" alt="Ashirvad Cpvc Flowguard Tee 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Flowguard Tee 3/4 inch</div>
+        <div class="product-price">₹29 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/ashirvad-cpvc-solvent-cement-solution-59ml/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779706674068-m6xn0nglxp8.png" alt="Ashirvad Cpvc Solvent Cement Solution 59ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Ashirvad Cpvc Solvent Cement Solution 59ml</div>
+        <div class="product-price">₹115 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-agri-pvc-reducer-tee-1inch-x-3-4-inch-1-x3-4/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779706994704-zelbqukkbed.png" alt="Finolex Agri Pvc Reducer Tee 1inch x 3/4 inch (1&quot;x3/4&quot;)" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Agri Pvc Reducer Tee 1inch x 3/4 inch (1&quot;x3/4&quot;)</div>
+        <div class="product-price">₹25 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-cpvc-solvent-cement-solution-118ml/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779707053445-n6w6y6iies7.png" alt="Finolex Cpvc Solvent Cement Solution 118ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Cpvc Solvent Cement Solution 118ml</div>
+        <div class="product-price">₹155 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-gully-trap-with-jali-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439216074-r2pous6b7ps.png" alt="Finolex SWR Pvc Gully Trap With Jali 4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Gully Trap With Jali 4 inch</div>
+        <div class="product-price">₹475 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-multi-floor-trap-with-jali-4-inch-x-2-5-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439226541-as3o7u4wjtf.png" alt="Finolex SWR Pvc Multi Floor Trap With Jali 4 inch x 2.5 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Multi Floor Trap With Jali 4 inch x 2.5 inch</div>
+        <div class="product-price">₹165 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-swr-pvc-nahini-trap-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439251342-svdud9vvjkp.png" alt="Finolex SWR Pvc Nahini Trap 4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex SWR Pvc Nahini Trap 4 inch</div>
+        <div class="product-price">₹100 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-brass-reducer-elbow-3-4-inch-x-1-2-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779707162458-povwxmkb9q.png" alt="Finolex Upvc Brass Reducer Elbow 3/4 inch x 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Brass Reducer Elbow 3/4 inch x 1/2 inch</div>
+        <div class="product-price">₹74 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-reducer-elbow-1-inch-x-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439359945-c9tfezvtfv5.png" alt="Finolex Upvc Reducer Elbow 1 inch x 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Reducer Elbow 1 inch x 3/4 inch</div>
+        <div class="product-price">₹16 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-reducer-tee-1-inch-x-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779707265083-r8n7zzf4z2.png" alt="Finolex Upvc Reducer Tee 1 inch x 3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Reducer Tee 1 inch x 3/4 inch</div>
+        <div class="product-price">₹35 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-shoe-45-1-1-2-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779707345811-7vzg7ha7jbx.png" alt="Finolex Upvc Shoe 45-1 1/2 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Shoe 45-1 1/2 inch</div>
+        <div class="product-price">₹38.14 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-shoe-45-1-1-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779707354991-bt8frnzuxri.png" alt="Finolex Upvc Shoe 45-1 1/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Shoe 45-1 1/4 inch</div>
+        <div class="product-price">₹29.66 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-shoe-45-1-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779707378425-aau6t1y8gw6.png" alt="Finolex Upvc Shoe 45-1 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Shoe 45-1 inch</div>
+        <div class="product-price">₹21.19 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-shoe-45-3-4-inch/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Finolex Upvc Shoe 45-3/4 inch" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Shoe 45-3/4 inch</div>
+        <div class="product-price">₹12.71 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/plumbing/finolex-upvc-solvent-solution-cement-230ml/" class="product-card" data-cat="plumbing">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779707475018-xjaa3grch49.png" alt="Finolex Upvc Solvent Solution Cement 230ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Plumbing</div>
+        <div class="product-name">Finolex Upvc Solvent Solution Cement 230ml</div>
+        <div class="product-price">₹175 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/tiling/myk-sp-100-epoxy-grout-kit-1kg/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439807905-357lmy5i3no.png" alt="Myk SP 100 Epoxy Grout Kit 1kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Myk SP 100 Epoxy Grout Kit 1kg</div>
+        <div class="product-price">₹825</div>
+      </div>
+    </a><a href="/products/tiling/myk-600-series-unsanded-grout-1kg/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439735615-xap5kcmnpqo.png" alt="Myk 600 Series Unsanded Grout 1kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Myk 600 Series Unsanded Grout 1kg</div>
+        <div class="product-price">₹60</div>
+      </div>
+    </a><a href="/products/tiling/flooring-oxide-100gms/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779704447590-ppmagm0x0rk.png" alt="Flooring Oxide 100gms" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Flooring Oxide 100gms</div>
+        <div class="product-price">₹25</div>
+      </div>
+    </a><a href="/products/tiling/myk-sp-100-epoxy-grout-kit-5kg/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439830077-bbejewyop5t.png" alt="Myk SP 100 Epoxy Grout Kit 5kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Myk SP 100 Epoxy Grout Kit 5kg</div>
+        <div class="product-price">₹3,485</div>
+      </div>
+    </a><a href="/products/tiling/flooring-oxide-500gms/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779705091845-r2sw02zexj.png" alt="Flooring Oxide 500gms" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Flooring Oxide 500gms</div>
+        <div class="product-price">₹75</div>
+      </div>
+    </a><a href="/products/tiling/myk-500-series-sanded-grout-white-10kg/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439640417-l7hsc2lfa7l.png" alt="Myk 500 Series Sanded Grout White 10kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Myk 500 Series Sanded Grout White 10kg</div>
+        <div class="product-price">₹600 <span class="unit">/ Bags</span></div>
+      </div>
+    </a><a href="/products/tiling/myk-l1776-grout-adimix-tiling-liquid-400ml/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439652896-c2ze6ywfc1f.png" alt="Myk L1776 Grout Adimix Tiling Liquid 400ml" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Myk L1776 Grout Adimix Tiling Liquid 400ml</div>
+        <div class="product-price">₹220 <span class="unit">/ Pcs</span></div>
+      </div>
+    </a><a href="/products/tiling/myk-laticrete-thinset-tile-adhesive-305-grey-20kg/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://placehold.co/400x300/png" alt="Myk Laticrete Thinset Tile Adhesive 305 Grey 20kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Myk Laticrete Thinset Tile Adhesive 305 Grey 20kg</div>
+        <div class="product-price">₹305 <span class="unit">/ Bags</span></div>
+      </div>
+    </a><a href="/products/tiling/myk-laticrete-thinset-tile-adhesive-307-white-20kg/" class="product-card" data-cat="tiling">
+      <div class="product-img"><img src="https://storage.googleapis.com/suppliable-app.firebasestorage.app/products/1779439526651-hu66mhvnf3w.png" alt="Myk Laticrete Thinset Tile Adhesive 307 White 20Kg" loading="lazy"><span class="product-stock-pill in-stock">In stock</span></div>
+      <div class="product-body">
+        <div class="product-cat">Tiling</div>
+        <div class="product-name">Myk Laticrete Thinset Tile Adhesive 307 White 20Kg</div>
+        <div class="product-price">₹475 <span class="unit">/ Bags</span></div>
+      </div>
+    </a>
+    </div>
+
+    <div class="results-empty" id="resultsEmpty" hidden>
+      <span class="big-emoji">🔍</span>
+      <h2 style="font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:6px;">No products in this filter</h2>
+      <p>Try another category, or <a href="https://wa.me/918778627926?text=Hi%20Suppliable%2C" target="_blank" rel="noopener" style="color:var(--purple);text-decoration:underline;">message us on WhatsApp</a>.</p>
     </div>
 
   </div>
@@ -251,5 +2237,62 @@
       <span>Made in Chennai 🧡</span>
     </div>
   </footer>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('#catChips .cat-chip');
+  var cards = document.querySelectorAll('#productsGrid .product-card');
+  var countEl = document.getElementById('resultCount');
+  var emptyEl = document.getElementById('resultsEmpty');
+  var seoEl = document.getElementById('seoLink');
+  var totalCount = 290;
+
+  /* Map slug -> display name for the count label */
+  var catNames = {"bathroom-fittings":"Bathroom Fittings","construction-chemicals":"Construction Chemicals","electrical":"Electrical","electrical-conduits":"Electrical Conduits","hardwares":"Hardwares","lighting-fans":"Lighting & Fans","painting":"Painting","paints":"Paints","plumbing":"Plumbing","tiling":"Tiling"};
+
+  function applyFilter(slug) {
+    var visible = 0;
+    cards.forEach(function (card) {
+      var show = (slug === 'all' || card.dataset.cat === slug);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    chips.forEach(function (chip) {
+      var on = chip.dataset.filter === slug;
+      chip.classList.toggle('active', on);
+      chip.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    if (slug === 'all') {
+      countEl.textContent = 'Showing all ' + totalCount + ' products';
+      seoEl.hidden = true;
+    } else {
+      var name = catNames[slug] || slug;
+      countEl.textContent = 'Showing ' + visible + ' ' + name + ' product' + (visible === 1 ? '' : 's');
+      seoEl.hidden = false;
+      seoEl.href = '/products/' + slug + '/';
+      seoEl.textContent = 'View ' + name + ' on its own page →';
+    }
+
+    emptyEl.hidden = visible !== 0;
+
+    /* Update URL without reloading */
+    var url = new URL(window.location.href);
+    if (slug === 'all') url.searchParams.delete('category');
+    else url.searchParams.set('category', slug);
+    history.replaceState({}, '', url.pathname + (url.search || '') + url.hash);
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () { applyFilter(chip.dataset.filter); });
+  });
+
+  /* Read ?category= from URL on load */
+  var params = new URLSearchParams(window.location.search);
+  var initial = params.get('category');
+  if (initial && catNames[initial]) applyFilter(initial);
+})();
+</script>
 </body>
 </html>

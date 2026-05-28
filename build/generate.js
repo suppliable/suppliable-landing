@@ -238,12 +238,12 @@ async function main() {
   }
 
   console.log(`\n5. Writing products hub…`);
-  const totalProducts = allProducts.length;
+  const totalProducts = Object.values(productsBySlug).reduce((n, arr) => n + arr.length, 0);
   await writeFile(
     'products/index.html',
-    productsHubPage({ categories: allCategories, totalProducts })
+    productsHubPage({ categories: allCategories, totalProducts, productsByCategory: productsBySlug })
   );
-  console.log(`   ✓ /products/`);
+  console.log(`   ✓ /products/  (${totalProducts} products)`);
 
   console.log(`\n6. Building blog…`);
   const { posts, count: blogCount } = await buildBlog(ROOT);

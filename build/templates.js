@@ -499,8 +499,11 @@ function productCard(p, category) {
   </a>`;
 }
 
-/* ============== PRODUCTS HUB PAGE ============== */
-export function productsHubPage({ categories, totalProducts }) {
+/* ============== PRODUCTS HUB PAGE ==============
+   Shows EVERY product on one page with category chips that act as
+   client-side filters. Each chip toggles visibility of cards via
+   data-cat. URL gets ?category=<slug> for shareability. */
+export function productsHubPage({ categories, totalProducts, productsByCategory }) {
   const url = `${SITE}/products/`;
   const title = `Products | Construction materials in Chennai | Suppliable`;
   const description = `Browse ${totalProducts}+ construction materials across ${categories.length} categories — cement, steel, paint, plumbing, electrical, tiling and more. Order online with 60-minute Chennai delivery via the Suppliable app.`;
@@ -509,6 +512,14 @@ export function productsHubPage({ categories, totalProducts }) {
     { name: 'Home', url: SITE + '/' },
     { name: 'Products', url }
   ];
+
+  /* Flatten all products into a single ordered list, tagged with their category */
+  const flatProducts = [];
+  for (const cat of categories) {
+    for (const p of (productsByCategory[cat.slug] || [])) {
+      flatProducts.push({ p, cat });
+    }
+  }
 
   const collectionJSON = {
     '@context': 'https://schema.org',
@@ -524,10 +535,52 @@ export function productsHubPage({ categories, totalProducts }) {
     }))
   };
 
+  const chipsHTML = `
+    <div class="cat-chips" id="catChips" role="tablist" aria-label="Filter by category">
+      <button class="cat-chip active" data-filter="all" role="tab" aria-selected="true">All <span class="chip-count">${totalProducts}</span></button>
+      ${categories.map(c =>
+        `<button class="cat-chip" data-filter="${escapeHTML(c.slug)}" role="tab" aria-selected="false">${c.e} ${escapeHTML(c.name)} <span class="chip-count">${c.productCount}</span></button>`
+      ).join('')}
+    </div>`;
+
+  /* Slightly different product card markup: each card carries data-cat so
+     the filter JS can show/hide it. We re-use the same .product-card class. */
+  const cardsHTML = flatProducts.map(({ p, cat }) => {
+    const detailUrl = `/products/${cat.slug}/${p.slug}/`;
+    const imgPart = p.imageUrl
+      ? `<img src="${escapeHTML(p.imageUrl)}" alt="${escapeHTML(p.name)}" loading="lazy">`
+      : `<span class="emoji-fallback">${p.e}</span>`;
+    const stockPill = p.stock
+      ? '<span class="product-stock-pill in-stock">In stock</span>'
+      : '<span class="product-stock-pill">Out of stock</span>';
+    const priceHTML = p.hasVariants && p.priceRange
+      ? escapeHTML(p.priceRange)
+      : `${rupee(p.price)}${p.unit ? ` <span class="unit">/ ${escapeHTML(p.unit)}</span>` : ''}`;
+    return `<a href="${detailUrl}" class="product-card" data-cat="${escapeHTML(cat.slug)}">
+      <div class="product-img">${imgPart}${stockPill}</div>
+      <div class="product-body">
+        <div class="product-cat">${escapeHTML(cat.name)}</div>
+        <div class="product-name">${escapeHTML(p.name)}</div>
+        <div class="product-price">${priceHTML}</div>
+      </div>
+    </a>`;
+  }).join('');
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>${commonHead({ title, description, canonical: url })}
-  <style>${PAGE_STYLES}</style>
+  <style>${PAGE_STYLES}
+    /* hub-specific: filter chip styling (buttons not anchors) */
+    #catChips .cat-chip { font-family: inherit; cursor: pointer; }
+    #catChips .chip-count { font-size: .72rem; opacity: .65; margin-left: 4px; font-weight: 500; }
+    #catChips .cat-chip.active .chip-count { opacity: .55; }
+    .results-meta { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; gap: 16px; flex-wrap: wrap; }
+    .results-meta .count { font-size: .9rem; color: var(--gray-500, #757285); font-weight: 500; }
+    .results-meta .seo-link { font-size: .85rem; color: var(--purple); font-weight: 600; text-decoration: none; }
+    .results-meta .seo-link:hover { text-decoration: underline; }
+    .results-empty { text-align: center; padding: 60px 20px; color: var(--gray-500, #757285); }
+    .results-empty .big-emoji { font-size: 48px; display: block; margin-bottom: 14px; }
+  </style>
   ${breadcrumbJSONLD(breadcrumbs)}
   <script type="application/ld+json">${JSON.stringify(collectionJSON)}</script>
 </head>
@@ -539,6 +592,7 @@ ${header()}
     ${breadcrumbHTML(breadcrumbs)}
     <h1>All products</h1>
     <p class="sub">${totalProducts}+ construction materials across ${categories.length} categories — delivered to your Chennai site in 60 minutes.</p>
+    ${chipsHTML}
   </div>
 </section>
 
@@ -554,21 +608,81 @@ ${header()}
       <a href="/#download" class="btn btn-orange">Download app</a>
     </div>
 
-    <h2 style="font-size:1.2rem;font-weight:800;margin-bottom:14px;">Browse by category</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
-      ${categories.map(c => `
-        <a href="/products/${c.slug}/" style="background:#fff;border:1.5px solid #E7E5F1;border-radius:12px;padding:18px 16px;text-decoration:none;color:#14122B;display:flex;align-items:center;gap:12px;transition:border-color .15s,transform .15s;">
-          <span style="font-size:26px;">${c.e}</span>
-          <span>
-            <span style="font-weight:700;display:block;">${escapeHTML(c.name)}</span>
-            <span style="font-size:.8rem;color:#6B6880;">${c.productCount} product${c.productCount === 1 ? '' : 's'}</span>
-          </span>
-        </a>`).join('')}
+    <div class="results-meta">
+      <span class="count" id="resultCount">Showing all ${totalProducts} products</span>
+      <a href="#" class="seo-link" id="seoLink" hidden>View this category on its own page →</a>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      ${cardsHTML}
+    </div>
+
+    <div class="results-empty" id="resultsEmpty" hidden>
+      <span class="big-emoji">🔍</span>
+      <h2 style="font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:6px;">No products in this filter</h2>
+      <p>Try another category, or <a href="https://wa.me/918778627926?text=Hi%20Suppliable%2C" target="_blank" rel="noopener" style="color:var(--purple);text-decoration:underline;">message us on WhatsApp</a>.</p>
     </div>
 
   </div>
 </section>
 ${footer()}
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('#catChips .cat-chip');
+  var cards = document.querySelectorAll('#productsGrid .product-card');
+  var countEl = document.getElementById('resultCount');
+  var emptyEl = document.getElementById('resultsEmpty');
+  var seoEl = document.getElementById('seoLink');
+  var totalCount = ${totalProducts};
+
+  /* Map slug -> display name for the count label */
+  var catNames = ${JSON.stringify(Object.fromEntries(categories.map(c => [c.slug, c.name])))};
+
+  function applyFilter(slug) {
+    var visible = 0;
+    cards.forEach(function (card) {
+      var show = (slug === 'all' || card.dataset.cat === slug);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    chips.forEach(function (chip) {
+      var on = chip.dataset.filter === slug;
+      chip.classList.toggle('active', on);
+      chip.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    if (slug === 'all') {
+      countEl.textContent = 'Showing all ' + totalCount + ' products';
+      seoEl.hidden = true;
+    } else {
+      var name = catNames[slug] || slug;
+      countEl.textContent = 'Showing ' + visible + ' ' + name + ' product' + (visible === 1 ? '' : 's');
+      seoEl.hidden = false;
+      seoEl.href = '/products/' + slug + '/';
+      seoEl.textContent = 'View ' + name + ' on its own page →';
+    }
+
+    emptyEl.hidden = visible !== 0;
+
+    /* Update URL without reloading */
+    var url = new URL(window.location.href);
+    if (slug === 'all') url.searchParams.delete('category');
+    else url.searchParams.set('category', slug);
+    history.replaceState({}, '', url.pathname + (url.search || '') + url.hash);
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () { applyFilter(chip.dataset.filter); });
+  });
+
+  /* Read ?category= from URL on load */
+  var params = new URLSearchParams(window.location.search);
+  var initial = params.get('category');
+  if (initial && catNames[initial]) applyFilter(initial);
+})();
+</script>
 </body>
 </html>`;
 }
