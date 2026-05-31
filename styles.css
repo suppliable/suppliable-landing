@@ -328,9 +328,10 @@ h4 { font-weight: 600; line-height: 1.3; }
 }
 
 /* =========================================================
-   Hero truck — pure CSS Bolero with spinning wheels, dust,
-   speed lines, scrolling road, and a 60-min delivery badge.
-   No images — everything is a real DOM element.
+   Hero truck — Bolero illustration (PNG body) with the two
+   wheels sliced out into separate transparent PNGs so they
+   can spin independently. Surrounded by road + speed lines +
+   dust puffs + 60-min badge, all animated.
    ========================================================= */
 .hero-truck {
   position: relative;
@@ -342,203 +343,45 @@ h4 { font-weight: 600; line-height: 1.3; }
   padding-bottom: 38px;
 }
 
-/* The truck itself */
-.truck {
+/* Body + wheels container */
+.truck-wrap {
   position: relative;
-  width: 640px;
-  max-width: 100%;
-  height: 240px;
+  width: 100%;
+  max-width: 680px;
+  aspect-ratio: 1273 / 580;
   z-index: 3;
+  filter: drop-shadow(0 22px 24px rgba(0,0,0,.30));
   animation: truck-drive 1.4s ease-in-out infinite;
   transform-origin: 50% 90%;
-  filter: drop-shadow(0 14px 18px rgba(0,0,0,.28));
 }
-@keyframes truck-drive {
-  0%, 100% { transform: translateY(0)    rotate(-0.35deg); }
-  50%      { transform: translateY(-5px) rotate(0.25deg); }
-}
-
-/* CABIN */
-.cabin {
+.truck-body {
   position: absolute;
-  left: 0; bottom: 50px;
-  width: 200px; height: 130px;
-  background: linear-gradient(180deg, #8c52ff 0%, #5C25D8 100%);
-  border-radius: 38px 18px 20px 24px;
-  box-shadow: inset 0 -10px 0 rgba(0,0,0,.10), 0 6px 14px rgba(75,34,214,.32);
-}
-.cabin .window {
-  position: absolute;
-  top: 18px; left: 32px;
-  width: 110px; height: 50px;
-  background: linear-gradient(135deg, #E5DFFC 0%, #C7BCF5 100%);
-  border-radius: 12px 8px 6px 12px;
-  box-shadow: inset -8px -6px 0 rgba(75,34,214,.10);
-}
-.cabin .window::after {
-  content: '';
-  position: absolute;
-  top: 6px; left: 8px;
-  width: 28px; height: 14px;
-  background: rgba(255,255,255,.55);
-  border-radius: 8px;
-  transform: rotate(-10deg);
-}
-.cabin .headlight {
-  position: absolute;
-  right: 8px; bottom: 26px;
-  width: 18px; height: 18px;
-  background: radial-gradient(circle at 30% 30%, #FFF6B8, #FFD66B 60%, #E0AA2C);
-  border-radius: 50%;
-  box-shadow: 0 0 14px rgba(255, 214, 107, .8);
-}
-.cabin .door-badge {
-  position: absolute;
-  left: 50px; bottom: 12px;
-  display: flex; flex-direction: column; gap: 1px;
-  text-align: left;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-.cabin .door-badge strong {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #fff;
-  line-height: 1;
-}
-.cabin .door-badge span {
-  font-size: 6.5px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #FFB67E;
-  line-height: 1;
-}
-
-/* CARGO BED */
-.container-bed {
-  position: absolute;
-  left: 178px; bottom: 60px;
-  width: 440px; height: 140px;
-  background: linear-gradient(180deg, #6A2DDC 0%, #4B1FB0 100%);
-  border-radius: 14px;
-  padding: 12px;
-  box-sizing: border-box;
-  box-shadow: inset 0 -8px 0 rgba(0,0,0,.12);
-}
-.materials {
-  display: flex;
-  gap: 14px;
-  align-items: flex-end;
+  inset: 0;
+  width: 100%;
   height: 100%;
+  display: block;
+  z-index: 2;
 }
-
-/* RAMCO cement bags */
-.cement {
-  display: flex; flex-direction: column; gap: 5px;
-}
-.bag {
-  width: 78px; height: 30px;
-  background: linear-gradient(180deg, #F5E4C8 0%, #D9B68C 100%);
-  border-radius: 14px;
-  display: flex; justify-content: center; align-items: center;
-  font: 700 10px 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: .04em;
-  color: #1E4FA8;
-  box-shadow: inset 0 -3px 0 rgba(0,0,0,.10), 0 1px 2px rgba(0,0,0,.10);
-}
-
-/* AAC blocks */
-.blocks {
-  display: grid;
-  grid-template-columns: repeat(2, 48px);
-  gap: 5px;
-}
-.block {
-  width: 48px; height: 38px;
-  background: linear-gradient(180deg, #EFEFEF, #C7C7C7);
-  border-radius: 4px;
-  box-shadow: inset 0 -2px 0 rgba(0,0,0,.10);
-  position: relative;
-}
-.block::after {
-  content: '';
-  position: absolute;
-  inset: 4px 4px;
-  background-image:
-    linear-gradient(to bottom, transparent 28%, rgba(120,120,120,.18) 28% 32%, transparent 32% 56%, rgba(120,120,120,.18) 56% 60%, transparent 60%);
-  border-radius: 2px;
-}
-
-/* Finolex pipes */
-.pipes {
-  display: flex; flex-direction: column; gap: 6px;
-}
-.pipe {
-  width: 110px; height: 24px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #DCDCDC 100%);
-  border-radius: 20px;
-  border: 3px solid #A8A8A8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font: 800 8px 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: .04em;
-  color: #1A5FB4;
-  position: relative;
-  box-shadow: inset 0 -2px 0 rgba(0,0,0,.06);
-}
-.pipe::before, .pipe::after {
-  content: '';
-  position: absolute;
-  top: -3px; bottom: -3px;
-  width: 6px;
-  background: #1A5FB4;
-  border-radius: 2px;
-}
-.pipe::before { left: 16px; }
-.pipe::after  { right: 16px; }
-
-/* WHEELS */
 .wheel {
   position: absolute;
-  bottom: 0;
-  width: 76px; height: 76px;
-  background: radial-gradient(circle at 50% 50%, #1a1a24 0 38%, #2d2d3a 38% 46%, #4a4a5a 46% 100%);
-  border-radius: 50%;
-  border: 8px solid #3a3a48;
-  box-shadow: 0 4px 8px rgba(0,0,0,.35), inset 0 -3px 0 rgba(0,0,0,.30);
+  width: 13.83%;        /* 176 / 1273 */
+  height: auto;
+  aspect-ratio: 1;
+  display: block;
+  z-index: 1;           /* behind body — body has tyre arches that frame the wheel cleanly */
   animation: wheel-spin 0.55s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
-/* 5-spoke hub overlay */
-.wheel::before {
-  content: '';
-  position: absolute; inset: 12px;
-  border-radius: 50%;
-  background:
-    conic-gradient(from 0deg,
-      #C8C5D4 0deg 8deg, transparent 8deg 72deg,
-      #C8C5D4 72deg 80deg, transparent 80deg 144deg,
-      #C8C5D4 144deg 152deg, transparent 152deg 216deg,
-      #C8C5D4 216deg 224deg, transparent 224deg 288deg,
-      #C8C5D4 288deg 296deg, transparent 296deg 360deg);
-  -webkit-mask: radial-gradient(circle, #000 30%, transparent 30%);
-          mask: radial-gradient(circle, #000 30%, transparent 30%);
-}
-.wheel::after {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 22px; height: 22px;
-  background: radial-gradient(circle, #D5D2DE 0 40%, #8A8898 100%);
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #2d2d3a;
-}
-.wheel1 { left: 70px; }
-.wheel2 { right: 80px; }
+.wheel-front { left: 14.77%; top: 65.17%; }   /* 188/1273 ; 378/580 */
+.wheel-rear  { left: 62.77%; top: 62.07%; }   /* 799/1273 ; 360/580 */
 
 @keyframes wheel-spin {
   to { transform: rotate(360deg); }
+}
+@keyframes truck-drive {
+  0%, 100% { transform: translateY(0)    rotate(-0.30deg); }
+  50%      { transform: translateY(-5px) rotate(0.20deg); }
 }
 
 /* SPEED LINES */
@@ -577,11 +420,11 @@ h4 { font-weight: 600; line-height: 1.3; }
   to   { left: -240px; }
 }
 
-/* DUST PUFFS behind the rear wheel */
+/* DUST PUFFS */
 .dust {
   position: absolute;
-  bottom: 32px;
-  right: 30%;
+  bottom: 36px;
+  right: 14%;
   width: 36px;
   height: 36px;
   background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,.12) 60%, transparent 75%);
@@ -592,15 +435,15 @@ h4 { font-weight: 600; line-height: 1.3; }
   animation: dust-puff 1.6s linear infinite;
 }
 .dust-a { animation-delay: 0.0s; }
-.dust-b { animation-delay: 0.55s; right: 34%; bottom: 36px; }
-.dust-c { animation-delay: 1.1s;  right: 38%; bottom: 30px; width: 28px; height: 28px; }
+.dust-b { animation-delay: 0.55s; right: 18%; bottom: 42px; }
+.dust-c { animation-delay: 1.1s;  right: 22%; bottom: 34px; width: 28px; height: 28px; }
 @keyframes dust-puff {
   0%   { opacity: 0;   transform: translate(0,0) scale(.6); }
   30%  { opacity: .8; }
   100% { opacity: 0;   transform: translate(70px, -8px) scale(1.7); }
 }
 
-/* ROAD at the bottom */
+/* ROAD */
 .road {
   position: absolute;
   left: 0; right: 0;
@@ -631,7 +474,7 @@ h4 { font-weight: 600; line-height: 1.3; }
   to { transform: translateX(-80px); }
 }
 
-/* 60-min badge */
+/* 60-MIN BADGE */
 .hero-badge {
   position: absolute;
   top: 16px;
@@ -681,21 +524,18 @@ h4 { font-weight: 600; line-height: 1.3; }
   to   { transform: translateY(-6px); }
 }
 
-/* Mobile: scale the whole truck down so it fits */
 @media (max-width: 760px) {
-  .truck { transform-origin: 50% 90%; }
   .hero-truck { min-height: 320px; padding-bottom: 30px; }
   .road { height: 28px; }
 }
 @media (max-width: 520px) {
-  .truck { transform: scale(.72); }
   .hero-truck { min-height: 260px; }
   .hero-badge { padding: 10px 14px 10px 12px; min-width: 100px; }
   .hero-badge strong { font-size: 1.1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .truck, .wheel, .speedlines .sl, .dust, .road-dashes, .hero-badge, .hero-badge .badge-pulse {
+  .truck-wrap, .wheel, .speedlines .sl, .dust, .road-dashes, .hero-badge, .hero-badge .badge-pulse {
     animation: none;
   }
   .dust { display: none; }
