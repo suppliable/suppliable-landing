@@ -71,7 +71,7 @@ function header() {
         <a href="/#bulk">Bulk orders</a>
       </nav>
       <div class="header-actions">
-        <a href="/#download" class="btn btn-orange btn-sm">Download app</a>
+        <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener" class="btn btn-orange btn-sm">Download app</a>
       </div>
     </div>
   </header>`;
@@ -91,7 +91,7 @@ function footer() {
         <a href="/products/">Products</a>
         <a href="/#brands">Brands</a>
         <a href="/#bulk">Bulk orders</a>
-        <a href="/#download">Download app</a>
+        <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener">Download app</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -365,7 +365,7 @@ ${header()}
         <strong>Order ${escapeHTML(product.name)} on the Suppliable app</strong>
         <p>Get this product delivered to your construction site in Chennai within 60 minutes.</p>
       </div>
-      <a href="/#download" class="btn btn-orange">Download app</a>
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener" class="btn btn-orange">Download app</a>
     </div>
 
     <div class="pdetail">
@@ -388,7 +388,7 @@ ${header()}
         ${metaTable}
         ${variantsBlock}
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="/#download" class="btn btn-orange">Order on the app</a>
+          <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener" class="btn btn-orange">Order on the app</a>
           <a href="${whatsappLink(`Hi Suppliable, I'd like to buy: ${product.name}\nFrom: ${url}`)}" target="_blank" rel="noopener" class="btn btn-wa">💬 Ask on WhatsApp</a>
         </div>
       </div>
@@ -464,7 +464,7 @@ ${header()}
         <strong>Download the app to order now</strong>
         <p>Browse the full catalogue, track your order live, and get materials delivered to your site in 60 minutes.</p>
       </div>
-      <a href="/#download" class="btn btn-orange">Download app</a>
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener" class="btn btn-orange">Download app</a>
     </div>
 
     <div class="products-grid">
@@ -606,7 +606,7 @@ ${header()}
         <strong>Download the app to order now</strong>
         <p>Browse the full catalogue, track your order live, and get materials delivered to your site in 60 minutes.</p>
       </div>
-      <a href="/#download" class="btn btn-orange">Download app</a>
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener" class="btn btn-orange">Download app</a>
     </div>
 
     <div class="results-meta">
