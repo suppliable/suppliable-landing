@@ -36,9 +36,18 @@ Full catalogue with current prices and stock is available at:
 
 - [Home](https://www.suppliable.in/): Brand intro, 60-min delivery promise, app download, interactive demo
 - [All products](https://www.suppliable.in/products/): Browse the full catalogue by category
+- [Calculators](https://www.suppliable.in/calculators/): Free material calculators (paint, AAC blocks, cement, steel, waterproofing)
 - [Blog](https://www.suppliable.in/blog/): Construction guides, material comparisons and tips for Chennai builders
 - [Contact](https://www.suppliable.in/contact/): WhatsApp, call, email, office address, hours
 - [Privacy policy](https://www.suppliable.in/privacypolicy/): Data handling + user data deletion request form
+
+## Calculator pages
+
+- [Paint Calculator](https://www.suppliable.in/calculators/paint/): Litres needed by area + coats + coverage
+- [AAC Block Calculator](https://www.suppliable.in/calculators/aac-blocks/): Number of blocks + adhesive bags for any wall
+- [Cement Calculator](https://www.suppliable.in/calculators/cement/): Bags + sand + aggregate for plastering, columns, slabs
+- [Steel Weight Calculator](https://www.suppliable.in/calculators/steel/): TMT weight by diameter, formula D²/162
+- [Waterproofing Calculator](https://www.suppliable.in/calculators/waterproofing/): Dr. Fixit Newcoat/Bathseal/Pidifin 2K/Raincoat/LW+ quantity
 
 ## Category pages
 

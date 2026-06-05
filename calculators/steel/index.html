@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TMT Steel Weight Calculator (8/10/12/16/20/25mm) | Suppliable</title>
+  <meta name="description" content="Calculate TMT steel rod weight per metre and total weight by diameter. Standard formula D²/162. Get instant kg + cost estimate in Chennai." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.suppliable.in/calculators/steel/" />
+  <meta property="og:title" content="TMT Steel Weight Calculator — Suppliable" />
+  <meta property="og:description" content="Weight per metre + total weight by diameter, with cost estimate." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.suppliable.in/calculators/steel/" />
+  <meta property="og:image" content="https://www.suppliable.in/assets/og-image.png" />
+  <meta name="theme-color" content="#4B22D6" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/assets/logo-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Suppliable home">Suppliable</a>
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <a href="/#how">How it works</a>
+      <a href="/products/">Products</a>
+      <a href="/calculators/">Calculators</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener" class="btn btn-orange btn-sm">Download app</a>
+    </div>
+  </div>
+</header>
+
+<section class="calc-hero">
+  <div class="container">
+    <a href="/calculators/" class="back-link">← All calculators</a>
+    <h1>🏗️ TMT Steel Weight Calculator</h1>
+    <p class="sub">Weight per metre and total weight by diameter — based on the standard formula <strong>D²/162</strong>. Add per-kg price for an instant cost estimate.</p>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="container">
+    <div class="calc-grid">
+
+      <form class="calc-card" id="steelForm" novalidate>
+        <h2>Rod details</h2>
+        <p class="card-sub">Pick a standard TMT diameter, enter total length, get the weight.</p>
+
+        <div class="calc-field">
+          <label for="s-dia">Rod diameter <span class="hint">(mm)</span></label>
+          <select id="s-dia" class="calc-select">
+            <option value="6">6 mm (stirrups, small ties)</option>
+            <option value="8" selected>8 mm (slab distribution)</option>
+            <option value="10">10 mm (slab main)</option>
+            <option value="12">12 mm (beams, slabs)</option>
+            <option value="16">16 mm (columns, beams)</option>
+            <option value="20">20 mm (heavy columns)</option>
+            <option value="25">25 mm (large structures)</option>
+            <option value="32">32 mm (industrial)</option>
+          </select>
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-field">
+            <label for="s-len">Total length <span class="hint">(metres)</span></label>
+            <input id="s-len" class="calc-input" type="number" step="0.1" min="0" value="100">
+          </div>
+          <div class="calc-field">
+            <label for="s-price">Price per kg <span class="hint">(₹)</span></label>
+            <input id="s-price" class="calc-input" type="number" step="1" min="0" value="62">
+          </div>
+        </div>
+
+        <div class="calc-tip" style="background:var(--gray-100);padding:14px;border-radius:10px;margin-top:8px;font-size:.88rem;color:var(--gray-700);">
+          <strong>Formula:</strong> Weight per metre = D² / 162 kg/m, where D is the diameter in mm. Total = weight/m × length.
+        </div>
+      </form>
+
+      <aside class="calc-result" id="steelResult">
+        <h3>Your estimate</h3>
+        <p class="res-sub">Updates automatically as you type.</p>
+        <div id="steelResultBody"></div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <a href="/" class="logo logo-light">Suppliable</a>
+      <p>Construction materials, delivered to your site in 60 minutes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="/#how">How it works</a>
+      <a href="/products/">Products</a>
+      <a href="/calculators/">Calculators</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener">Download app</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/contact/">Contact</a>
+      <a href="/privacypolicy/">Privacy policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Reach us</h4>
+      <address>98 Kalaignar Karunanidhi Salai,<br>Sholinganallur, Chennai,<br>Tamil Nadu — 600119</address>
+      <a href="mailto:contact@suppliable.in">contact@suppliable.in</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Suppliable. All rights reserved.</span>
+    <span>Made in Chennai 🧡</span>
+  </div>
+</footer>
+
+<script src="/js/calc.js"></script>
+<script>
+(function () {
+  'use strict';
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var form = document.getElementById('steelForm');
+  var body = document.getElementById('steelResultBody');
+  var $ = function (id) { return document.getElementById(id); };
+
+  function compute() {
+    var d   = Calc.num($('s-dia').value, 8);
+    var len = Calc.num($('s-len').value);
+    var p   = Calc.num($('s-price').value, 62);
+
+    if (d <= 0 || len <= 0) {
+      body.innerHTML = '<div class="res-placeholder"><span class="big-emoji">⚖️</span><p>Pick a diameter and enter length to see the weight.</p></div>';
+      return;
+    }
+
+    var perMetre = (d * d) / 162;
+    var totalKg  = perMetre * len;
+    var totalTon = totalKg / 1000;
+    var cost     = totalKg * p;
+
+    var inputs  = { 'Diameter': d + ' mm', 'Length': len + ' m' };
+    var results = {
+      'Weight per metre': Calc.round(perMetre, 3) + ' kg/m',
+      'Total weight':     Calc.round(totalKg, 1) + ' kg (' + Calc.round(totalTon, 3) + ' t)',
+      'Estimated cost':   Calc.rupee(cost)
+    };
+
+    body.innerHTML = [
+      '<div class="res-row"><span class="k">Weight per metre</span><span class="v">' + Calc.round(perMetre, 3) + ' kg/m</span></div>',
+      '<div class="res-row"><span class="k">Total weight</span><span class="v">' + Calc.round(totalKg, 1) + ' kg</span></div>',
+      '<div class="res-row"><span class="k">In tonnes</span><span class="v">' + Calc.round(totalTon, 3) + ' t</span></div>',
+      '<div class="res-total"><span class="k">Estimated cost</span><br><span class="v">' + Calc.rupee(cost) + '</span><span class="vsub">at ₹' + p + '/kg · ' + d + ' mm × ' + len + ' m</span></div>',
+      (totalKg < 500
+        ? '<div class="res-tip"><strong>Note:</strong> Most TMT brands require a 500 kg minimum order per diameter for site delivery. Combine sizes to hit the minimum, or WhatsApp us to confirm availability.</div>'
+        : '<div class="res-tip"><strong>Tip:</strong> Always check the brand tag (ARS / Tata / ISteel) and verify Fe 500D or Fe 550D grade for residential work. CRS grade recommended for coastal Chennai.</div>'),
+      '<div class="res-actions">',
+      '  <button type="button" class="btn btn-orange" data-quote>Get a bulk quote</button>',
+      '  <button type="button" class="btn btn-wa" data-wa>💬 WhatsApp this estimate</button>',
+      '  <a class="btn btn-ghost" href="' + Calc.PLAY_STORE_URL + '" target="_blank" rel="noopener">📱 Order on the Suppliable app</a>',
+      '</div>'
+    ].join('');
+
+    var payload = { calculator: 'TMT Steel Weight', inputs: inputs, results: results };
+    body.querySelector('[data-wa]').addEventListener('click', function () { Calc.whatsapp(payload); });
+    body.querySelector('[data-quote]').addEventListener('click', function () { Calc.openQuoteModal(payload); });
+  }
+
+  form.addEventListener('input', compute);
+  form.addEventListener('change', compute);
+  compute();
+})();
+</script>
+</body>
+</html>

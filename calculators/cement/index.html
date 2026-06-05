@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cement Calculator — Plastering, Columns, Roof Slab | Suppliable</title>
+  <meta name="description" content="Free cement calculator for plastering, column concrete and roof slab — get cement bags, sand and aggregate quantities for M20/M25/M30 mix designs." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.suppliable.in/calculators/cement/" />
+  <meta property="og:title" content="Cement Calculator — Plastering · Columns · Slab" />
+  <meta property="og:description" content="Cement bags + sand + aggregate for any RCC or plaster job." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.suppliable.in/calculators/cement/" />
+  <meta property="og:image" content="https://www.suppliable.in/assets/og-image.png" />
+  <meta name="theme-color" content="#4B22D6" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/assets/logo-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Suppliable home">Suppliable</a>
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <a href="/#how">How it works</a>
+      <a href="/products/">Products</a>
+      <a href="/calculators/">Calculators</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener" class="btn btn-orange btn-sm">Download app</a>
+    </div>
+  </div>
+</header>
+
+<section class="calc-hero">
+  <div class="container">
+    <a href="/calculators/" class="back-link">← All calculators</a>
+    <h1>🧱 Cement Calculator</h1>
+    <p class="sub">Three jobs in one place — wall plastering, column concrete, roof slab. All quantities in bags / cft / m³ ready for ordering.</p>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="container">
+    <div class="calc-grid">
+
+      <form class="calc-card" id="cemForm" novalidate>
+        <div class="calc-tabs" role="tablist">
+          <button type="button" class="calc-tab active" data-tab="plaster" role="tab">Plastering</button>
+          <button type="button" class="calc-tab"        data-tab="column"  role="tab">Column concrete</button>
+          <button type="button" class="calc-tab"        data-tab="slab"    role="tab">Roof slab</button>
+        </div>
+
+        <!-- TAB A: PLASTERING -->
+        <div class="calc-panel active" id="tab-plaster">
+          <h2>Wall plastering</h2>
+          <p class="card-sub">Cement-sand mortar for wall plaster.</p>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="pl-area">Wall area <span class="hint">(sqft)</span></label>
+              <input id="pl-area" class="calc-input" type="number" step="1" min="0" value="500">
+            </div>
+            <div class="calc-field">
+              <label for="pl-thick">Plaster thickness <span class="hint">(mm)</span></label>
+              <select id="pl-thick" class="calc-select">
+                <option value="10">10 mm (internal)</option>
+                <option value="12" selected>12 mm (standard)</option>
+                <option value="15">15 mm</option>
+                <option value="20">20 mm (external)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="pl-ratio">Mortar ratio</label>
+              <select id="pl-ratio" class="calc-select">
+                <option value="4">1 : 4 (strong, external)</option>
+                <option value="5">1 : 5 (standard internal)</option>
+                <option value="6" selected>1 : 6 (general purpose)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="pl-cprice">Cement bag price <span class="hint">(₹ / 50kg)</span></label>
+              <input id="pl-cprice" class="calc-input" type="number" step="1" min="0" value="410">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB B: COLUMNS -->
+        <div class="calc-panel" id="tab-column">
+          <h2>Column concrete</h2>
+          <p class="card-sub">RCC concrete for vertical columns. Per-column dimensions × count.</p>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="co-n">Number of columns</label>
+              <input id="co-n" class="calc-input" type="number" step="1" min="1" value="6">
+            </div>
+            <div class="calc-field">
+              <label for="co-grade">Concrete grade</label>
+              <select id="co-grade" class="calc-select">
+                <option value="M20" selected>M20 (1 : 1.5 : 3)</option>
+                <option value="M25">M25 (1 : 1 : 2)</option>
+                <option value="M30">M30 (1 : 0.75 : 1.5)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="co-w">Column width <span class="hint">(mm)</span></label>
+              <input id="co-w" class="calc-input" type="number" step="10" min="100" value="230">
+            </div>
+            <div class="calc-field">
+              <label for="co-d">Column depth <span class="hint">(mm)</span></label>
+              <input id="co-d" class="calc-input" type="number" step="10" min="100" value="450">
+            </div>
+          </div>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="co-h">Column height <span class="hint">(ft)</span></label>
+              <input id="co-h" class="calc-input" type="number" step="0.5" min="0" value="10">
+            </div>
+            <div class="calc-field">
+              <label for="co-cprice">Cement bag price <span class="hint">(₹ / 50kg)</span></label>
+              <input id="co-cprice" class="calc-input" type="number" step="1" min="0" value="410">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB C: ROOF SLAB -->
+        <div class="calc-panel" id="tab-slab">
+          <h2>Roof slab</h2>
+          <p class="card-sub">RCC concrete for a flat slab.</p>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="sl-l">Slab length <span class="hint">(ft)</span></label>
+              <input id="sl-l" class="calc-input" type="number" step="0.5" min="0" value="30">
+            </div>
+            <div class="calc-field">
+              <label for="sl-w">Slab width <span class="hint">(ft)</span></label>
+              <input id="sl-w" class="calc-input" type="number" step="0.5" min="0" value="20">
+            </div>
+          </div>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="sl-t">Thickness <span class="hint">(mm)</span></label>
+              <select id="sl-t" class="calc-select">
+                <option value="100">100 mm (thin slab)</option>
+                <option value="125" selected>125 mm (standard)</option>
+                <option value="150">150 mm</option>
+                <option value="175">175 mm</option>
+                <option value="200">200 mm (heavy load)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="sl-grade">Concrete grade</label>
+              <select id="sl-grade" class="calc-select">
+                <option value="M20" selected>M20</option>
+                <option value="M25">M25</option>
+                <option value="M30">M30</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="sl-cprice">Cement bag price <span class="hint">(₹ / 50kg)</span></label>
+              <input id="sl-cprice" class="calc-input" type="number" step="1" min="0" value="410">
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <aside class="calc-result" id="cemResult">
+        <h3>Your estimate</h3>
+        <p class="res-sub">Updates automatically as you type or switch tabs.</p>
+        <div id="cemResultBody"></div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <a href="/" class="logo logo-light">Suppliable</a>
+      <p>Construction materials, delivered to your site in 60 minutes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="/#how">How it works</a>
+      <a href="/products/">Products</a>
+      <a href="/calculators/">Calculators</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener">Download app</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/contact/">Contact</a>
+      <a href="/privacypolicy/">Privacy policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Reach us</h4>
+      <address>98 Kalaignar Karunanidhi Salai,<br>Sholinganallur, Chennai,<br>Tamil Nadu — 600119</address>
+      <a href="mailto:contact@suppliable.in">contact@suppliable.in</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Suppliable. All rights reserved.</span>
+    <span>Made in Chennai 🧡</span>
+  </div>
+</footer>
+
+<script src="/js/calc.js"></script>
+<script>
+(function () {
+  'use strict';
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var form = document.getElementById('cemForm');
+  var body = document.getElementById('cemResultBody');
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* Concrete mix ratios (cement : sand : aggregate) */
+  var MIXES = {
+    M20: { c: 1, s: 1.5, a: 3 },
+    M25: { c: 1, s: 1.0, a: 2 },
+    M30: { c: 1, s: 0.75, a: 1.5 }
+  };
+  var DRY_VOL_FACTOR = 1.54;   /* wet → dry volume for concrete */
+  var PLASTER_DRY_FACTOR = 1.27; /* for mortar */
+  var CEM_KG_PER_M3 = 1440;
+  var BAG_KG = 50;
+  var M3_TO_CFT = 35.3147;
+
+  /* Tab switching */
+  var currentTab = 'plaster';
+  form.querySelectorAll('.calc-tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      form.querySelectorAll('.calc-tab').forEach(function (x) { x.classList.remove('active'); });
+      form.querySelectorAll('.calc-panel').forEach(function (p) { p.classList.remove('active'); });
+      t.classList.add('active');
+      document.getElementById('tab-' + t.dataset.tab).classList.add('active');
+      currentTab = t.dataset.tab;
+      compute();
+    });
+  });
+
+  function computePlaster() {
+    var areaSqft = Calc.num($('pl-area').value);
+    var thickMm  = Calc.num($('pl-thick').value, 12);
+    var ratio    = Calc.num($('pl-ratio').value, 6);
+    var price    = Calc.num($('pl-cprice').value, 410);
+    if (areaSqft <= 0 || thickMm <= 0) return null;
+
+    var areaM2     = areaSqft * 0.0929;
+    var wetVolM3   = areaM2 * (thickMm / 1000);
+    var dryVolM3   = wetVolM3 * PLASTER_DRY_FACTOR;
+    var cementM3   = dryVolM3 / (1 + ratio);
+    var sandM3     = dryVolM3 * ratio / (1 + ratio);
+    var cementKg   = cementM3 * CEM_KG_PER_M3;
+    var bags       = Math.ceil(cementKg / BAG_KG);
+    var sandCft    = sandM3 * M3_TO_CFT;
+    var cost       = bags * price;
+
+    return {
+      title: 'Plastering — ' + areaSqft + ' sqft @ ' + thickMm + ' mm (1:' + ratio + ')',
+      inputs: { 'Wall area': areaSqft + ' sqft', 'Thickness': thickMm + ' mm', 'Mortar ratio': '1 : ' + ratio },
+      rows: [
+        ['Wet mortar volume', Calc.round(wetVolM3, 3) + ' m³'],
+        ['Cement bags', bags + ' bags'],
+        ['Sand', Calc.round(sandCft) + ' cft (' + Calc.round(sandM3, 2) + ' m³)']
+      ],
+      cost: cost,
+      costSub: 'cement only · ' + bags + ' × ₹' + price + ' per 50kg bag',
+      tip: 'Buy sand by the tonne — ~1 tonne = 22 cft of M-sand. We deliver same day.',
+      results: { 'Cement': bags + ' bags', 'Sand': Calc.round(sandCft) + ' cft', 'Estimated cost (cement)': Calc.rupee(cost) }
+    };
+  }
+
+  function computeColumn() {
+    var n     = Calc.num($('co-n').value, 1);
+    var wMm   = Calc.num($('co-w').value);
+    var dMm   = Calc.num($('co-d').value);
+    var hFt   = Calc.num($('co-h').value);
+    var grade = $('co-grade').value;
+    var price = Calc.num($('co-cprice').value, 410);
+    if (n <= 0 || wMm <= 0 || dMm <= 0 || hFt <= 0) return null;
+
+    var mix = MIXES[grade] || MIXES.M20;
+    var hM = hFt * 0.3048;
+    var volPerCol = (wMm / 1000) * (dMm / 1000) * hM;       /* m³ */
+    var wetVol    = volPerCol * n;
+    var dryVol    = wetVol * DRY_VOL_FACTOR;
+    var parts     = mix.c + mix.s + mix.a;
+    var cementM3  = dryVol * mix.c / parts;
+    var sandM3    = dryVol * mix.s / parts;
+    var aggM3     = dryVol * mix.a / parts;
+    var cementKg  = cementM3 * CEM_KG_PER_M3;
+    var bags      = Math.ceil(cementKg / BAG_KG);
+    var cost      = bags * price;
+
+    return {
+      title: n + ' × ' + grade + ' columns (' + wMm + '×' + dMm + ' mm × ' + hFt + ' ft)',
+      inputs: { 'Columns': n, 'Size': wMm + ' × ' + dMm + ' mm', 'Height': hFt + ' ft', 'Grade': grade },
+      rows: [
+        ['Concrete volume', Calc.round(wetVol, 3) + ' m³'],
+        ['Cement bags', bags + ' bags'],
+        ['Sand', Calc.round(sandM3 * M3_TO_CFT) + ' cft'],
+        ['20mm aggregate', Calc.round(aggM3 * M3_TO_CFT) + ' cft']
+      ],
+      cost: cost,
+      costSub: 'cement only · ' + bags + ' bags @ ₹' + price + ' each',
+      tip: 'For ' + grade + ', use min Fe 500D TMT rebar (Fe 550D for G+1 and above).',
+      results: {
+        'Concrete volume': Calc.round(wetVol, 3) + ' m³',
+        'Cement': bags + ' bags',
+        'Sand': Calc.round(sandM3 * M3_TO_CFT) + ' cft',
+        '20mm aggregate': Calc.round(aggM3 * M3_TO_CFT) + ' cft',
+        'Estimated cost (cement)': Calc.rupee(cost)
+      }
+    };
+  }
+
+  function computeSlab() {
+    var lFt   = Calc.num($('sl-l').value);
+    var wFt   = Calc.num($('sl-w').value);
+    var tMm   = Calc.num($('sl-t').value, 125);
+    var grade = $('sl-grade').value;
+    var price = Calc.num($('sl-cprice').value, 410);
+    if (lFt <= 0 || wFt <= 0) return null;
+
+    var mix = MIXES[grade] || MIXES.M20;
+    var lM = lFt * 0.3048, wM = wFt * 0.3048;
+    var wetVol   = lM * wM * (tMm / 1000);
+    var dryVol   = wetVol * DRY_VOL_FACTOR;
+    var parts    = mix.c + mix.s + mix.a;
+    var cementM3 = dryVol * mix.c / parts;
+    var sandM3   = dryVol * mix.s / parts;
+    var aggM3    = dryVol * mix.a / parts;
+    var cementKg = cementM3 * CEM_KG_PER_M3;
+    var bags     = Math.ceil(cementKg / BAG_KG);
+    var cost     = bags * price;
+
+    return {
+      title: grade + ' slab: ' + lFt + ' × ' + wFt + ' ft × ' + tMm + ' mm',
+      inputs: { 'Slab size': lFt + ' × ' + wFt + ' ft', 'Thickness': tMm + ' mm', 'Grade': grade },
+      rows: [
+        ['Concrete volume', Calc.round(wetVol, 3) + ' m³'],
+        ['Cement bags', bags + ' bags'],
+        ['Sand', Calc.round(sandM3 * M3_TO_CFT) + ' cft'],
+        ['20mm aggregate', Calc.round(aggM3 * M3_TO_CFT) + ' cft']
+      ],
+      cost: cost,
+      costSub: 'cement only · ' + bags + ' bags',
+      tip: 'Pour the whole slab in one day to avoid cold joints. Order all cement and steel the night before.',
+      results: {
+        'Concrete volume': Calc.round(wetVol, 3) + ' m³',
+        'Cement': bags + ' bags',
+        'Sand': Calc.round(sandM3 * M3_TO_CFT) + ' cft',
+        '20mm aggregate': Calc.round(aggM3 * M3_TO_CFT) + ' cft',
+        'Estimated cost (cement)': Calc.rupee(cost)
+      }
+    };
+  }
+
+  function render(out) {
+    if (!out) {
+      body.innerHTML = '<div class="res-placeholder"><span class="big-emoji">🧮</span><p>Fill in the dimensions to see your estimate.</p></div>';
+      return;
+    }
+    var rows = out.rows.map(function (r) {
+      return '<div class="res-row"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>';
+    }).join('');
+    body.innerHTML = rows +
+      '<div class="res-total"><span class="k">Cement cost</span><br><span class="v">' + Calc.rupee(out.cost) + '</span><span class="vsub">' + out.costSub + '</span></div>' +
+      '<div class="res-tip"><strong>Tip:</strong> ' + out.tip + '</div>' +
+      '<div class="res-actions">' +
+      '  <button type="button" class="btn btn-orange" data-quote>Get a bulk quote</button>' +
+      '  <button type="button" class="btn btn-wa" data-wa>💬 WhatsApp this estimate</button>' +
+      '  <a class="btn btn-ghost" href="' + Calc.PLAY_STORE_URL + '" target="_blank" rel="noopener">📱 Order on the Suppliable app</a>' +
+      '</div>';
+
+    var payload = { calculator: 'Cement — ' + out.title, inputs: out.inputs, results: out.results };
+    body.querySelector('[data-wa]').addEventListener('click', function () { Calc.whatsapp(payload); });
+    body.querySelector('[data-quote]').addEventListener('click', function () { Calc.openQuoteModal(payload); });
+  }
+
+  function compute() {
+    var out;
+    if (currentTab === 'plaster') out = computePlaster();
+    else if (currentTab === 'column') out = computeColumn();
+    else out = computeSlab();
+    render(out);
+  }
+
+  form.addEventListener('input', compute);
+  form.addEventListener('change', compute);
+  compute();
+})();
+</script>
+</body>
+</html>

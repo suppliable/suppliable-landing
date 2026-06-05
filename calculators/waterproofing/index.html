@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Fixit Waterproofing Calculator — Terrace, Bathroom, Tank, Wall, LW+ | Suppliable</title>
+  <meta name="description" content="Calculate Dr. Fixit waterproofing quantities for terrace (Newcoat), bathroom (Bathseal), water tank (Pidifin 2K), external wall (Raincoat) and integral mix (LW+). Instant cost." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.suppliable.in/calculators/waterproofing/" />
+  <meta property="og:title" content="Dr. Fixit Waterproofing Calculator — Suppliable" />
+  <meta property="og:description" content="Pick the right Dr. Fixit product for the job and get exact quantities + cost." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.suppliable.in/calculators/waterproofing/" />
+  <meta property="og:image" content="https://www.suppliable.in/assets/og-image.png" />
+  <meta name="theme-color" content="#4B22D6" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/assets/logo-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Suppliable home">Suppliable</a>
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <a href="/#how">How it works</a>
+      <a href="/products/">Products</a>
+      <a href="/calculators/">Calculators</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener" class="btn btn-orange btn-sm">Download app</a>
+    </div>
+  </div>
+</header>
+
+<section class="calc-hero">
+  <div class="container">
+    <a href="/calculators/" class="back-link">← All calculators</a>
+    <h1>💧 Dr. Fixit Waterproofing Calculator</h1>
+    <p class="sub">Pick the application — terrace, bathroom, water tank, external wall or LW+ dosage — and get the exact Dr. Fixit product and quantity for the job.</p>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="container">
+    <div class="calc-grid">
+
+      <form class="calc-card" id="wpForm" novalidate>
+        <div class="calc-tabs" role="tablist">
+          <button type="button" class="calc-tab active" data-tab="terrace"  role="tab">Terrace</button>
+          <button type="button" class="calc-tab"        data-tab="bathroom" role="tab">Bathroom</button>
+          <button type="button" class="calc-tab"        data-tab="tank"     role="tab">Water Tank</button>
+          <button type="button" class="calc-tab"        data-tab="exterior" role="tab">External Wall</button>
+          <button type="button" class="calc-tab"        data-tab="lwplus"   role="tab">LW+ Dosage</button>
+        </div>
+
+        <!-- TERRACE: Dr. Fixit Newcoat -->
+        <div class="calc-panel active" id="tab-terrace">
+          <h2>Terrace — Dr. Fixit Newcoat</h2>
+          <p class="card-sub">Acrylic terrace waterproofing. Apply 2 coats for proper coverage.</p>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="t-l">Terrace length <span class="hint">(ft)</span></label>
+              <input id="t-l" class="calc-input" type="number" step="0.5" min="0" value="30">
+            </div>
+            <div class="calc-field">
+              <label for="t-w">Terrace width <span class="hint">(ft)</span></label>
+              <input id="t-w" class="calc-input" type="number" step="0.5" min="0" value="20">
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="t-cov">Coverage <span class="hint">(sqft / L per coat)</span></label>
+              <input id="t-cov" class="calc-input" type="number" step="1" min="5" value="30">
+            </div>
+            <div class="calc-field">
+              <label for="t-price">Price per litre <span class="hint">(₹)</span></label>
+              <input id="t-price" class="calc-input" type="number" step="5" min="0" value="320">
+            </div>
+          </div>
+        </div>
+
+        <!-- BATHROOM: Dr. Fixit Bathseal -->
+        <div class="calc-panel" id="tab-bathroom">
+          <h2>Bathroom — Dr. Fixit Bathseal</h2>
+          <p class="card-sub">Cement-based, applied to floor + walls (up to 1 ft above floor for wet area).</p>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="b-l">Floor length <span class="hint">(ft)</span></label>
+              <input id="b-l" class="calc-input" type="number" step="0.5" min="0" value="6">
+            </div>
+            <div class="calc-field">
+              <label for="b-w">Floor width <span class="hint">(ft)</span></label>
+              <input id="b-w" class="calc-input" type="number" step="0.5" min="0" value="4">
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="b-wh">Wall height to coat <span class="hint">(ft)</span></label>
+              <input id="b-wh" class="calc-input" type="number" step="0.5" min="0" value="3">
+            </div>
+            <div class="calc-field">
+              <label for="b-price">Pack price <span class="hint">(₹ / 5kg)</span></label>
+              <input id="b-price" class="calc-input" type="number" step="10" min="0" value="1500">
+            </div>
+          </div>
+        </div>
+
+        <!-- WATER TANK: Pidifin 2K -->
+        <div class="calc-panel" id="tab-tank">
+          <h2>Water Tank — Dr. Fixit Pidifin 2K</h2>
+          <p class="card-sub">2-component cementitious coating. Applied to inside of RCC tanks (all 4 walls + floor).</p>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="k-l">Tank length <span class="hint">(ft)</span></label>
+              <input id="k-l" class="calc-input" type="number" step="0.5" min="0" value="6">
+            </div>
+            <div class="calc-field">
+              <label for="k-w">Tank width <span class="hint">(ft)</span></label>
+              <input id="k-w" class="calc-input" type="number" step="0.5" min="0" value="4">
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="k-h">Tank height <span class="hint">(ft)</span></label>
+              <input id="k-h" class="calc-input" type="number" step="0.5" min="0" value="4">
+            </div>
+            <div class="calc-field">
+              <label for="k-price">Kit price <span class="hint">(₹ / 15kg kit)</span></label>
+              <input id="k-price" class="calc-input" type="number" step="10" min="0" value="1950">
+            </div>
+          </div>
+        </div>
+
+        <!-- EXTERIOR WALL: Dr. Fixit Raincoat -->
+        <div class="calc-panel" id="tab-exterior">
+          <h2>External Wall — Dr. Fixit Raincoat</h2>
+          <p class="card-sub">Elastomeric exterior wall coating. Typically 2 coats.</p>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="e-l">Wall length <span class="hint">(ft)</span></label>
+              <input id="e-l" class="calc-input" type="number" step="0.5" min="0" value="40">
+            </div>
+            <div class="calc-field">
+              <label for="e-h">Wall height <span class="hint">(ft)</span></label>
+              <input id="e-h" class="calc-input" type="number" step="0.5" min="0" value="10">
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="e-coats">Number of coats</label>
+              <select id="e-coats" class="calc-select">
+                <option value="1">1 coat</option>
+                <option value="2" selected>2 coats (recommended)</option>
+                <option value="3">3 coats (heavy weather)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="e-price">Price per litre <span class="hint">(₹)</span></label>
+              <input id="e-price" class="calc-input" type="number" step="5" min="0" value="360">
+            </div>
+          </div>
+        </div>
+
+        <!-- LW+ DOSAGE -->
+        <div class="calc-panel" id="tab-lwplus">
+          <h2>LW+ Dosage — Dr. Fixit Pidiproof LW+</h2>
+          <p class="card-sub">Integral waterproofing admixture for RCC. 200 ml per 50kg cement bag.</p>
+
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="l-bags">Number of cement bags</label>
+              <input id="l-bags" class="calc-input" type="number" step="1" min="0" value="100">
+            </div>
+            <div class="calc-field">
+              <label for="l-price">Price per litre <span class="hint">(₹)</span></label>
+              <input id="l-price" class="calc-input" type="number" step="5" min="0" value="165">
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <aside class="calc-result" id="wpResult">
+        <h3>Your estimate</h3>
+        <p class="res-sub">Updates automatically as you type or switch tabs.</p>
+        <div id="wpResultBody"></div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <a href="/" class="logo logo-light">Suppliable</a>
+      <p>Construction materials, delivered to your site in 60 minutes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="/#how">How it works</a>
+      <a href="/products/">Products</a>
+      <a href="/calculators/">Calculators</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener">Download app</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/contact/">Contact</a>
+      <a href="/privacypolicy/">Privacy policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Reach us</h4>
+      <address>98 Kalaignar Karunanidhi Salai,<br>Sholinganallur, Chennai,<br>Tamil Nadu — 600119</address>
+      <a href="mailto:contact@suppliable.in">contact@suppliable.in</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> Suppliable. All rights reserved.</span>
+    <span>Made in Chennai 🧡</span>
+  </div>
+</footer>
+
+<script src="/js/calc.js"></script>
+<script>
+(function () {
+  'use strict';
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var form = document.getElementById('wpForm');
+  var body = document.getElementById('wpResultBody');
+  var $ = function (id) { return document.getElementById(id); };
+  var currentTab = 'terrace';
+
+  form.querySelectorAll('.calc-tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      form.querySelectorAll('.calc-tab').forEach(function (x) { x.classList.remove('active'); });
+      form.querySelectorAll('.calc-panel').forEach(function (p) { p.classList.remove('active'); });
+      t.classList.add('active');
+      document.getElementById('tab-' + t.dataset.tab).classList.add('active');
+      currentTab = t.dataset.tab;
+      compute();
+    });
+  });
+
+  /* --- per-tab calculators --- */
+  function calcTerrace() {
+    var l = Calc.num($('t-l').value), w = Calc.num($('t-w').value),
+        cov = Calc.num($('t-cov').value, 30), price = Calc.num($('t-price').value, 320);
+    if (l <= 0 || w <= 0) return null;
+    var area = l * w;
+    var coats = 2;
+    var litres = (area * coats) / cov;
+    var buckets = Math.ceil(litres / 20);
+    var cost = litres * price;
+    return {
+      product: 'Dr. Fixit Newcoat (Terrace)',
+      title: 'Terrace ' + l + '×' + w + ' ft · 2 coats',
+      inputs: { 'Terrace size': l + ' × ' + w + ' ft', 'Coverage': cov + ' sqft/L per coat' },
+      rows: [
+        ['Terrace area', Calc.round(area) + ' sqft'],
+        ['Coats applied', coats + ' coats'],
+        ['Material required', Calc.round(litres, 1) + ' L'],
+        ['20L buckets needed', buckets + ' bucket' + (buckets === 1 ? '' : 's')]
+      ],
+      cost: cost,
+      costSub: 'at ₹' + price + '/L · materials only',
+      tip: 'Apply LW+ in the slab concrete itself for primary defence. Newcoat on top is the second layer.',
+      results: {
+        'Product': 'Dr. Fixit Newcoat',
+        'Area': Calc.round(area) + ' sqft',
+        'Litres': Calc.round(litres, 1) + ' L (' + buckets + ' × 20L)',
+        'Estimated cost': Calc.rupee(cost)
+      }
+    };
+  }
+
+  function calcBathroom() {
+    var l = Calc.num($('b-l').value), w = Calc.num($('b-w').value),
+        wh = Calc.num($('b-wh').value), price = Calc.num($('b-price').value, 1500);
+    if (l <= 0 || w <= 0) return null;
+    var floor = l * w;
+    var perim = 2 * (l + w);
+    var wall = perim * wh;
+    var area = floor + wall;
+    var coverage = 12; /* sqft per kg, 2 coats */
+    var kg = area / coverage;
+    var packs = Math.ceil(kg / 5);
+    var cost = packs * price;
+    return {
+      product: 'Dr. Fixit Bathseal (Bathroom)',
+      title: 'Bathroom ' + l + '×' + w + ' ft · ' + wh + ' ft wall coat',
+      inputs: { 'Floor': l + ' × ' + w + ' ft', 'Wall coat height': wh + ' ft' },
+      rows: [
+        ['Floor area', Calc.round(floor) + ' sqft'],
+        ['Wall coat area', Calc.round(wall) + ' sqft'],
+        ['Total waterproofing area', Calc.round(area) + ' sqft'],
+        ['Material required', Calc.round(kg, 1) + ' kg'],
+        ['5kg packs needed', packs + ' pack' + (packs === 1 ? '' : 's')]
+      ],
+      cost: cost,
+      costSub: packs + ' × ₹' + price + ' per 5kg pack',
+      tip: 'Apply 2 coats perpendicular to each other to seal pinholes. Wait 24h between coats.',
+      results: {
+        'Product': 'Dr. Fixit Bathseal',
+        'Area': Calc.round(area) + ' sqft',
+        'Material': Calc.round(kg, 1) + ' kg (' + packs + ' × 5kg)',
+        'Estimated cost': Calc.rupee(cost)
+      }
+    };
+  }
+
+  function calcTank() {
+    var l = Calc.num($('k-l').value), w = Calc.num($('k-w').value),
+        h = Calc.num($('k-h').value), price = Calc.num($('k-price').value, 1950);
+    if (l <= 0 || w <= 0 || h <= 0) return null;
+    /* Internal surface: 4 walls + floor */
+    var area = 2 * (l * h) + 2 * (w * h) + (l * w);
+    var kitCoverage = 100; /* sqft per 15kg kit, 2 coats */
+    var kits = Math.ceil(area / kitCoverage);
+    var cost = kits * price;
+    return {
+      product: 'Dr. Fixit Pidifin 2K (Water Tank)',
+      title: 'Tank ' + l + '×' + w + '×' + h + ' ft (inside)',
+      inputs: { 'Tank size': l + ' × ' + w + ' × ' + h + ' ft' },
+      rows: [
+        ['Inside surface (4 walls + floor)', Calc.round(area) + ' sqft'],
+        ['Kits needed (15kg / kit)', kits + ' kit' + (kits === 1 ? '' : 's')]
+      ],
+      cost: cost,
+      costSub: kits + ' × ₹' + price + ' per 15kg kit',
+      tip: 'Drain + dry the tank fully before applying. Pidifin needs a clean cement substrate, no curing compounds.',
+      results: {
+        'Product': 'Dr. Fixit Pidifin 2K',
+        'Area': Calc.round(area) + ' sqft',
+        'Kits': kits + ' × 15kg',
+        'Estimated cost': Calc.rupee(cost)
+      }
+    };
+  }
+
+  function calcExterior() {
+    var l = Calc.num($('e-l').value), h = Calc.num($('e-h').value),
+        coats = Calc.num($('e-coats').value, 2), price = Calc.num($('e-price').value, 360);
+    if (l <= 0 || h <= 0) return null;
+    var area = l * h;
+    var coverage = 50; /* sqft/L per coat */
+    var litres = (area * coats) / coverage;
+    var buckets = Math.ceil(litres / 20);
+    var cost = litres * price;
+    return {
+      product: 'Dr. Fixit Raincoat (Exterior Wall)',
+      title: 'External wall ' + l + '×' + h + ' ft · ' + coats + ' coats',
+      inputs: { 'Wall size': l + ' × ' + h + ' ft', 'Coats': coats },
+      rows: [
+        ['Wall area', Calc.round(area) + ' sqft'],
+        ['Coats applied', coats],
+        ['Litres needed', Calc.round(litres, 1) + ' L'],
+        ['20L buckets', buckets + ' bucket' + (buckets === 1 ? '' : 's')]
+      ],
+      cost: cost,
+      costSub: 'at ₹' + price + '/L · materials only',
+      tip: 'Apply over a properly primed wall — Asian Paints Wall Primer or equivalent. Raincoat alone won\'t adhere to bare plaster.',
+      results: {
+        'Product': 'Dr. Fixit Raincoat',
+        'Area': Calc.round(area) + ' sqft',
+        'Litres': Calc.round(litres, 1) + ' L (' + buckets + ' × 20L)',
+        'Estimated cost': Calc.rupee(cost)
+      }
+    };
+  }
+
+  function calcLwPlus() {
+    var bags = Calc.num($('l-bags').value);
+    var price = Calc.num($('l-price').value, 165);
+    if (bags <= 0) return null;
+    var totalMl = bags * 200;
+    var litres = totalMl / 1000;
+    var packs = Calc.suggestPacks(litres, [1, 5, 10, 20]);
+    var cost = litres * price;
+    return {
+      product: 'Dr. Fixit Pidiproof LW+',
+      title: 'LW+ dosage for ' + bags + ' cement bags',
+      inputs: { 'Cement bags': bags, 'Dosage': '200 ml per 50kg bag' },
+      rows: [
+        ['Total dosage', totalMl.toLocaleString('en-IN') + ' ml'],
+        ['Litres needed', Calc.round(litres, 2) + ' L'],
+        ['Suggested packs', packs]
+      ],
+      cost: cost,
+      costSub: 'at ₹' + price + '/L · pack pricing varies',
+      tip: 'Add LW+ at the mixer directly — never sprinkle on dry cement. Best paired with a topcoat (Pidifin 2K) for slabs.',
+      results: {
+        'Product': 'Dr. Fixit LW+',
+        'Dosage': totalMl + ' ml (' + Calc.round(litres, 2) + ' L)',
+        'Packs': packs,
+        'Estimated cost': Calc.rupee(cost)
+      }
+    };
+  }
+
+  function render(out) {
+    if (!out) {
+      body.innerHTML = '<div class="res-placeholder"><span class="big-emoji">💧</span><p>Enter the area to see your Dr. Fixit estimate.</p></div>';
+      return;
+    }
+    var rows = out.rows.map(function (r) {
+      return '<div class="res-row"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>';
+    }).join('');
+    body.innerHTML = '<div class="res-row" style="border-top:0;padding-top:0;"><span class="k">Product</span><span class="v">' + out.product + '</span></div>' +
+      rows +
+      '<div class="res-total"><span class="k">Estimated cost</span><br><span class="v">' + Calc.rupee(out.cost) + '</span><span class="vsub">' + out.costSub + '</span></div>' +
+      '<div class="res-tip"><strong>Tip:</strong> ' + out.tip + '</div>' +
+      '<div class="res-actions">' +
+      '  <button type="button" class="btn btn-orange" data-quote>Get a bulk quote</button>' +
+      '  <button type="button" class="btn btn-wa" data-wa>💬 WhatsApp this estimate</button>' +
+      '  <a class="btn btn-ghost" href="' + Calc.PLAY_STORE_URL + '" target="_blank" rel="noopener">📱 Order on the Suppliable app</a>' +
+      '</div>';
+
+    var payload = { calculator: 'Waterproofing — ' + out.title, inputs: out.inputs, results: out.results };
+    body.querySelector('[data-wa]').addEventListener('click', function () { Calc.whatsapp(payload); });
+    body.querySelector('[data-quote]').addEventListener('click', function () { Calc.openQuoteModal(payload); });
+  }
+
+  function compute() {
+    var out;
+    switch (currentTab) {
+      case 'terrace':  out = calcTerrace();  break;
+      case 'bathroom': out = calcBathroom(); break;
+      case 'tank':     out = calcTank();     break;
+      case 'exterior': out = calcExterior(); break;
+      case 'lwplus':   out = calcLwPlus();   break;
+    }
+    render(out);
+  }
+
+  form.addEventListener('input', compute);
+  form.addEventListener('change', compute);
+  compute();
+})();
+</script>
+</body>
+</html>

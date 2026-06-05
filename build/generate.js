@@ -254,6 +254,12 @@ async function main() {
   const urls = [
     { loc: `${SITE}/`, priority: '1.0', changefreq: 'weekly', lastmod: today },
     { loc: `${SITE}/products/`, priority: '0.9', changefreq: 'daily', lastmod: today },
+    { loc: `${SITE}/calculators/`, priority: '0.85', changefreq: 'monthly' },
+    { loc: `${SITE}/calculators/paint/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/calculators/aac-blocks/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/calculators/cement/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/calculators/steel/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/calculators/waterproofing/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/contact/`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${SITE}/privacypolicy/`, priority: '0.4', changefreq: 'yearly' }
   ];

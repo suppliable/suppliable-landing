@@ -117,6 +117,7 @@ function header() {
       <nav class="nav" id="primaryNav" aria-label="Primary">
         <a href="/#how">How it works</a>
         <a href="/products/">Products</a>
+        <a href="/calculators/">Calculators</a>
         <a href="/blog/">Blog</a>
         <a href="/#bulk">Bulk orders</a>
       </nav>
@@ -139,6 +140,7 @@ function footer() {
         <h4>Explore</h4>
         <a href="/#how">How it works</a>
         <a href="/products/">Products</a>
+        <a href="/calculators/">Calculators</a>
         <a href="/blog/">Blog</a>
         <a href="/#bulk">Bulk orders</a>
         <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener">Download app</a>
