@@ -29,7 +29,7 @@
     <nav class="nav" id="primaryNav" aria-label="Primary">
       <a href="/#how">How it works</a>
       <a href="/products/">Products</a>
-      <a href="/calculators/">Calculators</a>
+      <a href="/calculators/">Material Calculator</a>
       <a href="/blog/">Blog</a>
     </nav>
     <div class="header-actions">
@@ -59,7 +59,7 @@
           <label for="p-type">Paint type</label>
           <select id="p-type" class="calc-select">
             <option value="interior" selected>Interior — Asian Paints Tractor Emulsion (~140 sqft/L)</option>
-            <option value="exterior">Exterior — Asian Paints Ace / Apex (~110 sqft/L)</option>
+            <option value="exterior">Exterior — Asian Paints Ace (~110 sqft/L)</option>
           </select>
         </div>
 
@@ -116,7 +116,7 @@
       <h4>Explore</h4>
       <a href="/#how">How it works</a>
       <a href="/products/">Products</a>
-      <a href="/calculators/">Calculators</a>
+      <a href="/calculators/">Material Calculator</a>
       <a href="/blog/">Blog</a>
       <a href="https://play.google.com/store/apps/details?id=com.suppliable.customer" target="_blank" rel="noopener">Download app</a>
     </div>
@@ -158,7 +158,6 @@
     },
     exterior: {
       keywords: ['asian', 'ace'],
-      altKeywords: ['asian', 'apex'],
       name: 'Asian Paints Ace Exterior Emulsion',
       coverage: 110,
       fallbackPrice: 250
@@ -169,7 +168,6 @@
   function lookupPaint(typeKey) {
     var cfg = PAINT_CFG[typeKey];
     var p = Calc.findProduct(cfg.keywords);
-    if (!p && cfg.altKeywords) p = Calc.findProduct(cfg.altKeywords);
     return {
       product:  p,
       name:     p ? p.name : cfg.name,
@@ -230,7 +228,7 @@
       '<div class="res-row"><span class="k">Paint required</span><span class="v">' + Calc.round(litres, 1) + ' L</span></div>',
       '<div class="res-row"><span class="k">Suggested pack</span><span class="v">' + pack + '</span></div>',
       '<div class="res-total"><span class="k">Estimated cost</span><br><span class="v">' + Calc.rupee(cost) + '</span><span class="vsub">' + (lookup.source === 'live' ? 'live price' : 'estimate') + ' · ' + Calc.rupee(price) + '/L · materials only</span></div>',
-      '<div class="res-tip"><strong>Tip:</strong> Add 10% extra for touch-ups and uneven walls. ' + (typeKey === 'interior' ? 'For premium finish, upgrade to Royale (~110 sqft/L).' : 'For 12-year warranty exteriors, upgrade to Apex Ultima.') + '</div>',
+      '<div class="res-tip"><strong>Tip:</strong> Add 10% extra for touch-ups and uneven walls. ' + (typeKey === 'interior' ? 'For premium finish, upgrade to Royale (~110 sqft/L).' : 'For premium exteriors, upgrade to Asian Paints Apex Ultima (12-year warranty).') + '</div>',
       '<div class="res-actions">',
       '  <button type="button" class="btn btn-orange" data-quote>Get a bulk quote</button>',
       '  <button type="button" class="btn btn-wa" data-wa>💬 WhatsApp this estimate</button>',
