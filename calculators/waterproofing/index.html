@@ -62,7 +62,7 @@
         <!-- TERRACE: Dr. Fixit Newcoat -->
         <div class="calc-panel active" id="tab-terrace">
           <h2>Terrace — Dr. Fixit Newcoat</h2>
-          <p class="card-sub">Acrylic terrace waterproofing. Apply 2 coats for proper coverage.</p>
+          <p class="card-sub">Acrylic terrace waterproofing. Apply 2 coats. <strong>Official coverage: 22 sqft/L per coat.</strong></p>
 
           <div class="calc-row">
             <div class="calc-field">
@@ -74,22 +74,12 @@
               <input id="t-w" class="calc-input" type="number" step="0.5" min="0" value="20">
             </div>
           </div>
-          <div class="calc-row">
-            <div class="calc-field">
-              <label for="t-cov">Coverage <span class="hint">(sqft / L per coat)</span></label>
-              <input id="t-cov" class="calc-input" type="number" step="1" min="5" value="30">
-            </div>
-            <div class="calc-field">
-              <label for="t-price">Price per litre <span class="hint">(₹)</span></label>
-              <input id="t-price" class="calc-input" type="number" step="5" min="0" value="320">
-            </div>
-          </div>
         </div>
 
         <!-- BATHROOM: Dr. Fixit Bathseal -->
         <div class="calc-panel" id="tab-bathroom">
           <h2>Bathroom — Dr. Fixit Bathseal</h2>
-          <p class="card-sub">Cement-based, applied to floor + walls (up to 1 ft above floor for wet area).</p>
+          <p class="card-sub">Cement-based, applied to floor + walls (up to 1 ft above floor for wet area). <strong>Official coverage: 6.5 sqft/kg (2 coats).</strong></p>
 
           <div class="calc-row">
             <div class="calc-field">
@@ -101,22 +91,16 @@
               <input id="b-w" class="calc-input" type="number" step="0.5" min="0" value="4">
             </div>
           </div>
-          <div class="calc-row">
-            <div class="calc-field">
-              <label for="b-wh">Wall height to coat <span class="hint">(ft)</span></label>
-              <input id="b-wh" class="calc-input" type="number" step="0.5" min="0" value="3">
-            </div>
-            <div class="calc-field">
-              <label for="b-price">Pack price <span class="hint">(₹ / 5kg)</span></label>
-              <input id="b-price" class="calc-input" type="number" step="10" min="0" value="1500">
-            </div>
+          <div class="calc-field">
+            <label for="b-wh">Wall height to coat <span class="hint">(ft)</span></label>
+            <input id="b-wh" class="calc-input" type="number" step="0.5" min="0" value="3">
           </div>
         </div>
 
         <!-- WATER TANK: Pidifin 2K -->
         <div class="calc-panel" id="tab-tank">
           <h2>Water Tank — Dr. Fixit Pidifin 2K</h2>
-          <p class="card-sub">2-component cementitious coating. Applied to inside of RCC tanks (all 4 walls + floor).</p>
+          <p class="card-sub">2-component cementitious coating. Applied to inside of RCC tanks (all 4 walls + floor). <strong>Official coverage: 1.5 kg/m² (2 coats) — one 15 kg kit covers ~108 sqft.</strong></p>
 
           <div class="calc-row">
             <div class="calc-field">
@@ -128,22 +112,16 @@
               <input id="k-w" class="calc-input" type="number" step="0.5" min="0" value="4">
             </div>
           </div>
-          <div class="calc-row">
-            <div class="calc-field">
-              <label for="k-h">Tank height <span class="hint">(ft)</span></label>
-              <input id="k-h" class="calc-input" type="number" step="0.5" min="0" value="4">
-            </div>
-            <div class="calc-field">
-              <label for="k-price">Kit price <span class="hint">(₹ / 15kg kit)</span></label>
-              <input id="k-price" class="calc-input" type="number" step="10" min="0" value="1950">
-            </div>
+          <div class="calc-field">
+            <label for="k-h">Tank height <span class="hint">(ft)</span></label>
+            <input id="k-h" class="calc-input" type="number" step="0.5" min="0" value="4">
           </div>
         </div>
 
         <!-- EXTERIOR WALL: Dr. Fixit Raincoat -->
         <div class="calc-panel" id="tab-exterior">
           <h2>External Wall — Dr. Fixit Raincoat</h2>
-          <p class="card-sub">Elastomeric exterior wall coating. Typically 2 coats.</p>
+          <p class="card-sub">Elastomeric exterior wall coating. Typically 2 coats. <strong>Official coverage: 86 sqft/L per coat (8 sqm/L).</strong></p>
 
           <div class="calc-row">
             <div class="calc-field">
@@ -155,37 +133,31 @@
               <input id="e-h" class="calc-input" type="number" step="0.5" min="0" value="10">
             </div>
           </div>
-          <div class="calc-row">
-            <div class="calc-field">
-              <label for="e-coats">Number of coats</label>
-              <select id="e-coats" class="calc-select">
-                <option value="1">1 coat</option>
-                <option value="2" selected>2 coats (recommended)</option>
-                <option value="3">3 coats (heavy weather)</option>
-              </select>
-            </div>
-            <div class="calc-field">
-              <label for="e-price">Price per litre <span class="hint">(₹)</span></label>
-              <input id="e-price" class="calc-input" type="number" step="5" min="0" value="360">
-            </div>
+          <div class="calc-field">
+            <label for="e-coats">Number of coats</label>
+            <select id="e-coats" class="calc-select">
+              <option value="1">1 coat</option>
+              <option value="2" selected>2 coats (recommended)</option>
+              <option value="3">3 coats (heavy weather)</option>
+            </select>
           </div>
         </div>
 
         <!-- LW+ DOSAGE -->
         <div class="calc-panel" id="tab-lwplus">
           <h2>LW+ Dosage — Dr. Fixit Pidiproof LW+</h2>
-          <p class="card-sub">Integral waterproofing admixture for RCC. 200 ml per 50kg cement bag.</p>
+          <p class="card-sub">Integral waterproofing admixture for RCC. <strong>200 ml per 50 kg cement bag.</strong></p>
 
-          <div class="calc-row">
-            <div class="calc-field">
-              <label for="l-bags">Number of cement bags</label>
-              <input id="l-bags" class="calc-input" type="number" step="1" min="0" value="100">
-            </div>
-            <div class="calc-field">
-              <label for="l-price">Price per litre <span class="hint">(₹)</span></label>
-              <input id="l-price" class="calc-input" type="number" step="5" min="0" value="165">
-            </div>
+          <div class="calc-field">
+            <label for="l-bags">Number of cement bags</label>
+            <input id="l-bags" class="calc-input" type="number" step="1" min="0" value="100">
           </div>
+        </div>
+
+        <!-- Live price hint shared by all tabs -->
+        <div class="calc-tip" style="background:var(--gray-100);padding:14px;border-radius:10px;font-size:.88rem;color:var(--gray-700);margin-top:18px;">
+          <strong id="wp-product-name">Loading product…</strong>
+          <div id="wp-price-hint" style="margin-top:4px;color:var(--gray-500);">Pulling live Dr. Fixit prices from our catalogue.</div>
         </div>
       </form>
 
@@ -230,6 +202,7 @@
   </div>
 </footer>
 
+<script src="/js/api.js"></script>
 <script src="/js/calc.js"></script>
 <script>
 (function () {
@@ -252,20 +225,65 @@
     });
   });
 
-  /* --- per-tab calculators --- */
-  function calcTerrace() {
-    var l = Calc.num($('t-l').value), w = Calc.num($('t-w').value),
-        cov = Calc.num($('t-cov').value, 30), price = Calc.num($('t-price').value, 320);
-    if (l <= 0 || w <= 0) return null;
-    var area = l * w;
-    var coats = 2;
-    var litres = (area * coats) / cov;
-    var buckets = Math.ceil(litres / 20);
-    var cost = litres * price;
+  /* Dr. Fixit product config — keywords for API lookup + official coverage + fallback price */
+  var WP_CFG = {
+    terrace:  { keywords: ['fixit', 'newcoat'],          name: 'Dr. Fixit Newcoat',          unit: 'L',   coverage: 22,           fallbackPrice: 320,  bucketLitres: 20,  variantHint: '20' },
+    bathroom: { keywords: ['fixit', 'bathseal'],         name: 'Dr. Fixit Bathseal',         unit: 'kg',  coverage: 6.5,          fallbackPrice: 300,  pack: 5,           variantHint: '5'  },
+    tank:     { keywords: ['fixit', 'pidifin'],          name: 'Dr. Fixit Pidifin 2K',       unit: 'kit', coverage: 108,          fallbackPrice: 1950, kitKg: 15,         variantHint: '15' },
+    exterior: { keywords: ['fixit', 'raincoat'],         name: 'Dr. Fixit Raincoat',         unit: 'L',   coverage: 86,           fallbackPrice: 360,  bucketLitres: 20,  variantHint: '20' },
+    lwplus:   { keywords: ['fixit', 'lw'],               name: 'Dr. Fixit Pidiproof LW+',    unit: 'L',   coverage: null,         fallbackPrice: 165,                       variantHint: '1'  }
+  };
+
+  function lookupWP(tabKey) {
+    var cfg = WP_CFG[tabKey];
+    var p = Calc.findProduct(cfg.keywords);
+    var price;
+    if (cfg.unit === 'kit' && p) {
+      /* Pidifin 15 kg kit price */
+      price = Calc.variantPrice(p, '15') || Calc.variantPrice(p) || cfg.fallbackPrice;
+    } else if (cfg.unit === 'kg' && p) {
+      /* Bathseal 5 kg pack */
+      price = Calc.variantPrice(p, '5') || Calc.variantPrice(p) || cfg.fallbackPrice;
+    } else if (p) {
+      /* litre-based: try 1L variant for per-litre price, else compute from bucket */
+      price = Calc.variantPrice(p, '1') || Calc.variantPrice(p) || cfg.fallbackPrice;
+    } else {
+      price = cfg.fallbackPrice;
+    }
     return {
-      product: 'Dr. Fixit Newcoat (Terrace)',
+      product: p,
+      name:    p ? p.name : cfg.name,
+      coverage: cfg.coverage,
+      price:   price,
+      source:  p ? 'live' : 'estimate',
+      unit:    cfg.unit
+    };
+  }
+
+  function updateProductHint() {
+    var lu = lookupWP(currentTab);
+    $('wp-product-name').textContent = lu.name;
+    var priceLabel;
+    if (lu.unit === 'kit') priceLabel = Calc.rupee(lu.price) + ' per 15kg kit';
+    else if (lu.unit === 'kg') priceLabel = Calc.rupee(lu.price) + ' per 5kg pack';
+    else priceLabel = Calc.rupee(lu.price) + '/L';
+    $('wp-price-hint').textContent = (lu.source === 'live' ? 'Live price: ' : 'Estimate: ') + priceLabel +
+      (lu.coverage ? ' · Coverage: ' + lu.coverage + (lu.unit === 'kit' ? ' sqft/kit' : lu.unit === 'kg' ? ' sqft/kg' : ' sqft/L per coat') : '');
+  }
+
+  /* --- per-tab calculators (use live prices from API where possible) --- */
+  function calcTerrace() {
+    var l = Calc.num($('t-l').value), w = Calc.num($('t-w').value);
+    var lu = lookupWP('terrace');
+    if (l <= 0 || w <= 0) return null;
+    var area = l * w, coats = 2;
+    var litres = (area * coats) / lu.coverage;
+    var buckets = Math.ceil(litres / 20);
+    var cost = litres * lu.price;
+    return {
+      product: lu.name, source: lu.source,
       title: 'Terrace ' + l + '×' + w + ' ft · 2 coats',
-      inputs: { 'Terrace size': l + ' × ' + w + ' ft', 'Coverage': cov + ' sqft/L per coat' },
+      inputs: { 'Terrace size': l + ' × ' + w + ' ft', 'Coverage': lu.coverage + ' sqft/L per coat' },
       rows: [
         ['Terrace area', Calc.round(area) + ' sqft'],
         ['Coats applied', coats + ' coats'],
@@ -273,63 +291,47 @@
         ['20L buckets needed', buckets + ' bucket' + (buckets === 1 ? '' : 's')]
       ],
       cost: cost,
-      costSub: 'at ₹' + price + '/L · materials only',
+      costSub: (lu.source === 'live' ? 'live price · ' : 'estimate · ') + Calc.rupee(lu.price) + '/L',
       tip: 'Apply LW+ in the slab concrete itself for primary defence. Newcoat on top is the second layer.',
-      results: {
-        'Product': 'Dr. Fixit Newcoat',
-        'Area': Calc.round(area) + ' sqft',
-        'Litres': Calc.round(litres, 1) + ' L (' + buckets + ' × 20L)',
-        'Estimated cost': Calc.rupee(cost)
-      }
+      results: { 'Product': lu.name, 'Area': Calc.round(area) + ' sqft', 'Litres': Calc.round(litres, 1) + ' L (' + buckets + ' × 20L)', 'Estimated cost': Calc.rupee(cost) }
     };
   }
 
   function calcBathroom() {
-    var l = Calc.num($('b-l').value), w = Calc.num($('b-w').value),
-        wh = Calc.num($('b-wh').value), price = Calc.num($('b-price').value, 1500);
+    var l = Calc.num($('b-l').value), w = Calc.num($('b-w').value), wh = Calc.num($('b-wh').value);
+    var lu = lookupWP('bathroom');
     if (l <= 0 || w <= 0) return null;
-    var floor = l * w;
-    var perim = 2 * (l + w);
-    var wall = perim * wh;
-    var area = floor + wall;
-    var coverage = 12; /* sqft per kg, 2 coats */
-    var kg = area / coverage;
+    var floor = l * w, perim = 2 * (l + w), wall = perim * wh, area = floor + wall;
+    var kg = area / lu.coverage;
     var packs = Math.ceil(kg / 5);
-    var cost = packs * price;
+    var cost = packs * lu.price;
     return {
-      product: 'Dr. Fixit Bathseal (Bathroom)',
+      product: lu.name, source: lu.source,
       title: 'Bathroom ' + l + '×' + w + ' ft · ' + wh + ' ft wall coat',
       inputs: { 'Floor': l + ' × ' + w + ' ft', 'Wall coat height': wh + ' ft' },
       rows: [
         ['Floor area', Calc.round(floor) + ' sqft'],
         ['Wall coat area', Calc.round(wall) + ' sqft'],
-        ['Total waterproofing area', Calc.round(area) + ' sqft'],
+        ['Total area', Calc.round(area) + ' sqft'],
         ['Material required', Calc.round(kg, 1) + ' kg'],
         ['5kg packs needed', packs + ' pack' + (packs === 1 ? '' : 's')]
       ],
       cost: cost,
-      costSub: packs + ' × ₹' + price + ' per 5kg pack',
+      costSub: (lu.source === 'live' ? 'live · ' : 'estimate · ') + packs + ' × ' + Calc.rupee(lu.price) + '/5kg',
       tip: 'Apply 2 coats perpendicular to each other to seal pinholes. Wait 24h between coats.',
-      results: {
-        'Product': 'Dr. Fixit Bathseal',
-        'Area': Calc.round(area) + ' sqft',
-        'Material': Calc.round(kg, 1) + ' kg (' + packs + ' × 5kg)',
-        'Estimated cost': Calc.rupee(cost)
-      }
+      results: { 'Product': lu.name, 'Area': Calc.round(area) + ' sqft', 'Material': Calc.round(kg, 1) + ' kg (' + packs + ' × 5kg)', 'Estimated cost': Calc.rupee(cost) }
     };
   }
 
   function calcTank() {
-    var l = Calc.num($('k-l').value), w = Calc.num($('k-w').value),
-        h = Calc.num($('k-h').value), price = Calc.num($('k-price').value, 1950);
+    var l = Calc.num($('k-l').value), w = Calc.num($('k-w').value), h = Calc.num($('k-h').value);
+    var lu = lookupWP('tank');
     if (l <= 0 || w <= 0 || h <= 0) return null;
-    /* Internal surface: 4 walls + floor */
     var area = 2 * (l * h) + 2 * (w * h) + (l * w);
-    var kitCoverage = 100; /* sqft per 15kg kit, 2 coats */
-    var kits = Math.ceil(area / kitCoverage);
-    var cost = kits * price;
+    var kits = Math.ceil(area / lu.coverage);
+    var cost = kits * lu.price;
     return {
-      product: 'Dr. Fixit Pidifin 2K (Water Tank)',
+      product: lu.name, source: lu.source,
       title: 'Tank ' + l + '×' + w + '×' + h + ' ft (inside)',
       inputs: { 'Tank size': l + ' × ' + w + ' × ' + h + ' ft' },
       rows: [
@@ -337,30 +339,24 @@
         ['Kits needed (15kg / kit)', kits + ' kit' + (kits === 1 ? '' : 's')]
       ],
       cost: cost,
-      costSub: kits + ' × ₹' + price + ' per 15kg kit',
+      costSub: (lu.source === 'live' ? 'live · ' : 'estimate · ') + kits + ' × ' + Calc.rupee(lu.price) + '/15kg kit',
       tip: 'Drain + dry the tank fully before applying. Pidifin needs a clean cement substrate, no curing compounds.',
-      results: {
-        'Product': 'Dr. Fixit Pidifin 2K',
-        'Area': Calc.round(area) + ' sqft',
-        'Kits': kits + ' × 15kg',
-        'Estimated cost': Calc.rupee(cost)
-      }
+      results: { 'Product': lu.name, 'Area': Calc.round(area) + ' sqft', 'Kits': kits + ' × 15kg', 'Estimated cost': Calc.rupee(cost) }
     };
   }
 
   function calcExterior() {
-    var l = Calc.num($('e-l').value), h = Calc.num($('e-h').value),
-        coats = Calc.num($('e-coats').value, 2), price = Calc.num($('e-price').value, 360);
+    var l = Calc.num($('e-l').value), h = Calc.num($('e-h').value), coats = Calc.num($('e-coats').value, 2);
+    var lu = lookupWP('exterior');
     if (l <= 0 || h <= 0) return null;
     var area = l * h;
-    var coverage = 50; /* sqft/L per coat */
-    var litres = (area * coats) / coverage;
+    var litres = (area * coats) / lu.coverage;
     var buckets = Math.ceil(litres / 20);
-    var cost = litres * price;
+    var cost = litres * lu.price;
     return {
-      product: 'Dr. Fixit Raincoat (Exterior Wall)',
+      product: lu.name, source: lu.source,
       title: 'External wall ' + l + '×' + h + ' ft · ' + coats + ' coats',
-      inputs: { 'Wall size': l + ' × ' + h + ' ft', 'Coats': coats },
+      inputs: { 'Wall size': l + ' × ' + h + ' ft', 'Coats': coats, 'Coverage': lu.coverage + ' sqft/L per coat' },
       rows: [
         ['Wall area', Calc.round(area) + ' sqft'],
         ['Coats applied', coats],
@@ -368,27 +364,22 @@
         ['20L buckets', buckets + ' bucket' + (buckets === 1 ? '' : 's')]
       ],
       cost: cost,
-      costSub: 'at ₹' + price + '/L · materials only',
+      costSub: (lu.source === 'live' ? 'live · ' : 'estimate · ') + Calc.rupee(lu.price) + '/L',
       tip: 'Apply over a properly primed wall — Asian Paints Wall Primer or equivalent. Raincoat alone won\'t adhere to bare plaster.',
-      results: {
-        'Product': 'Dr. Fixit Raincoat',
-        'Area': Calc.round(area) + ' sqft',
-        'Litres': Calc.round(litres, 1) + ' L (' + buckets + ' × 20L)',
-        'Estimated cost': Calc.rupee(cost)
-      }
+      results: { 'Product': lu.name, 'Area': Calc.round(area) + ' sqft', 'Litres': Calc.round(litres, 1) + ' L (' + buckets + ' × 20L)', 'Estimated cost': Calc.rupee(cost) }
     };
   }
 
   function calcLwPlus() {
     var bags = Calc.num($('l-bags').value);
-    var price = Calc.num($('l-price').value, 165);
+    var lu = lookupWP('lwplus');
     if (bags <= 0) return null;
     var totalMl = bags * 200;
     var litres = totalMl / 1000;
     var packs = Calc.suggestPacks(litres, [1, 5, 10, 20]);
-    var cost = litres * price;
+    var cost = litres * lu.price;
     return {
-      product: 'Dr. Fixit Pidiproof LW+',
+      product: lu.name, source: lu.source,
       title: 'LW+ dosage for ' + bags + ' cement bags',
       inputs: { 'Cement bags': bags, 'Dosage': '200 ml per 50kg bag' },
       rows: [
@@ -397,14 +388,9 @@
         ['Suggested packs', packs]
       ],
       cost: cost,
-      costSub: 'at ₹' + price + '/L · pack pricing varies',
+      costSub: (lu.source === 'live' ? 'live · ' : 'estimate · ') + Calc.rupee(lu.price) + '/L · pack pricing varies',
       tip: 'Add LW+ at the mixer directly — never sprinkle on dry cement. Best paired with a topcoat (Pidifin 2K) for slabs.',
-      results: {
-        'Product': 'Dr. Fixit LW+',
-        'Dosage': totalMl + ' ml (' + Calc.round(litres, 2) + ' L)',
-        'Packs': packs,
-        'Estimated cost': Calc.rupee(cost)
-      }
+      results: { 'Product': lu.name, 'Dosage': totalMl + ' ml (' + Calc.round(litres, 2) + ' L)', 'Packs': packs, 'Estimated cost': Calc.rupee(cost) }
     };
   }
 
@@ -432,6 +418,7 @@
   }
 
   function compute() {
+    updateProductHint();
     var out;
     switch (currentTab) {
       case 'terrace':  out = calcTerrace();  break;
@@ -446,6 +433,10 @@
   form.addEventListener('input', compute);
   form.addEventListener('change', compute);
   compute();
+
+  /* Re-compute when live prices arrive from the API */
+  Calc.loadAllProducts();
+  Calc.whenProductsReady(compute);
 })();
 </script>
 </body>

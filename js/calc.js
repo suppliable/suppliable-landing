@@ -228,6 +228,67 @@
     return n;
   }
 
+  /* =========================================================
+     API price lookups — pull live prices from the catalogue API.
+     Loaded once, cached on window.Calc._products.
+     ========================================================= */
+  var productsPromise = null;
+  var productsList   = null;
+  var onProductsReady = [];
+
+  function loadAllProducts() {
+    if (productsList) return Promise.resolve(productsList);
+    if (productsPromise) return productsPromise;
+    if (typeof SuppliableAPI === 'undefined') return Promise.resolve([]);
+    productsPromise = SuppliableAPI.getAllProducts().then(function (list) {
+      productsList = list || [];
+      /* fire any pending callbacks */
+      onProductsReady.forEach(function (cb) { try { cb(productsList); } catch (e) {} });
+      onProductsReady = [];
+      return productsList;
+    }).catch(function () { return []; });
+    return productsPromise;
+  }
+
+  /* Find first product whose name+brand contain ALL the given keywords
+     (case-insensitive). Returns null if not found / not loaded yet. */
+  function findProduct(keywords) {
+    if (!productsList) return null;
+    var lower = keywords.map(function (k) { return String(k).toLowerCase(); });
+    for (var i = 0; i < productsList.length; i++) {
+      var p = productsList[i];
+      var hay = (p.name + ' ' + (p.brand || '')).toLowerCase();
+      var ok = lower.every(function (k) { return hay.indexOf(k) > -1; });
+      if (ok) return p;
+    }
+    return null;
+  }
+
+  /* Get price for a specific variant of a product (or fall back to the
+     base price). variantHint is a substring of the variant label, e.g.
+     "20" matches "20L". */
+  function variantPrice(product, variantHint) {
+    if (!product) return null;
+    if (product.hasVariants && product.variants && product.variants.length) {
+      if (variantHint) {
+        var v = product.variants.find(function (v) {
+          return v.label.toLowerCase().indexOf(String(variantHint).toLowerCase()) > -1;
+        });
+        if (v) return v.price;
+      }
+      /* fallback to lowest variant price */
+      return Math.min.apply(null, product.variants.map(function (v) { return v.price; }));
+    }
+    return product.price || null;
+  }
+
+  /* Register a callback to fire when products finish loading.
+     Useful for re-computing once the live prices arrive. */
+  function whenProductsReady(cb) {
+    if (productsList) cb(productsList);
+    else onProductsReady.push(cb);
+  }
+
   /* --- Public API --- */
   global.Calc = {
     PRICES: PRICE_CONFIG,
@@ -240,6 +301,10 @@
     suggestPacks: suggestPacks,
     whatsapp: whatsapp,
     openQuoteModal: openQuoteModal,
-    closeQuoteModal: closeModal
+    closeQuoteModal: closeModal,
+    loadAllProducts: loadAllProducts,
+    findProduct: findProduct,
+    variantPrice: variantPrice,
+    whenProductsReady: whenProductsReady
   };
 })(window);

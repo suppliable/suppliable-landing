@@ -98,15 +98,9 @@
           </div>
         </div>
 
-        <div class="calc-row">
-          <div class="calc-field">
-            <label for="a-bprice">Price per block <span class="hint">(₹)</span></label>
-            <input id="a-bprice" class="calc-input" type="number" step="1" min="0" value="65">
-          </div>
-          <div class="calc-field">
-            <label for="a-aprice">Adhesive bag price <span class="hint">(40kg, ₹)</span></label>
-            <input id="a-aprice" class="calc-input" type="number" step="10" min="0" value="360">
-          </div>
+        <div class="calc-tip" style="background:var(--gray-100);padding:14px;border-radius:10px;font-size:.88rem;color:var(--gray-700);">
+          <strong id="a-product-name">Loading…</strong>
+          <div id="a-price-hint" style="margin-top:4px;color:var(--gray-500);">Pulling live block + adhesive prices from our catalogue.</div>
         </div>
       </form>
 
@@ -151,6 +145,7 @@
   </div>
 </footer>
 
+<script src="/js/api.js"></script>
 <script src="/js/calc.js"></script>
 <script>
 (function () {
@@ -166,12 +161,48 @@
     customRow.style.display = $('a-bsize').value === 'custom' ? '' : 'none';
   });
 
+  /* AAC block + adhesive product mapping. Size in inches → API search keywords */
+  var BLOCK_FALLBACK = { 4: 45, 6: 65, 8: 80, 9: 95 };
+  function lookupBlock(thicknessInches) {
+    /* try multiple brand keywords */
+    var p = Calc.findProduct(['aac', thicknessInches + ' inch'])
+         || Calc.findProduct(['aac', thicknessInches + '"'])
+         || Calc.findProduct(['renacon', thicknessInches])
+         || Calc.findProduct(['ekocon', thicknessInches])
+         || Calc.findProduct(['reenacon', thicknessInches]);
+    var price = p ? (Calc.variantPrice(p) || BLOCK_FALLBACK[thicknessInches] || 65) : (BLOCK_FALLBACK[thicknessInches] || 65);
+    return {
+      product: p,
+      name:    p ? p.name : (thicknessInches + '" AAC Block'),
+      price:   price,
+      source:  p ? 'live' : 'estimate'
+    };
+  }
+  function lookupAdhesive() {
+    var p = Calc.findProduct(['block', 'fix'])
+         || Calc.findProduct(['aac', 'adhesive'])
+         || Calc.findProduct(['ramco', 'block']);
+    var price = p ? (Calc.variantPrice(p, '40') || Calc.variantPrice(p) || 360) : 360;
+    return {
+      product: p,
+      name:    p ? p.name : 'AAC block-fix adhesive (40kg)',
+      price:   price,
+      source:  p ? 'live' : 'estimate'
+    };
+  }
+
+  /* Map block size (mm thickness) → inches for product lookup */
+  function thicknessInches(mm) {
+    if (mm <= 110) return 4;
+    if (mm <= 175) return 6;
+    if (mm <= 210) return 8;
+    return 9;
+  }
+
   function compute() {
     var lenFt = Calc.num($('a-len').value);
     var heiFt = Calc.num($('a-hei').value);
     var waste = Calc.num($('a-waste').value, 5) / 100;
-    var bprice = Calc.num($('a-bprice').value, 65);
-    var aprice = Calc.num($('a-aprice').value, 360);
 
     var sizeVal = $('a-bsize').value;
     var bl, bh; /* mm */
@@ -183,6 +214,19 @@
       bl = parseFloat(parts[0]);
       bh = parseFloat(parts[1]);
     }
+    /* parse thickness from the 3rd dimension (e.g. "600x200x150" -> 150) */
+    var thickMm = sizeVal === 'custom' ? 150 : (parseFloat(sizeVal.split('x')[2]) || 150);
+
+    /* live price lookups */
+    var blockLU = lookupBlock(thicknessInches(thickMm));
+    var glueLU  = lookupAdhesive();
+    var bprice  = blockLU.price;
+    var aprice  = glueLU.price;
+
+    $('a-product-name').textContent = blockLU.name + ' · ' + glueLU.name;
+    $('a-price-hint').textContent = (blockLU.source === 'live' && glueLU.source === 'live'
+        ? 'Live prices: ' + Calc.rupee(bprice) + '/block · ' + Calc.rupee(aprice) + '/40kg bag'
+        : 'Estimate: ' + Calc.rupee(bprice) + '/block · ' + Calc.rupee(aprice) + '/40kg bag (catalogue offline or product not yet listed)');
 
     if (lenFt <= 0 || heiFt <= 0 || bl <= 0 || bh <= 0) {
       body.innerHTML = '<div class="res-placeholder"><span class="big-emoji">📐</span><p>Enter wall + block dimensions to see an estimate.</p></div>';
@@ -192,14 +236,13 @@
     /* convert wall ft → mm */
     var wallW = lenFt * 304.8;
     var wallH = heiFt * 304.8;
-    var wallArea  = wallW * wallH;          /* sq mm */
-    var blockArea = bl * bh;                /* sq mm */
+    var wallArea  = wallW * wallH;
+    var blockArea = bl * bh;
     var rawCount  = wallArea / blockArea;
     var blocks    = Math.ceil(rawCount * (1 + waste));
 
-    /* Adhesive: rule-of-thumb 1 kg per 0.6 sqm of bedded joint =
-       roughly 1 bag (40kg) per 100 blocks for 6" blocks. We scale by block thickness. */
-    var bedKgPerBlock = 0.4;                 /* avg for 6" — adjust by size */
+    /* Adhesive ~0.4 kg/block for 6"; scale linearly with thickness */
+    var bedKgPerBlock = 0.4 * (thickMm / 150);
     var adhesiveKg    = blocks * bedKgPerBlock;
     var adhesiveBags  = Math.ceil(adhesiveKg / 40);
 
@@ -209,23 +252,26 @@
 
     var inputs = {
       'Wall size':       lenFt + ' ft × ' + heiFt + ' ft',
-      'Block size (mm)': bl + ' × ' + bh,
+      'Block':           blockLU.name + ' (' + bl + '×' + bh + ' mm)',
       'Wastage':         (waste * 100) + '%'
     };
     var results = {
-      'Blocks needed':   blocks + ' blocks',
-      'Adhesive bags':   adhesiveBags + ' × 40kg bags',
-      'Estimated cost':  Calc.rupee(totalCost)
+      'Blocks needed':   blocks + ' × ' + blockLU.name,
+      'Adhesive bags':   adhesiveBags + ' × 40kg (' + glueLU.name + ')',
+      'Block cost':      Calc.rupee(blockCost),
+      'Adhesive cost':   Calc.rupee(adhesiveCost),
+      'Estimated total': Calc.rupee(totalCost)
     };
 
     body.innerHTML = [
+      '<div class="res-row" style="border-top:0;padding-top:0;"><span class="k">Block</span><span class="v">' + blockLU.name + '</span></div>',
+      '<div class="res-row"><span class="k">Adhesive</span><span class="v">' + glueLU.name + '</span></div>',
       '<div class="res-row"><span class="k">Wall area</span><span class="v">' + Calc.round(lenFt * heiFt) + ' sqft</span></div>',
-      '<div class="res-row"><span class="k">Blocks (raw)</span><span class="v">' + Math.ceil(rawCount) + '</span></div>',
       '<div class="res-row"><span class="k">Blocks (with wastage)</span><span class="v">' + blocks + ' blocks</span></div>',
-      '<div class="res-row"><span class="k">Adhesive needed</span><span class="v">' + adhesiveBags + ' × 40kg bag' + (adhesiveBags === 1 ? '' : 's') + '</span></div>',
+      '<div class="res-row"><span class="k">Adhesive bags</span><span class="v">' + adhesiveBags + ' × 40kg</span></div>',
       '<div class="res-row"><span class="k">Block cost</span><span class="v">' + Calc.rupee(blockCost) + '</span></div>',
       '<div class="res-row"><span class="k">Adhesive cost</span><span class="v">' + Calc.rupee(adhesiveCost) + '</span></div>',
-      '<div class="res-total"><span class="k">Total estimate</span><br><span class="v">' + Calc.rupee(totalCost) + '</span><span class="vsub">blocks + adhesive · materials only</span></div>',
+      '<div class="res-total"><span class="k">Total estimate</span><br><span class="v">' + Calc.rupee(totalCost) + '</span><span class="vsub">' + (blockLU.source === 'live' ? 'live prices' : 'estimate') + ' · blocks + adhesive · materials only</span></div>',
       '<div class="res-tip"><strong>Tip:</strong> Use thin-bed adhesive (Ramco Block Fix / MYK) — not cement-sand mortar — for proper AAC bonding and thermal performance.</div>',
       '<div class="res-actions">',
       '  <button type="button" class="btn btn-orange" data-quote>Get a bulk quote</button>',
@@ -242,6 +288,9 @@
   form.addEventListener('input', compute);
   form.addEventListener('change', compute);
   compute();
+
+  Calc.loadAllProducts();
+  Calc.whenProductsReady(compute);
 })();
 </script>
 </body>

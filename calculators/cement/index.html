@@ -60,7 +60,26 @@
         <!-- TAB A: PLASTERING -->
         <div class="calc-panel active" id="tab-plaster">
           <h2>Wall plastering</h2>
-          <p class="card-sub">Cement-sand mortar for wall plaster.</p>
+          <p class="card-sub">Cement-sand mortar for wall plaster. Tap a thickness preset below or enter your own.</p>
+
+          <!-- Quick thickness preset selector -->
+          <div class="calc-field">
+            <label>Plaster thickness — pick your job</label>
+            <div class="thick-presets" role="radiogroup" aria-label="Plaster thickness preset">
+              <button type="button" class="thick-preset" data-thick="6"  role="radio" aria-checked="false">
+                <strong>6 mm</strong><span>Ceiling finish</span>
+              </button>
+              <button type="button" class="thick-preset is-active" data-thick="12" role="radio" aria-checked="true">
+                <strong>12 mm</strong><span>Internal walls</span>
+              </button>
+              <button type="button" class="thick-preset" data-thick="15" role="radio" aria-checked="false">
+                <strong>15 mm</strong><span>External walls</span>
+              </button>
+              <button type="button" class="thick-preset" data-thick="20" role="radio" aria-checked="false">
+                <strong>20 mm</strong><span>Rough masonry correction</span>
+              </button>
+            </div>
+          </div>
 
           <div class="calc-row">
             <div class="calc-field">
@@ -68,13 +87,8 @@
               <input id="pl-area" class="calc-input" type="number" step="1" min="0" value="500">
             </div>
             <div class="calc-field">
-              <label for="pl-thick">Plaster thickness <span class="hint">(mm)</span></label>
-              <select id="pl-thick" class="calc-select">
-                <option value="10">10 mm (internal)</option>
-                <option value="12" selected>12 mm (standard)</option>
-                <option value="15">15 mm</option>
-                <option value="20">20 mm (external)</option>
-              </select>
+              <label for="pl-thick">Or enter thickness <span class="hint">(mm)</span></label>
+              <input id="pl-thick" class="calc-input" type="number" step="1" min="3" max="40" value="12">
             </div>
           </div>
 
@@ -245,6 +259,28 @@
   var CEM_KG_PER_M3 = 1440;
   var BAG_KG = 50;
   var M3_TO_CFT = 35.3147;
+
+  /* Plastering thickness preset clicks → set the thickness input + active state */
+  form.querySelectorAll('.thick-preset').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      form.querySelectorAll('.thick-preset').forEach(function (b) {
+        b.classList.remove('is-active'); b.setAttribute('aria-checked', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-checked', 'true');
+      $('pl-thick').value = btn.dataset.thick;
+      compute();
+    });
+  });
+  /* If user types a custom thickness, clear preset active state */
+  $('pl-thick').addEventListener('input', function () {
+    var v = $('pl-thick').value;
+    form.querySelectorAll('.thick-preset').forEach(function (b) {
+      var active = b.dataset.thick === String(v);
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-checked', active ? 'true' : 'false');
+    });
+  });
 
   /* Tab switching */
   var currentTab = 'plaster';

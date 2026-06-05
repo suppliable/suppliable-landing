@@ -53,7 +53,15 @@
       <!-- INPUTS -->
       <form class="calc-card" id="paintForm" novalidate>
         <h2>Your wall</h2>
-        <p class="card-sub">All measurements in feet. The calculator updates live.</p>
+        <p class="card-sub">All measurements in feet. The calculator updates live with prices from our live catalogue.</p>
+
+        <div class="calc-field">
+          <label for="p-type">Paint type</label>
+          <select id="p-type" class="calc-select">
+            <option value="interior" selected>Interior — Asian Paints Tractor Emulsion (~140 sqft/L)</option>
+            <option value="exterior">Exterior — Asian Paints Ace / Apex (~110 sqft/L)</option>
+          </select>
+        </div>
 
         <div class="calc-row">
           <div class="calc-field">
@@ -81,15 +89,9 @@
           </div>
         </div>
 
-        <div class="calc-row">
-          <div class="calc-field">
-            <label for="p-cov">Coverage <span class="hint">(sqft / litre)</span></label>
-            <input id="p-cov" class="calc-input" type="number" inputmode="decimal" step="5" min="50" max="300" value="150">
-          </div>
-          <div class="calc-field">
-            <label for="p-price">Price per litre <span class="hint">(₹)</span></label>
-            <input id="p-price" class="calc-input" type="number" inputmode="numeric" step="10" min="0" value="250">
-          </div>
+        <div class="calc-tip" style="background:var(--gray-100);padding:14px;border-radius:10px;font-size:.88rem;color:var(--gray-700);">
+          <strong id="p-product">Loading product…</strong>
+          <div id="p-price-hint" style="margin-top:4px;color:var(--gray-500);">Pulling live price from our catalogue.</div>
         </div>
       </form>
 
@@ -135,6 +137,7 @@
   </div>
 </footer>
 
+<script src="/js/api.js"></script>
 <script src="/js/calc.js"></script>
 <script>
 (function () {
@@ -145,30 +148,72 @@
   var body = document.getElementById('paintResultBody');
   var $ = function (id) { return document.getElementById(id); };
 
-  function compute() {
-    var len   = Calc.num($('p-len').value);
-    var hei   = Calc.num($('p-hei').value);
-    var walls = Calc.num($('p-walls').value, 1);
-    var coats = Calc.num($('p-coats').value, 2);
-    var cov   = Calc.num($('p-cov').value, 150);
-    var price = Calc.num($('p-price').value, 250);
+  /* Paint product config — keywords to find in API + fallback specs */
+  var PAINT_CFG = {
+    interior: {
+      keywords: ['asian', 'tractor'],
+      name: 'Asian Paints Tractor Emulsion',
+      coverage: 140,        /* sqft/L per coat (official Asian Paints spec) */
+      fallbackPrice: 190    /* ₹/L if API unavailable */
+    },
+    exterior: {
+      keywords: ['asian', 'ace'],
+      altKeywords: ['asian', 'apex'],
+      name: 'Asian Paints Ace Exterior Emulsion',
+      coverage: 110,
+      fallbackPrice: 250
+    }
+  };
 
-    if (len <= 0 || hei <= 0 || walls <= 0 || cov <= 0) {
+  /* Try to find the product in the API; fallback to default price */
+  function lookupPaint(typeKey) {
+    var cfg = PAINT_CFG[typeKey];
+    var p = Calc.findProduct(cfg.keywords);
+    if (!p && cfg.altKeywords) p = Calc.findProduct(cfg.altKeywords);
+    return {
+      product:  p,
+      name:     p ? p.name : cfg.name,
+      coverage: cfg.coverage,
+      /* prefer the 1L variant price (per-litre); fall back to base price */
+      pricePerLitre: p ? (Calc.variantPrice(p, '1') || Calc.variantPrice(p) || cfg.fallbackPrice) : cfg.fallbackPrice,
+      source: p ? 'live' : 'estimate'
+    };
+  }
+
+  function compute() {
+    var typeKey = $('p-type').value;
+    var len     = Calc.num($('p-len').value);
+    var hei     = Calc.num($('p-hei').value);
+    var walls   = Calc.num($('p-walls').value, 1);
+    var coats   = Calc.num($('p-coats').value, 2);
+
+    var lookup = lookupPaint(typeKey);
+    var cov    = lookup.coverage;
+    var price  = lookup.pricePerLitre;
+
+    $('p-product').textContent = lookup.name;
+    $('p-price-hint').textContent = lookup.source === 'live'
+      ? 'Live price: ' + Calc.rupee(price) + '/L · Coverage: ' + cov + ' sqft per coat'
+      : 'Estimate: ' + Calc.rupee(price) + '/L · Coverage: ' + cov + ' sqft per coat (catalogue offline)';
+
+    if (len <= 0 || hei <= 0 || walls <= 0) {
       body.innerHTML = '<div class="res-placeholder"><span class="big-emoji">📏</span><p>Enter your wall dimensions to see an estimate.</p></div>';
       return;
     }
 
-    var wallArea  = len * hei * walls;     /* sqft */
+    var wallArea  = len * hei * walls;
     var paintArea = wallArea * coats;
     var litres    = paintArea / cov;
     var pack      = Calc.suggestPacks(litres, [1, 4, 10, 20]);
     var cost      = litres * price;
 
     var inputs = {
+      'Paint type':      typeKey === 'interior' ? 'Interior' : 'Exterior',
+      'Product':         lookup.name,
       'Wall size':       len + ' ft × ' + hei + ' ft',
       'Number of walls': walls,
       'Coats':           coats,
-      'Coverage':        cov + ' sqft/L'
+      'Coverage':        cov + ' sqft/L per coat'
     };
     var results = {
       'Total area':       Calc.round(wallArea) + ' sqft',
@@ -179,12 +224,13 @@
     };
 
     body.innerHTML = [
+      '<div class="res-row" style="border-top:0;padding-top:0;"><span class="k">Product</span><span class="v">' + lookup.name + '</span></div>',
       '<div class="res-row"><span class="k">Wall area</span><span class="v">' + Calc.round(wallArea) + ' sqft</span></div>',
       '<div class="res-row"><span class="k">Total painting area</span><span class="v">' + Calc.round(paintArea) + ' sqft</span></div>',
       '<div class="res-row"><span class="k">Paint required</span><span class="v">' + Calc.round(litres, 1) + ' L</span></div>',
       '<div class="res-row"><span class="k">Suggested pack</span><span class="v">' + pack + '</span></div>',
-      '<div class="res-total"><span class="k">Estimated cost</span><br><span class="v">' + Calc.rupee(cost) + '</span><span class="vsub">at ₹' + price + '/L · materials only</span></div>',
-      '<div class="res-tip"><strong>Tip:</strong> Add 10% extra for touch-ups and uneven walls. Buy primer separately for best adhesion.</div>',
+      '<div class="res-total"><span class="k">Estimated cost</span><br><span class="v">' + Calc.rupee(cost) + '</span><span class="vsub">' + (lookup.source === 'live' ? 'live price' : 'estimate') + ' · ' + Calc.rupee(price) + '/L · materials only</span></div>',
+      '<div class="res-tip"><strong>Tip:</strong> Add 10% extra for touch-ups and uneven walls. ' + (typeKey === 'interior' ? 'For premium finish, upgrade to Royale (~110 sqft/L).' : 'For 12-year warranty exteriors, upgrade to Apex Ultima.') + '</div>',
       '<div class="res-actions">',
       '  <button type="button" class="btn btn-orange" data-quote>Get a bulk quote</button>',
       '  <button type="button" class="btn btn-wa" data-wa>💬 WhatsApp this estimate</button>',
@@ -192,7 +238,6 @@
       '</div>'
     ].join('');
 
-    /* wire action buttons */
     var payload = { calculator: 'Paint', inputs: inputs, results: results };
     body.querySelector('[data-wa]').addEventListener('click', function () { Calc.whatsapp(payload); });
     body.querySelector('[data-quote]').addEventListener('click', function () { Calc.openQuoteModal(payload); });
@@ -201,6 +246,10 @@
   form.addEventListener('input', compute);
   form.addEventListener('change', compute);
   compute();
+
+  /* Re-compute once live prices arrive */
+  Calc.loadAllProducts();
+  Calc.whenProductsReady(compute);
 })();
 </script>
 </body>
