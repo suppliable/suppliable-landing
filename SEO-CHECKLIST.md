@@ -10,7 +10,7 @@ After this push deploys to GitHub Pages, the sitemap will have 390 URLs includin
 
 - Open **Google Search Console** → `suppliable.in` property → Sitemaps
 - The existing entry `sitemap.xml` should auto-recrawl, but force it: click the row → **Resubmit**
-- Open **Bing Webmaster Tools** → Sitemaps → resubmit `https://www.suppliable.in/sitemap.xml`
+- Open **Bing Webmaster Tools** → Sitemaps → resubmit `https://suppliable.in/sitemap.xml`
 
 ---
 
@@ -23,19 +23,19 @@ For each URL below, in Google Search Console:
 Submit these 13 URLs:
 
 ```
-https://www.suppliable.in/materialcalculator/
-https://www.suppliable.in/materialcalculator/paint/
-https://www.suppliable.in/materialcalculator/aac-blocks/
-https://www.suppliable.in/materialcalculator/cement/
-https://www.suppliable.in/materialcalculator/steel/
-https://www.suppliable.in/materialcalculator/waterproofing/
-https://www.suppliable.in/materialcalculator/chennai/
-https://www.suppliable.in/materialcalculator/chennai/paint/
-https://www.suppliable.in/materialcalculator/chennai/aac-blocks/
-https://www.suppliable.in/materialcalculator/chennai/cement/
-https://www.suppliable.in/materialcalculator/chennai/steel/
-https://www.suppliable.in/materialcalculator/chennai/waterproofing/
-https://www.suppliable.in/blog/
+https://suppliable.in/materialcalculator/
+https://suppliable.in/materialcalculator/paint/
+https://suppliable.in/materialcalculator/aac-blocks/
+https://suppliable.in/materialcalculator/cement/
+https://suppliable.in/materialcalculator/steel/
+https://suppliable.in/materialcalculator/waterproofing/
+https://suppliable.in/materialcalculator/chennai/
+https://suppliable.in/materialcalculator/chennai/paint/
+https://suppliable.in/materialcalculator/chennai/aac-blocks/
+https://suppliable.in/materialcalculator/chennai/cement/
+https://suppliable.in/materialcalculator/chennai/steel/
+https://suppliable.in/materialcalculator/chennai/waterproofing/
+https://suppliable.in/blog/
 ```
 
 Search Console has a quota of ~10-12 manual submissions per day. Spread across two days if needed.
@@ -51,7 +51,7 @@ Bing/Yandex/Seznam support the IndexNow protocol — instant indexing.
 node -e "console.log(require('crypto').randomBytes(16).toString('hex'))" > .indexnow-key
 KEY=$(cat .indexnow-key)
 
-# Make it discoverable at https://www.suppliable.in/<KEY>.txt
+# Make it discoverable at https://suppliable.in/<KEY>.txt
 echo $KEY > $KEY.txt
 git add $KEY.txt
 git commit -m "Add IndexNow verification file"
@@ -79,7 +79,7 @@ Critical for "near me" and Chennai-local queries — this is what makes Suppliab
 - Address: 98 Kalaignar Karunanidhi Salai, Sholinganallur, Chennai 600119
 - Service area: Add OMR, ECR, Velachery, Adyar, Pallavaram, Tambaram, Anna Nagar, T. Nagar
 - Phone: +91 87786 27926
-- Website: https://www.suppliable.in
+- Website: https://suppliable.in
 - Hours: Mon-Sat 9 AM – 7 PM IST
 - Upload photos: warehouse, delivery truck, products
 - Add the calculator URL in your description: *"Free material calculators at suppliable.in/materialcalculator/"*

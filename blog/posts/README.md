@@ -1,6 +1,6 @@
 # How to write a blog post
 
-This folder holds the source for every post on https://www.suppliable.in/blog/.
+This folder holds the source for every post on https://suppliable.in/blog/.
 Each post is a single Markdown file. The build script reads them on every push
 and generates the HTML pages automatically.
 

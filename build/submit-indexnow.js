@@ -11,14 +11,14 @@
  * Setup (one-time):
  *   1. Generate a key:  node -e "console.log(require('crypto').randomBytes(16).toString('hex'))"
  *   2. Save it to .indexnow-key (gitignored) and to public/<KEY>.txt with the key as the only content
- *   3. Commit + push public/<KEY>.txt so it's reachable at https://www.suppliable.in/<KEY>.txt
+ *   3. Commit + push public/<KEY>.txt so it's reachable at https://suppliable.in/<KEY>.txt
  */
 
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-const HOST = 'www.suppliable.in';
+const HOST = 'suppliable.in';
 const KEY_FILE = path.join(__dirname, '..', '.indexnow-key');
 const SITEMAP_FILE = path.join(__dirname, '..', 'sitemap.xml');
 

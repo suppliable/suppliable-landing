@@ -19,7 +19,7 @@ import { buildBlog } from './blog.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const SITE = 'https://www.suppliable.in';
+const SITE = 'https://suppliable.in';
 
 const API_BASE = process.env.API_BASE || 'https://construction-api-gznk.onrender.com/api/v1';
 

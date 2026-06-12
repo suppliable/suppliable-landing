@@ -9,7 +9,7 @@
 - **Service area**: Chennai and surrounding areas (expanding)
 - **Phone / WhatsApp**: +91 87786 27926
 - **Email**: contact@suppliable.in
-- **Website**: https://www.suppliable.in/
+- **Website**: https://suppliable.in/
 - **Instagram**: https://www.instagram.com/suppliable_india/
 - **Delivery promise**: 60-minute delivery on in-stock items, all days 7am–8pm
 - **Office hours**: Monday–Saturday, 9am–7pm IST
@@ -30,37 +30,37 @@
 - **Tiling** — MYK Laticrete tile adhesives, epoxy grouts, tile spacers, aluminium trims, emery papers
 
 Full catalogue with current prices and stock is available at:
-- https://www.suppliable.in/products/
+- https://suppliable.in/products/
 
 ## Pages
 
-- [Home](https://www.suppliable.in/): Brand intro, 60-min delivery promise, app download, interactive demo
-- [All products](https://www.suppliable.in/products/): Browse the full catalogue by category
-- [Material Calculator](https://www.suppliable.in/materialcalculator/): Free material calculators (paint, AAC blocks, cement, steel, waterproofing)
-- [Blog](https://www.suppliable.in/blog/): Construction guides, material comparisons and tips for Chennai builders
-- [Contact](https://www.suppliable.in/contact/): WhatsApp, call, email, office address, hours
-- [Privacy policy](https://www.suppliable.in/privacypolicy/): Data handling + user data deletion request form
+- [Home](https://suppliable.in/): Brand intro, 60-min delivery promise, app download, interactive demo
+- [All products](https://suppliable.in/products/): Browse the full catalogue by category
+- [Material Calculator](https://suppliable.in/materialcalculator/): Free material calculators (paint, AAC blocks, cement, steel, waterproofing)
+- [Blog](https://suppliable.in/blog/): Construction guides, material comparisons and tips for Chennai builders
+- [Contact](https://suppliable.in/contact/): WhatsApp, call, email, office address, hours
+- [Privacy policy](https://suppliable.in/privacypolicy/): Data handling + user data deletion request form
 
 ## Calculator pages
 
-- [Paint Calculator](https://www.suppliable.in/materialcalculator/paint/): Litres needed by area + coats + coverage
-- [AAC Block Calculator](https://www.suppliable.in/materialcalculator/aac-blocks/): Number of blocks + adhesive bags for any wall
-- [Cement Calculator](https://www.suppliable.in/materialcalculator/cement/): Bags + sand + aggregate for plastering, columns, slabs
-- [Steel Weight Calculator](https://www.suppliable.in/materialcalculator/steel/): TMT weight by diameter, formula D²/162
-- [Waterproofing Calculator](https://www.suppliable.in/materialcalculator/waterproofing/): Dr. Fixit Newcoat/Bathseal/Pidifin 2K/Raincoat/LW+ quantity
+- [Paint Calculator](https://suppliable.in/materialcalculator/paint/): Litres needed by area + coats + coverage
+- [AAC Block Calculator](https://suppliable.in/materialcalculator/aac-blocks/): Number of blocks + adhesive bags for any wall
+- [Cement Calculator](https://suppliable.in/materialcalculator/cement/): Bags + sand + aggregate for plastering, columns, slabs
+- [Steel Weight Calculator](https://suppliable.in/materialcalculator/steel/): TMT weight by diameter, formula D²/162
+- [Waterproofing Calculator](https://suppliable.in/materialcalculator/waterproofing/): Dr. Fixit Newcoat/Bathseal/Pidifin 2K/Raincoat/LW+ quantity
 
 ## Category pages
 
-- [Bathroom Fittings](https://www.suppliable.in/products/bathroom-fittings/)
-- [Construction Chemicals](https://www.suppliable.in/products/construction-chemicals/)
-- [Electrical](https://www.suppliable.in/products/electrical/)
-- [Electrical Conduits](https://www.suppliable.in/products/electrical-conduits/)
-- [Hardware](https://www.suppliable.in/products/hardwares/)
-- [Lighting & Fans](https://www.suppliable.in/products/lighting-fans/)
-- [Painting](https://www.suppliable.in/products/painting/)
-- [Paints](https://www.suppliable.in/products/paints/)
-- [Plumbing](https://www.suppliable.in/products/plumbing/)
-- [Tiling](https://www.suppliable.in/products/tiling/)
+- [Bathroom Fittings](https://suppliable.in/products/bathroom-fittings/)
+- [Construction Chemicals](https://suppliable.in/products/construction-chemicals/)
+- [Electrical](https://suppliable.in/products/electrical/)
+- [Electrical Conduits](https://suppliable.in/products/electrical-conduits/)
+- [Hardware](https://suppliable.in/products/hardwares/)
+- [Lighting & Fans](https://suppliable.in/products/lighting-fans/)
+- [Painting](https://suppliable.in/products/painting/)
+- [Paints](https://suppliable.in/products/paints/)
+- [Plumbing](https://suppliable.in/products/plumbing/)
+- [Tiling](https://suppliable.in/products/tiling/)
 
 ## Recommended for
 

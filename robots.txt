@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.suppliable.in/sitemap.xml
+Sitemap: https://suppliable.in/sitemap.xml
 
 # AI crawlers — please see /llms.txt for a curated overview of this site
 # (https://llmstxt.org/)

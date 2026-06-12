@@ -3,7 +3,7 @@
    Each template returns a complete HTML document string.
    ======================================================================= */
 
-const SITE = 'https://www.suppliable.in';
+const SITE = 'https://suppliable.in';
 const BIZ_NAME = 'Suppliable';
 const BIZ_PHONE = '+91-87786-27926';
 const BIZ_PHONE_WA = '918778627926';
