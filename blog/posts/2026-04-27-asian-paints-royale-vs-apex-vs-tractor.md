@@ -141,4 +141,9 @@ Plus labour: ₹15-25 per sqft of wall area for the full putty + primer + 2-coat
 
 ---
 
+---
+
+> 🧮 **Free tool**: Try our [Paint Calculator](/materialcalculator/paint/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+
+
 *Paint team at Suppliable. [WhatsApp us](https://wa.me/918778627926) with your house size and we'll quote the full paint BOM within an hour.*

@@ -90,4 +90,9 @@ Whichever you pick, get the **right adhesive** and have a clear delivery plan �
 
 ---
 
+---
+
+> 🧮 **Free tool**: Try our [AAC Block Calculator](/materialcalculator/aac-blocks/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+
+
 *Have a project coming up? [WhatsApp us](https://wa.me/918778627926) with your requirement and we'll quote within an hour.*

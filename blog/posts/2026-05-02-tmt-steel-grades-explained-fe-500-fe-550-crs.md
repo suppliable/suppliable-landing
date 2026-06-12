@@ -111,3 +111,8 @@ All grades stocked and delivered from Suppliable Sholinganallur. [WhatsApp us wi
 ---
 
 *Steel team at Suppliable. [Browse all products →](/products/)*
+
+---
+
+> 🧮 **Free tool**: Try our [Steel Weight Calculator](/materialcalculator/steel/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+

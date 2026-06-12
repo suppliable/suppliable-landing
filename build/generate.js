@@ -260,6 +260,12 @@ async function main() {
     { loc: `${SITE}/materialcalculator/cement/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/materialcalculator/steel/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/materialcalculator/waterproofing/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/materialcalculator/chennai/`, priority: '0.85', changefreq: 'monthly' },
+    { loc: `${SITE}/materialcalculator/chennai/paint/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/materialcalculator/chennai/aac-blocks/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/materialcalculator/chennai/cement/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/materialcalculator/chennai/steel/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/materialcalculator/chennai/waterproofing/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/contact/`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${SITE}/privacypolicy/`, priority: '0.4', changefreq: 'yearly' }
   ];

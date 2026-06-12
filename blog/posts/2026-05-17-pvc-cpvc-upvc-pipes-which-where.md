@@ -121,4 +121,9 @@ All available at Suppliable Sholinganallur, delivered to your Chennai site in 60
 
 ---
 
+---
+
+> 🧮 **Free tool**: Try our [Material Calculator suite](/materialcalculator/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+
+
 *Plumbing materials team at Suppliable. WhatsApp us at +91 87786 27926 for a full-house plumbing BOM quote.*

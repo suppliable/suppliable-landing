@@ -136,4 +136,9 @@ Go up to **Schneider Acti9 + Polycab FRLS HR + Legrand switches** if it's a prem
 
 ---
 
+---
+
+> 🧮 **Free tool**: Try our [Material Calculator suite](/materialcalculator/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+
+
 *Electrical materials team at Suppliable. [WhatsApp us](https://wa.me/918778627926) with your electrician's BOM and we'll quote within an hour.*

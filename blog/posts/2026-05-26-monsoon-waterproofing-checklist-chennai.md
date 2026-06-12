@@ -90,4 +90,9 @@ Monsoon-proofing is cheap if you do it during construction, expensive if you do 
 
 ---
 
+---
+
+> 🧮 **Free tool**: Try our [Dr. Fixit Waterproofing Calculator](/materialcalculator/waterproofing/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+
+
 *Got a monsoon-prep order coming up? [WhatsApp us at +91 87786 27926](https://wa.me/918778627926) and we'll quote your full waterproofing BOM within the hour.*

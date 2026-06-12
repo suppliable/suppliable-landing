@@ -106,3 +106,8 @@ If you're losing half-days to materials missing, the answer isn't "order more up
 ---
 
 *Suppliable team — on-demand construction materials, Chennai.*
+
+---
+
+> 🧮 **Free tool**: Try our [free Material Calculator](/materialcalculator/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+

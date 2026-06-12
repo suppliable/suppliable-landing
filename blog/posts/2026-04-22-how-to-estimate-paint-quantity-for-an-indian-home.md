@@ -159,3 +159,8 @@ If you're not sure of your wall area, just give us the **built-up sqft** of the 
 ---
 
 *Paint team at Suppliable. [Browse painting products →](/products/painting/)*
+
+---
+
+> 🧮 **Free tool**: Try our [Paint Calculator](/materialcalculator/paint/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+

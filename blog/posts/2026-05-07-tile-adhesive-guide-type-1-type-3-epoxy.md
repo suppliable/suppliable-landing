@@ -122,4 +122,9 @@ All in stock at Suppliable Sholinganallur, delivered to your site in 60 minutes.
 
 ---
 
+---
+
+> 🧮 **Free tool**: Try our [Material Calculator suite](/materialcalculator/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+
+
 *Tiling materials team at Suppliable. [WhatsApp us](https://wa.me/918778627926) with your tiling BOM and we'll quote within the hour.*

@@ -135,3 +135,8 @@ If you're running a site anywhere in our coverage map, give us a try on your nex
 ---
 
 *Suppliable — on-demand construction materials, Chennai. Based in Sholinganallur, serving South Chennai with 60-minute delivery.*
+
+---
+
+> 🧮 **Free tool**: Try our [Material Calculator](/materialcalculator/) — same calculation as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+

@@ -112,4 +112,9 @@ Want our estimation spreadsheet? [WhatsApp us](https://wa.me/918778627926) "send
 
 ---
 
+---
+
+> 🧮 **Free tool**: Try our [Cement Calculator](/materialcalculator/cement/) and [Steel Weight Calculator](/materialcalculator/steel/) — same calculations as in this post, but instant, with live prices and a one-tap WhatsApp quote.
+
+
 *Materials team at Suppliable. We deliver every category above to your Chennai site in 60 minutes. [Browse products](/products/) or [WhatsApp for a custom quote](https://wa.me/918778627926).*
