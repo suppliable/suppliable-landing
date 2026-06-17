@@ -267,7 +267,9 @@ async function main() {
     { loc: `${SITE}/materialcalculator/chennai/steel/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/materialcalculator/chennai/waterproofing/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/contact/`, priority: '0.7', changefreq: 'monthly' },
-    { loc: `${SITE}/privacypolicy/`, priority: '0.4', changefreq: 'yearly' }
+    { loc: `${SITE}/privacypolicy/`, priority: '0.4', changefreq: 'yearly' },
+    { loc: `${SITE}/termsofservice/`, priority: '0.4', changefreq: 'yearly' },
+    { loc: `${SITE}/refundpolicy/`, priority: '0.4', changefreq: 'yearly' }
   ];
   for (const cat of allCategories) {
     urls.push({

@@ -99,6 +99,8 @@ function footer() {
         <h4>Company</h4>
         <a href="/contact/">Contact</a>
         <a href="/privacypolicy/">Privacy policy</a>
+        <a href="/termsofservice/">Terms of service</a>
+        <a href="/refundpolicy/">Refund policy</a>
       </div>
       <div class="footer-col">
         <h4>Reach us</h4>
