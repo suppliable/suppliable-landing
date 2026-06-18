@@ -109,6 +109,18 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://suppliable.in/products/aac/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suppliable.in/products/aac/ekocon-aac-block-isi-standard/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://suppliable.in/products/bathroom-fittings/</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>daily</changefreq>
