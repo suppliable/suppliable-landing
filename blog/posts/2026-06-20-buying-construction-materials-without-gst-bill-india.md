@@ -19,7 +19,7 @@ It's the most expensive saving you'll ever make. This post explains why.
 The off-the-books trade exists because three groups all benefit short-term:
 
 **The shopkeeper saves:**
-- **18% GST** on most construction items, **28% on cement**, **18% on TMT steel**, **12% on bricks** — not having to remit this is direct revenue
+- **18% GST** on most construction items including cement, TMT steel, paint, pipes and hardware (cement was reduced from 28% to 18% by the GST Council in 2026); **12% on bricks and AAC blocks**; **5% on sand** — not having to remit this is direct revenue
 - **Income tax** on the cash sale, which never enters the books
 - **E-way bill compliance** for inter-state movement above ₹50,000
 - **Compliance overhead** — filing GSTR-1, GSTR-3B, reconciling input tax credit, hiring an accountant
@@ -192,7 +192,7 @@ No. Issuing a backdated invoice is a **forgery offence under both GST law and th
 
 ### What's the GST rate on common construction materials?
 
-- **Cement: 28%** (the highest slab — there's been industry pushback for years to reduce this to 18%)
+- **Cement: 18%** (reduced from 28% by the GST Council in 2026 — a long-awaited correction that brings cement in line with most other construction materials)
 - **TMT steel: 18%**
 - **Bricks, blocks, aggregate: 12%**
 - **Paint, putty, adhesive: 18%**
@@ -201,9 +201,9 @@ No. Issuing a backdated invoice is a **forgery offence under both GST law and th
 - **Hardware, fasteners: 18%**
 - **Sand: 5%** (if not chemically processed)
 
-### Will GST rates come down?
+### Will GST rates come down further?
 
-The GST Council has reviewed the 28% cement rate multiple times. As of mid-2026 no rate cut has been announced, but the long-term direction is consolidation toward fewer, lower slabs. Don't bank on it for your current project.
+The 2026 cement reduction (28% → 18%) was the big one — it's brought cement in line with most other construction materials and shaved ~8-10% off per-bag builder costs. Further rate cuts are unlikely in the short term. The long-term GST direction is consolidation toward fewer, simpler slabs (likely a 5% / 18% / 28% structure) rather than across-the-board reductions.
 
 ### What's the safest way to verify a GST invoice?
 
