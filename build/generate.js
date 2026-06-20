@@ -266,6 +266,8 @@ async function main() {
     { loc: `${SITE}/materialcalculator/chennai/cement/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/materialcalculator/chennai/steel/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/materialcalculator/chennai/waterproofing/`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${SITE}/chennai/`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${SITE}/sand-gravel-chennai/`, priority: '0.8', changefreq: 'monthly' },
     { loc: `${SITE}/contact/`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${SITE}/privacypolicy/`, priority: '0.4', changefreq: 'yearly' },
     { loc: `${SITE}/termsofservice/`, priority: '0.4', changefreq: 'yearly' },

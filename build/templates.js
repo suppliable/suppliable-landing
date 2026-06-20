@@ -408,10 +408,64 @@ ${footer()}
 }
 
 /* ============== CATEGORY LIST PAGE ============== */
+// Per-category SEO overrides — uses exact-match query phrases from Search Console.
+// Keys are the category slug.
+const CATEGORY_SEO = {
+  hardwares: {
+    title: 'Hardware Shop in Chennai — 60-Min Delivery (Tools, Fasteners, Hand Tools) | Suppliable',
+    description: 'Your hardware shop near Sholinganallur Chennai — tools, fasteners, hand tools, binding wire, screws, taps, drill bits delivered to site in 60 minutes. {n} products from trusted brands. Order on WhatsApp or the app.'
+  },
+  cements: {
+    title: 'Cement Suppliers in Chennai — UltraTech, Ramco, Zuari PPC (Live Prices) | Suppliable',
+    description: 'Cement near you in Chennai — UltraTech, Ramco, Zuari PPC 50 kg bags delivered in 60 minutes from Sholinganallur warehouse. {n} cement products with live dealer pricing. WhatsApp +91 87786 27926.'
+  },
+  electrical: {
+    title: 'Electrical Shop in Chennai — Wires, Switches, MCB, Sockets | Suppliable',
+    description: 'Electrical shop near you in Chennai — single-core wires, MCB, switches, sockets, casing, plug tops from Anchor, Polycab, Orbit, Merigold. {n} products, 60-minute site delivery.'
+  },
+  plumbing: {
+    title: 'Plumbing Shop in Chennai — CPVC, UPVC, PVC, Fittings, Taps | Suppliable',
+    description: 'Plumbing shop in Chennai — CPVC pipes, UPVC, PVC, taps, fittings, traps, ball valves from Finolex, Ashirvad, Prince. {n} plumbing products, 60-minute delivery.'
+  },
+  tiling: {
+    title: 'Tile Adhesive & Grout Suppliers in Chennai — MYK Laticrete, Roff | Suppliable',
+    description: 'Tile adhesive and grout suppliers in Chennai — MYK Laticrete Type-1/Type-3, epoxy grout, spacers, sponges. {n} tiling products, 60-minute delivery from Sholinganallur.'
+  },
+  painting: {
+    title: 'Paint Shop in Chennai — Asian Paints, Birla Opus, Putty, Primers | Suppliable',
+    description: 'Paint shop near you in Chennai — Asian Paints Tractor & Ace, Birla Opus, wall putty, primer, rollers and brushes. {n} paint products, 60-minute delivery.'
+  },
+  bathroom_fittings: {
+    title: 'Bathroom Fittings in Chennai — Parryware, Cera, Jaguar | Suppliable',
+    description: 'Bathroom fittings shop in Chennai — taps, mixers, showers, sanitaryware from Parryware, Cera, Jaguar. {n} products, 60-minute delivery from Sholinganallur.'
+  },
+  construction_chemicals: {
+    title: 'Construction Chemicals in Chennai — Dr. Fixit, Fosroc, Sika | Suppliable',
+    description: 'Construction chemicals supplier in Chennai — Dr. Fixit waterproofing, Fosroc, Sika, adhesives, sealants, integral additives. {n} products, 60-minute delivery.'
+  },
+  electrical_conduits: {
+    title: 'Electrical Conduits in Chennai — PVC Conduit, Casing, Bends | Suppliable',
+    description: 'Electrical conduits supplier in Chennai — PVC conduit pipe, casing-capping, bends, junction boxes. {n} products, 60-minute delivery from Sholinganallur.'
+  },
+  lighting_fans: {
+    title: 'Lights & Fans Shop in Chennai — LED Battens, Bulkheads, Floodlights | Suppliable',
+    description: 'Lights and fans shop near you in Chennai — LED batten tubes, bulkheads, floodlights, focus lights from Havells, Maze, Veto. {n} products, 60-minute delivery.'
+  },
+  paints: {
+    title: 'Paint Shop in Chennai — Emulsion, Putty, Primer | Suppliable',
+    description: 'Paint suppliers in Chennai — emulsion, putty, primer in 1L/4L/10L/20L packs. {n} products, 60-minute delivery from Sholinganallur warehouse.'
+  }
+};
+
 export function categoryPage({ category, products, allCategories }) {
   const url = `${SITE}/products/${category.slug}/`;
-  const title = `${category.name} | Buy online in Chennai | Suppliable`;
-  const description = `Buy ${category.name.toLowerCase()} online in Chennai with 60-minute site delivery. Browse ${products.length} ${category.name.toLowerCase()} product${products.length === 1 ? '' : 's'} from trusted brands — order on the Suppliable app or get a bulk quote.`;
+  const seo = CATEGORY_SEO[category.slug];
+  const title = seo
+    ? seo.title
+    : `${category.name} in Chennai — 60-Min Delivery | Suppliable`;
+  const description = seo
+    ? seo.description.replace('{n}', products.length)
+    : `${category.name} in Chennai — ${products.length} products from trusted brands, delivered to your site in 60 minutes. Order on WhatsApp +91 87786 27926 or the Suppliable app.`;
 
   const breadcrumbs = [
     { name: 'Home', url: SITE + '/' },
