@@ -1483,6 +1483,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://suppliable.in/products/motors/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suppliable.in/products/motors/crompton-win-dura-self-priming-pump-motor/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://suppliable.in/products/motors/crompton-borewell-submersible-1hp-pump-with-single-phase-control-panel-4w1-10-bu/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://suppliable.in/products/motors/crompton-residential-openwell-pump-1hp-owe12-1ph-z-28/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://suppliable.in/products/painting/</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1772,6 +1796,12 @@
   </url>
   <url>
     <loc>https://suppliable.in/products/painting/asian-paints-royal-shyne-luxury-interior-emulsion-paint-colour/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://suppliable.in/products/painting/cotton-waste/</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -2323,7 +2353,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://suppliable.in/products/plumbing/finolex-swr-pvc-multi-floor-trap-with-jali-4-inch-x-2-5-inch/</loc>
+    <loc>https://suppliable.in/products/plumbing/finolex-swr-pvc-multi-floor-trap-without-jali-4-inch-x-2-5-inch/</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
