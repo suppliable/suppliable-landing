@@ -40,16 +40,28 @@ jobs:
         run: node build/generate.js
 
       - name: Commit generated pages
+        id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Suppliable Build Bot"
           git add products/ sitemap.xml
           if git diff --staged --quiet; then
             echo "No changes to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "build: regenerate static product pages
 
             Triggered by: ${{ github.event_name }}
             Run: ${{ github.run_number }}"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Wait for GitHub Pages deploy
+        if: steps.commit.outputs.changed == 'true' || github.event_name == 'push'
+        run: sleep 90
+
+      - name: Ping IndexNow (Bing, Yandex)
+        if: steps.commit.outputs.changed == 'true' || github.event_name == 'push'
+        run: node build/submit-indexnow.js --all
+        continue-on-error: true

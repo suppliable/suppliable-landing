@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build/generate.js"
+    "build": "node build/generate.js",
+    "indexnow": "node build/submit-indexnow.js",
+    "indexnow:all": "node build/submit-indexnow.js --all"
   },
   "engines": {
     "node": ">=18"

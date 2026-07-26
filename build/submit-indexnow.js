@@ -48,13 +48,25 @@ const PRIORITY_URLS = [
 ];
 
 function loadKey() {
-  if (!fs.existsSync(KEY_FILE)) {
-    console.error(`✗ Missing ${KEY_FILE}.`);
-    console.error(`  Generate one:  openssl rand -hex 16 > .indexnow-key`);
-    console.error(`  Then copy that string into <key>.txt at repo root and commit + push.`);
-    process.exit(1);
+  // Primary source: local .indexnow-key (gitignored, for dev machines).
+  if (fs.existsSync(KEY_FILE)) {
+    return fs.readFileSync(KEY_FILE, 'utf8').trim();
   }
-  return fs.readFileSync(KEY_FILE, 'utf8').trim();
+  // Fallback: any <hex>.txt at repo root whose contents equal its filename.
+  // This is the public verification file — safe to use as the key in CI
+  // (the key is public by design; the .txt file must be served at that URL).
+  const repoRoot = path.join(__dirname, '..');
+  for (const name of fs.readdirSync(repoRoot)) {
+    if (!/^[0-9a-f]{8,128}\.txt$/i.test(name)) continue;
+    const contents = fs.readFileSync(path.join(repoRoot, name), 'utf8').trim();
+    const expected = name.replace(/\.txt$/, '');
+    if (contents === expected) return contents;
+  }
+  console.error(`✗ No IndexNow key found.`);
+  console.error(`  Local:  put the key in ${KEY_FILE}`);
+  console.error(`  Repo:   put a <key>.txt file at repo root whose contents equal <key>`);
+  console.error(`  Generate one:  openssl rand -hex 16 > .indexnow-key`);
+  process.exit(1);
 }
 
 function parseSitemapUrls() {
