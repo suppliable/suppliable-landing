@@ -14,9 +14,12 @@
  *   3. Commit + push public/<KEY>.txt so it's reachable at https://suppliable.in/<KEY>.txt
  */
 
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+import fs from 'node:fs';
+import path from 'node:path';
+import https from 'node:https';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const HOST = 'suppliable.in';
 const KEY_FILE = path.join(__dirname, '..', '.indexnow-key');
@@ -47,8 +50,8 @@ const PRIORITY_URLS = [
 function loadKey() {
   if (!fs.existsSync(KEY_FILE)) {
     console.error(`✗ Missing ${KEY_FILE}.`);
-    console.error(`  Generate one:  node -e "console.log(require('crypto').randomBytes(16).toString('hex'))" > .indexnow-key`);
-    console.error(`  Then copy that string into public/<key>.txt and commit + push.`);
+    console.error(`  Generate one:  openssl rand -hex 16 > .indexnow-key`);
+    console.error(`  Then copy that string into <key>.txt at repo root and commit + push.`);
     process.exit(1);
   }
   return fs.readFileSync(KEY_FILE, 'utf8').trim();
