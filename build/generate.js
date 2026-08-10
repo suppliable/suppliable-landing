@@ -122,6 +122,54 @@ async function writeFile(relPath, content) {
   await fs.writeFile(abs, content, 'utf8');
 }
 
+/* Redirect stubs — old URLs that must always redirect to a new location.
+   Written after cleanGenerated() so they survive every build. Add an entry
+   here any time the API renames a slug, we consolidate a category, or
+   Search Console reports a 404 for an external link with the wrong path. */
+const REDIRECT_STUBS = {
+  // Wix-era blog URLs
+  'post/aac-blocks-vs-solid-blocks-which-one-is-right-for-your-construction-project': '/blog/aac-blocks-vs-red-bricks-for-chennai-homes-which-should-you-pick/',
+  // ToS mis-linked from external site
+  'terms-and-conditions': '/termsofservice/',
+  // API slug renames
+  'products/plumbing/ashirvad-cpvc-solvent-cement-solution-59ml': '/products/plumbing/ashirvad-cpvc-solvent-cement-solution/',
+  'products/hardwares/anchor-fastner-rawl': '/products/hardwares/anchor-bolt-fastner-rawl/',
+  // Category consolidation
+  'products/paints': '/products/painting/',
+  'products/paints/asian-paint-test-shade': '/products/painting/',
+  // Deleted SKUs — send to parent category
+  'products/hardwares/frp-fiber-manhole-cover-with-frame-3-ton-white-colour': '/products/hardwares/',
+  'products/electrical/ellgee-fuse-unit': '/products/electrical/',
+  'products/electrical/ellgee-rotary-switch': '/products/electrical/',
+  'products/bathroom-fittings/parryware-claret-bib-cock-with-nozzle-g5279a1': '/products/bathroom-fittings/'
+};
+
+/* Which redirect stubs to write (skip the sentinel entries above). */
+function redirectStubHTML(target) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting…</title>
+<link rel="canonical" href="https://suppliable.in${target}">
+<meta name="robots" content="noindex,follow">
+<meta http-equiv="refresh" content="0; url=https://suppliable.in${target}">
+<script>window.location.replace("${target}");</script>
+</head>
+<body><p>This page has moved. If you are not redirected automatically, <a href="${target}">click here</a>.</p></body>
+</html>
+`;
+}
+
+async function writeRedirectStubs() {
+  let n = 0;
+  for (const [urlPath, target] of Object.entries(REDIRECT_STUBS)) {
+    await writeFile(`${urlPath}/index.html`, redirectStubHTML(target));
+    n++;
+  }
+  console.log(`   ✓ ${n} redirect stubs (permanent — survive rebuild)`);
+}
+
 /* delete the generated /products/ subfolders (categories) — index.html
    itself is regenerated each build so we don't need to preserve it. */
 async function cleanGenerated() {
@@ -194,6 +242,9 @@ async function main() {
 
   console.log('2. Cleaning old generated pages…');
   await cleanGenerated();
+
+  console.log('\n2b. Writing redirect stubs for known-moved URLs…');
+  await writeRedirectStubs();
 
   /* Group products by category slug */
   const productsBySlug = {};
