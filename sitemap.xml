@@ -247,7 +247,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://suppliable.in/products/bathroom-fittings/parryware-tapti-wall-hung-basin-white/</loc>
+    <loc>https://suppliable.in/products/bathroom-fittings/parryware-tapti-wall-hung-wash-basin-white/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -287,12 +287,6 @@
     <lastmod>2026-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://suppliable.in/products/cements/dalmia-bop-cement-50kg-ppc/</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://suppliable.in/products/cements/ramco-hardworker-block-fix-for-aac-blocks-paste-40kg/</loc>
@@ -1369,6 +1363,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://suppliable.in/products/hardwares/ms-binding-wire-loose-qty-1kg/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://suppliable.in/products/hardwares/permanent-marker-black/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -1382,12 +1382,6 @@
   </url>
   <url>
     <loc>https://suppliable.in/products/hardwares/pp-rope-10mm-for-construction-1mtr/</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://suppliable.in/products/hardwares/royal-binding-wire-loose-qty-1kg/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
