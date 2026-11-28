@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Take Your Hardware Store Online — Sell on Suppliable | Chennai</title>
+  <meta name="description" content="Own a hardware or building-materials store in Chennai? Get online orders on the Suppliable app. Free for 3 months, then zero commission with plans from ₹1,999/month. Register in 2 minutes." />
+  <meta name="keywords" content="sell hardware online, take hardware store online, hardware shop online chennai, list my shop online, sell building materials online, hardware dealer registration, online hardware store chennai" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://suppliable.in/sell-on-suppliable/" />
+
+  <meta property="og:site_name" content="Suppliable" />
+  <meta property="og:title" content="Take your hardware store online — Sell on Suppliable" />
+  <meta property="og:description" content="Get online orders on the Suppliable app. Free for 3 months, zero commission after that." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://suppliable.in/sell-on-suppliable/" />
+  <meta property="og:image" content="https://suppliable.in/assets/og-image.png" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Take your hardware store online — Sell on Suppliable" />
+  <meta name="twitter:description" content="Get online orders on the Suppliable app. Free for 3 months, zero commission after that." />
+  <meta name="twitter:image" content="https://suppliable.in/assets/og-image.png" />
+  <meta name="theme-color" content="#4B22D6" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/assets/logo-192.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does it cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Everything is free for the first 3 months. After that, plans start at ₹1,999 per month, with zero commission on your sales." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who delivers the orders?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your own delivery staff, using the Suppliable delivery app. When your orders grow, Suppliable provides its own delivery fleet." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a website or a computer?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Just a smartphone. Our team sets up your online catalogue for you." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which areas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "All of Chennai." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ---------- /sell-on-suppliable/ ---------- */
+
+    /* Hero phone preview */
+    .hero-phone { position: relative; justify-self: center; padding: 24px 0 24px 40px; }
+    .phone {
+      position: relative;
+      width: 290px;
+      background: #0E0C22;
+      border-radius: 46px;
+      padding: 11px;
+      box-shadow: 0 30px 60px rgba(10,6,40,.45), inset 0 0 0 2px rgba(255,255,255,.08);
+    }
+    .phone::before { /* notch */
+      content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+      width: 84px; height: 22px; background: #0E0C22; border-radius: 14px; z-index: 2;
+    }
+    .screen { background: var(--gray-100); border-radius: 36px; overflow: hidden; color: var(--ink); }
+    .appbar { background: var(--purple); color: #fff; padding: 46px 18px 18px; }
+    .appbar-row { display: flex; justify-content: space-between; align-items: center; }
+    .appbar h4 { font-size: 1.02rem; font-weight: 800; }
+    .online { font-size: .72rem; font-weight: 700; background: rgba(22,163,74,.2); color: #86EFAC; padding: 4px 10px; border-radius: 999px; }
+    .online::before { content: "● "; }
+    .today { display: flex; gap: 22px; margin-top: 14px; }
+    .today div { display: flex; flex-direction: column; }
+    .today strong { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; }
+    .today span { font-size: .7rem; color: rgba(255,255,255,.7); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+    .screen-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .order { background: #fff; border-radius: 16px; padding: 14px; box-shadow: var(--shadow-sm); }
+    .order-new { border: 2px solid var(--orange); }
+    .order-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .badge-new { background: var(--orange); color: #fff; font-size: .68rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; letter-spacing: .04em; }
+    .order-dist { font-size: .74rem; color: var(--gray-500); font-weight: 600; }
+    .order-items { font-size: .9rem; font-weight: 600; line-height: 1.5; }
+    .order-total { font-size: 1.35rem; font-weight: 800; margin: 8px 0 12px; }
+    .order-btns { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; }
+    .order-btns span { text-align: center; font-size: .85rem; font-weight: 700; padding: 10px 0; border-radius: 10px; }
+    .btn-reject { background: var(--gray-100); color: var(--gray-600); }
+    .btn-accept { background: var(--green); color: #fff; }
+    .order-mini { display: flex; justify-content: space-between; align-items: center; font-size: .84rem; font-weight: 600; }
+    .order-mini em { font-style: normal; font-size: .72rem; font-weight: 700; color: var(--purple); background: var(--purple-50); padding: 4px 8px; border-radius: 6px; }
+
+    .toast {
+      position: absolute; top: 70px; left: -10px; z-index: 3;
+      background: #fff; color: var(--ink); border-radius: 14px; padding: 10px 14px;
+      box-shadow: var(--shadow-xl); display: flex; align-items: center; gap: 10px;
+      font-size: .85rem; font-weight: 700; white-space: nowrap;
+    }
+    .toast i { font-style: normal; font-size: 1.2rem; }
+    .toast small { display: block; font-size: .72rem; color: var(--gray-500); font-weight: 600; }
+
+    /* Manifesto */
+    .manifesto { background: var(--purple-deep); color: #fff; text-align: center; padding: var(--space-16) 0; }
+    .manifesto h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; }
+    .manifesto p { margin-top: var(--space-3); font-size: 1.15rem; font-weight: 700; color: var(--orange); }
+
+    /* Steps */
+    .steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); max-width: 960px; margin: 0 auto; padding-top: 12px; }
+    .steps3 .step { cursor: default; text-align: center; padding-top: var(--space-8); }
+    .steps3 .step-time { left: 50%; transform: translateX(-50%); }
+    .steps3 .cat-emoji { font-size: 2.2rem; }
+    .steps3 h3 { font-size: 1.1rem; }
+
+    /* Benefits */
+    .perks4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+    .perks4 .cat-card { text-align: center; }
+    .perks4 .cat-card:hover { transform: none; }
+    .perks4 h3 { font-size: 1rem; }
+    .perks4 p { margin-top: 4px; }
+
+    /* Pricing */
+    .price-grid { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+    .price-card { position: relative; background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: var(--space-8) var(--space-6) var(--space-6); text-align: center; }
+    .price-card.is-featured { border: 2px solid var(--purple); box-shadow: var(--shadow-md); }
+    .price-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #fff; font-weight: 700; font-size: .76rem; padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
+    .price-tag.alt { background: var(--purple); }
+    .price { margin: var(--space-2) 0 var(--space-1); }
+    .price strong { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; color: var(--purple); }
+    .price span { color: var(--gray-500); font-weight: 600; }
+    .price-card p { color: var(--gray-600); font-weight: 600; }
+
+    /* Form */
+    .field select {
+      width: 100%; font: inherit; padding: 11px 14px; color: var(--ink);
+      border: 1px solid var(--gray-200); border-radius: var(--radius-sm); background: var(--gray-50);
+    }
+    .field select:focus { outline: none; border-color: var(--purple); background: #fff; box-shadow: 0 0 0 3px rgba(75,34,214,.12); }
+    .field.invalid select { border-color: var(--red); background: var(--red-50); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+
+    /* FAQ */
+    .faq { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-3); }
+    .faq details { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius); padding: var(--space-4) var(--space-5); }
+    .faq details[open] { border-color: var(--purple); }
+    .faq summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--purple); font-size: 1.3rem; line-height: 1; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { margin-top: var(--space-2); color: var(--gray-600); }
+
+    @media (max-width: 1000px) {
+      .perks4 { grid-template-columns: repeat(2, 1fr); }
+      .hero-phone { padding-left: 0; }
+    }
+    @media (max-width: 760px) {
+      .steps3, .price-grid { grid-template-columns: 1fr; row-gap: var(--space-8); }
+      .field-row { grid-template-columns: 1fr; gap: 0; }
+      .toast { left: -20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Suppliable home">Suppliable</a>
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="/">For customers</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#register" class="btn btn-orange btn-sm">Register your store</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="pill">🏪 For hardware stores in Chennai</span>
+          <h1>Take your hardware store <span class="hl">online.</span></h1>
+          <p class="hero-sub">Get orders from customers across Chennai, right on your phone.</p>
+          <div class="hero-cta">
+            <a href="#register" class="btn btn-orange btn-lg">Register your store</a>
+            <a href="https://wa.me/918778627926?text=Hi%2C%20I%20own%20a%20hardware%20store%20and%20want%20to%20sell%20on%20Suppliable." class="btn btn-ghost-light btn-lg" target="_blank" rel="noopener">WhatsApp us</a>
+          </div>
+          <ul class="stats">
+            <li><span class="stat-num">3 months</span><span class="stat-label">Free</span></li>
+            <li><span class="stat-num">0%</span><span class="stat-label">Commission</span></li>
+            <li><span class="stat-num">₹1,999</span><span class="stat-label">/ month after</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-phone" aria-hidden="true">
+          <div class="toast"><i>🔔</i><div>New order!<small>₹9,320 · 2 km away</small></div></div>
+          <div class="phone">
+            <div class="screen">
+              <div class="appbar">
+                <div class="appbar-row"><h4>Your Hardware Store</h4><span class="online">Online</span></div>
+                <div class="today">
+                  <div><strong>12</strong><span>Orders today</span></div>
+                  <div><strong>₹38,450</strong><span>Sales today</span></div>
+                </div>
+              </div>
+              <div class="screen-body">
+                <div class="order order-new">
+                  <div class="order-top"><span class="badge-new">NEW ORDER</span><span class="order-dist">2 km away</span></div>
+                  <div class="order-items">20 × UltraTech Cement<br>4 × Finolex Pipe ¾″</div>
+                  <div class="order-total">₹9,320</div>
+                  <div class="order-btns"><span class="btn-reject">Reject</span><span class="btn-accept">Accept</span></div>
+                </div>
+                <div class="order order-mini"><span>2 × Asian Paints 20 L</span><em>On the way</em></div>
+                <div class="order order-mini"><span>50 × AAC Blocks</span><em>Delivered</em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto">
+      <div class="container">
+        <h2>Why let big brands take our industry?</h2>
+        <p>Let's go online. Let's grow together.</p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">How it works</span>
+          <h2>Online in 3 steps.</h2>
+        </div>
+        <div class="steps3">
+          <div class="step">
+            <span class="step-time">Step 1</span>
+            <span class="cat-emoji">📝</span>
+            <h3>Register</h3>
+            <p>2-minute form</p>
+          </div>
+          <div class="step">
+            <span class="step-time">Step 2</span>
+            <span class="cat-emoji">📦</span>
+            <h3>We set up your shop</h3>
+            <p>Products, prices, photos</p>
+          </div>
+          <div class="step">
+            <span class="step-time">Step 3</span>
+            <span class="cat-emoji">🔔</span>
+            <h3>Get orders</h3>
+            <p>Accept, pack, deliver</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="section section-mist" id="benefits">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What you get</span>
+          <h2>Run your store like a quick-commerce app.</h2>
+        </div>
+        <div class="perks4">
+          <div class="cat-card"><span class="cat-emoji">📱</span><h3>Online store</h3><p>On the Suppliable app</p></div>
+          <div class="cat-card"><span class="cat-emoji">🚚</span><h3>Delivery app</h3><p>For your delivery staff</p></div>
+          <div class="cat-card"><span class="cat-emoji">💳</span><h3>Payments</h3><p>UPI, card &amp; COD</p></div>
+          <div class="cat-card"><span class="cat-emoji">📊</span><h3>Sales dashboard</h3><p>Every order, one place</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Pricing</span>
+          <h2>Free to start. Zero commission.</h2>
+        </div>
+        <div class="price-grid">
+          <div class="price-card is-featured">
+            <span class="price-tag">First 3 months</span>
+            <div class="price"><strong>₹0</strong></div>
+            <p>Everything included</p>
+          </div>
+          <div class="price-card">
+            <span class="price-tag alt">After that</span>
+            <div class="price"><strong>₹1,999</strong><span> / month</span></div>
+            <p>Starting price · 0% commission</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTER -->
+    <section class="section section-bulk" id="register">
+      <div class="container bulk-inner">
+        <div class="bulk-copy">
+          <span class="eyebrow eyebrow-light">Register your store</span>
+          <h2>Start free today.</h2>
+          <p class="bulk-sub">Fill this in and our team will call you.</p>
+        </div>
+
+        <div class="bulk-form-wrap">
+          <form class="bulk-form" id="storeForm" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="sf-owner">Your name</label>
+                <input type="text" id="sf-owner" name="owner" autocomplete="name" required />
+                <span class="error"></span>
+              </div>
+              <div class="field">
+                <label for="sf-phone">Phone</label>
+                <input type="tel" id="sf-phone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile" required />
+                <span class="error"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="sf-store">Store name</label>
+              <input type="text" id="sf-store" name="store" autocomplete="organization" required />
+              <span class="error"></span>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="sf-area">Area</label>
+                <input type="text" id="sf-area" name="area" placeholder="e.g. Velachery" required />
+                <span class="error"></span>
+              </div>
+              <div class="field">
+                <label for="sf-type">Store type</label>
+                <select id="sf-type" name="type" required>
+                  <option value="">Select…</option>
+                  <option>Hardware &amp; tools</option>
+                  <option>Paints</option>
+                  <option>Plumbing &amp; sanitaryware</option>
+                  <option>Electricals</option>
+                  <option>Tiles</option>
+                  <option>Cement, steel &amp; blocks</option>
+                  <option>Multi-category</option>
+                  <option>Other</option>
+                </select>
+                <span class="error"></span>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-orange btn-block">Register my store</button>
+            <p class="form-success" id="storeFormSuccess" hidden>✅ Opening WhatsApp. Tap <strong>Send</strong> to submit.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Quick answers.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>How much does it cost?</summary>
+            <p>Everything is free for the first 3 months. After that, plans start at ₹1,999 per month, with zero commission on your sales.</p>
+          </details>
+          <details>
+            <summary>Who delivers the orders?</summary>
+            <p>Your own delivery staff, using the Suppliable delivery app. When your orders grow, Suppliable provides its own delivery fleet.</p>
+          </details>
+          <details>
+            <summary>Do I need a website or a computer?</summary>
+            <p>No. Just a smartphone. Our team sets up your online catalogue for you.</p>
+          </details>
+          <details>
+            <summary>Which areas?</summary>
+            <p>All of Chennai.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo logo-footer">Suppl<span class="logo-i">i</span>able</span>
+        <p>Construction materials, delivered to your site in 60 minutes.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="/#how">How it works</a>
+        <a href="/products/">Products</a>
+        <a href="/materialcalculator/">Material Calculator</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sell-on-suppliable/">Sell on Suppliable</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/contact/">Contact</a>
+        <a href="/privacypolicy/">Privacy policy</a>
+        <a href="/termsofservice/">Terms of service</a>
+        <a href="/refundpolicy/">Refund policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Reach us</h4>
+        <address>
+          98 Kalaignar Karunanidhi Salai,<br>
+          Sholinganallur, Chennai,<br>
+          Tamil Nadu — 600119
+        </address>
+        <a href="mailto:contact@suppliable.in">contact@suppliable.in</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year">2026</span> Suppliable. All rights reserved.</span>
+      <span>Made in Chennai 🧡</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var header = document.getElementById('siteHeader');
+    function onScroll() { header.classList.toggle('scrolled', window.scrollY > 8); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var navToggle = document.getElementById('navToggle');
+    var nav = document.getElementById('primaryNav');
+    navToggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    var targets = document.querySelectorAll('.section-head, .steps3 .step, .perks4 .cat-card, .price-card, .bulk-copy, .bulk-form-wrap');
+    if ('IntersectionObserver' in window) {
+      targets.forEach(function (el) { el.classList.add('reveal'); });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.15 });
+      targets.forEach(function (el) { io.observe(el); });
+    }
+
+    /* Registration form → WhatsApp */
+    var form = document.getElementById('storeForm');
+    var success = document.getElementById('storeFormSuccess');
+    var fields = form.querySelectorAll('[required]');
+
+    function setError(input, msg) {
+      var field = input.closest('.field');
+      field.classList.toggle('invalid', !!msg);
+      field.querySelector('.error').textContent = msg || '';
+    }
+    function validate(input) {
+      var val = input.value.trim();
+      if (!val) { setError(input, 'Required'); return false; }
+      if (input.id === 'sf-phone' && val.replace(/\D/g, '').length < 10) { setError(input, 'Enter a 10-digit number'); return false; }
+      setError(input, ''); return true;
+    }
+    fields.forEach(function (input) {
+      input.addEventListener('blur', function () { validate(input); });
+      input.addEventListener(input.tagName === 'SELECT' ? 'change' : 'input', function () {
+        if (input.closest('.field').classList.contains('invalid')) validate(input);
+      });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ok = true;
+      fields.forEach(function (input) { if (!validate(input)) ok = false; });
+      if (!ok) { form.querySelector('.field.invalid input, .field.invalid select').focus(); return; }
+
+      var msg = [
+        'Store registration from suppliable.in/sell-on-suppliable',
+        '',
+        'Name: ' + form.owner.value.trim(),
+        'Phone: ' + form.phone.value.trim(),
+        'Store: ' + form.store.value.trim(),
+        'Area: ' + form.area.value.trim(),
+        'Store type: ' + form.type.value
+      ].join('\n');
+
+      success.hidden = false;
+      form.reset();
+      setTimeout(function () {
+        window.location.href = 'https://wa.me/918778627926?text=' + encodeURIComponent(msg);
+      }, 600);
+    });
+  })();
+  </script>
+</body>
+</html>
